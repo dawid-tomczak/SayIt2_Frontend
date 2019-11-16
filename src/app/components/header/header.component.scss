@@ -1,0 +1,25 @@
+#header__toolbar-logo{
+  width:100px;
+  height: auto;
+}
+
+#header__toolbar-user{
+  height: 40px;
+  width: auto;
+}
+
+mat-toolbar{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 600px) {
+  #header__toolbar-user {
+    display: none;
+  }
+
+  mat-toolbar{
+  justify-content: center;
+  }
+}
