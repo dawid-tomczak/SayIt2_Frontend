@@ -6,3 +6,9 @@ export class Translation {
   meaningPL: string;
   categoryId: number;
 }
+
+export class Category {
+  id: number;
+  name: string;
+  materialIconName: string;
+}
