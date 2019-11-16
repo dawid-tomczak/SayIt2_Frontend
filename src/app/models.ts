@@ -21,3 +21,9 @@ export class QuizQuestion {
   option2: string;
   option3: string;
 }
+
+export class LearningType {
+  id: number;
+  name: string;
+  description: string;
+}
