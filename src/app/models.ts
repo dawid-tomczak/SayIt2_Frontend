@@ -27,3 +27,13 @@ export class LearningType {
   name: string;
   description: string;
 }
+
+export class BackgroundShape {
+  name: 'rectangle' | 'circle' | 'line' | 'zig';
+  positionPercentageX: number;
+  positionPercentageY: number;
+  scalePercentageThreshold: number;
+  xMovingPercentageThreshold: number;
+  yMovingPercentageThreshold: number;
+  rotate: number;
+}
