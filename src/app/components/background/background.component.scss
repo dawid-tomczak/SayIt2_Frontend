@@ -1,0 +1,26 @@
+@import "../../../variables.scss";
+
+.circle{
+  fill: none;
+  stroke: $pink;
+  stroke-width: 4px;
+}
+
+.rectangle{
+  fill: none;
+  stroke: $green;
+  stroke-width:4px
+}
+
+.line{
+  stroke: $purple;
+  stroke-linecap: round;
+  stroke-width: 4px;
+}
+
+.zig{
+  stroke:$pink;
+  fill: none;
+  stroke-width:4;
+  stroke-linecap: round;
+}
