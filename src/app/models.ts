@@ -36,4 +36,5 @@ export class BackgroundShape {
   xMovingPercentageThreshold: number;
   yMovingPercentageThreshold: number;
   rotate: number;
+  color: 'purple' | 'pink' | 'green';
 }
