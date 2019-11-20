@@ -34,11 +34,14 @@ export class BackgorundElementComponent implements AfterViewInit {
     elementReference.style.setProperty('--positionY', propertiesObj.positionPercentageY.toString() + '%');
     elementReference.style.setProperty('--positionX', propertiesObj.positionPercentageX.toString() + '%');
     elementReference.style.setProperty('--scaleThreshold', propertiesObj.scaleThreshold.toString());
+    elementReference.style.setProperty('--delayRandomFactor', Math.floor(Math.random() * 100).toString());
   }
 
   private _assignPathProperties(elementReference: ChildNode, propertiesObj: BackgroundShape) {
     // tslint:disable-next-line:no-string-literal
     elementReference['style'].setProperty('--color', this.colorsDictionary[propertiesObj.color]);
   }
+
+  private _enableRandomMoving(elementReference);
 
 }
