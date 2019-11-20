@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BackgroundComponent } from './components/background/background.component';
 import { MainPageComponent } from './components/pages/main-page/main-page.component';
 import { MainPageHeroComponent } from './components/pages/main-page/main-page-hero/main-page-hero.component';
+import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MainPageHeroComponent } from './components/pages/main-page/main-page-he
     HeaderComponent,
     BackgroundComponent,
     MainPageComponent,
-    MainPageHeroComponent
+    MainPageHeroComponent,
+    BackgorundElementComponent
   ],
   imports: [
     BrowserModule,

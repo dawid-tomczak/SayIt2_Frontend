@@ -1,0 +1,19 @@
+@import "../../../../variables.scss";
+
+path, line, circle, rect{
+  fill: none;
+  stroke: var(--color);
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+
+svg{
+  position:absolute;
+  top:var(--positionX);
+  left:var(--positionY);
+  transform: rotate(var(--rotate));
+}
+
+
+

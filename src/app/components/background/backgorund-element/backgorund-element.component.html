@@ -1,0 +1,15 @@
+<svg #svg width="40px" height="40px" *ngIf="shape.name === 'circle'" id="{{'elementSVG-' + index.toString()}}">
+  <circle #path r="45%" cx="50%" cy="50%" id="elementPath" />
+</svg>
+
+<svg #svg width="40px" height="40px" *ngIf="shape.name === 'rectangle'" id="{{'elementSVG-' + index.toString()}}">
+  <rect #path x="5%" y="5%" rx="2%" ry="2%" height="90%" width="90%" id="{{'elementPath-' + index.toString()}}" />
+</svg>
+
+<svg #svg width="50px" height="50px" *ngIf="shape.name === 'line'" id="{{'elementSVG-' + index.toString()}}">
+  <line #path x1="10%" y1="50%" x2="90%" y2="50%" id="{{'elementPath-' + index.toString()}}" />
+</svg>
+
+<svg #svg width="55px" height="20px" *ngIf="shape.name === 'zig'" id="{{'elementSVG-' + index.toString()}}">
+  <path #path d="M 2 2 L 10 16.5 L 20 3 L 30 16.5 L 40 3 L 50 17" id="{{'elementPath-' + index.toString()}}" />
+</svg>
