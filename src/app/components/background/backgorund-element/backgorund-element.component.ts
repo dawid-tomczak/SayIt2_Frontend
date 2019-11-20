@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewChecked, AfterViewInit, ViewChild } from '@angular/core';
 import { BackgroundShape } from 'src/app/models';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-backgorund-element',
@@ -32,6 +33,7 @@ export class BackgorundElementComponent implements AfterViewInit {
     elementReference.style.setProperty('--rotate', propertiesObj.rotate.toString() + 'deg');
     elementReference.style.setProperty('--positionY', propertiesObj.positionPercentageY.toString() + '%');
     elementReference.style.setProperty('--positionX', propertiesObj.positionPercentageX.toString() + '%');
+    elementReference.style.setProperty('--scaleThreshold', propertiesObj.scaleThreshold.toString());
   }
 
   private _assignPathProperties(elementReference: ChildNode, propertiesObj: BackgroundShape) {

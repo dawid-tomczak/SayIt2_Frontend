@@ -13,6 +13,20 @@ svg{
   top:var(--positionX);
   left:var(--positionY);
   transform: rotate(var(--rotate));
+
+  animation-name: scaleAnimation;
+  animation-duration: random(5) + s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes scaleAnimation{
+  from{
+    transfrom: scale(1) rotate(var(--rotate));
+  }
+  to{
+    transform: scale(var(--scaleThreshold)) rotate(var(--rotate));
+  }
 }
 
 
