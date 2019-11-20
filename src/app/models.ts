@@ -32,7 +32,7 @@ export class BackgroundShape {
   name: 'rectangle' | 'circle' | 'line' | 'zig';
   positionPercentageX: number;
   positionPercentageY: number;
-  scalePercentageThreshold: number;
+  scaleThreshold: number;
   xMovingPercentageThreshold: number;
   yMovingPercentageThreshold: number;
   rotate: number;
