@@ -13,6 +13,7 @@ import { BackgorundElementComponent } from './components/background/backgorund-e
 import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatRippleModule } from '@angular/material/core';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatRippleModule
+    MatRippleModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
