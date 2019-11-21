@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FicheComponent } from './components/pages/fiche/fiche.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MainPageComponent,
     MainPageHeroComponent,
     BackgorundElementComponent,
-    CategoryCardComponent
+    CategoryCardComponent,
+    FicheComponent
   ],
   imports: [
     BrowserModule,
