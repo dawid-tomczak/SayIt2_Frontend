@@ -37,4 +37,5 @@ export class BackgroundShape {
   yMovingPercentageThreshold: number;
   rotate: number;
   color: 'purple' | 'pink' | 'green';
+  animationDuration: number;
 }

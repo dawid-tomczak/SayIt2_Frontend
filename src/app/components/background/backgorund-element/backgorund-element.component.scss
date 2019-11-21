@@ -9,16 +9,15 @@ path, line, circle, rect{
 
 
 svg{
-  position:absolute;
+  opacity: 0.35;
+  position: fixed;
   top:var(--positionX);
   left:var(--positionY);
   transform: rotate(var(--rotate));
 
   animation-name: scaleAnimation;
-  animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-delay: var(--delayRandomFactor) + s;
 }
 
 @keyframes scaleAnimation{

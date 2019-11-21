@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, AfterViewChecked, AfterViewInit, ViewChild } from '@angular/core';
 import { BackgroundShape } from 'src/app/models';
 import { element } from 'protractor';
+import { Random, MersenneTwister19937 } from 'random-js';
 
 @Component({
   selector: 'app-backgorund-element',
@@ -18,6 +19,8 @@ export class BackgorundElementComponent implements AfterViewInit {
     green: '#72CC79'
   };
 
+  random = new Random(MersenneTwister19937.autoSeed());
+
 
   constructor() { }
 
@@ -30,11 +33,16 @@ export class BackgorundElementComponent implements AfterViewInit {
   }
 
   private _assignSVGProperties(elementReference: HTMLElement, propertiesObj: BackgroundShape) {
+
+    const delay = this.random.integer(0, 3000) * (propertiesObj.scaleThreshold * 100);
+    console.log(propertiesObj.animationDuration);
+
     elementReference.style.setProperty('--rotate', propertiesObj.rotate.toString() + 'deg');
     elementReference.style.setProperty('--positionY', propertiesObj.positionPercentageY.toString() + '%');
     elementReference.style.setProperty('--positionX', propertiesObj.positionPercentageX.toString() + '%');
     elementReference.style.setProperty('--scaleThreshold', propertiesObj.scaleThreshold.toString());
-    elementReference.style.setProperty('--delayRandomFactor', Math.floor(Math.random() * 100).toString());
+    elementReference.style.setProperty('--delayRandomFactor', delay.toString());
+    elementReference.style.setProperty('animation-duration', propertiesObj.animationDuration.toString() + 'ms');
   }
 
   private _assignPathProperties(elementReference: ChildNode, propertiesObj: BackgroundShape) {
