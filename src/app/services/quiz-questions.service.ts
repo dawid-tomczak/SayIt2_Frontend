@@ -24,7 +24,7 @@ export class QuizQuestionsService {
     return this.http.post(this.url, questionToAdd);
   }
 
-  public patchQuizQuestion(id: number, changes: any) {
+  public patchQuizQuestion(id: number, changes: any): Observable<any> {
     return this.http.patch(this.url + `(${id})`, changes);
   }
 }
