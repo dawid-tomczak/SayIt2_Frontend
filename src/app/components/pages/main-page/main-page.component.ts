@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  categories: Category[];
+
+  constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
+    this.categoriesService.getCategories().subscribe(res => {
+      this.categories = res;
+      console.log(res);
+    }, err => {
+      console.log('can not get categories', err);
+    });
   }
 
 }
