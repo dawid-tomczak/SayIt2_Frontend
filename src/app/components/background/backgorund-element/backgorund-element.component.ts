@@ -42,6 +42,4 @@ export class BackgorundElementComponent implements AfterViewInit {
     elementReference['style'].setProperty('--color', this.colorsDictionary[propertiesObj.color]);
   }
 
-  private _enableRandomMoving(elementReference);
-
 }
