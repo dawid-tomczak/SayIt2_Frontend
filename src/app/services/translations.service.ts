@@ -21,7 +21,7 @@ export class TranslationsService {
   }
 
   public getTranslationsForCategory(categoryId: number): Observable<Translation[]> {
-    return this.http.get(this.url + `?$filter=CategoryId eq ${categoryId}`).pipe(
+    return this.http.get(this.url + `?$filter=categoryId eq ${categoryId}`).pipe(
       pluck('value')
     );
   }
