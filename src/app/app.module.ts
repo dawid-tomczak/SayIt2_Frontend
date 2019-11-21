@@ -16,6 +16,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FicheComponent } from './components/pages/fiche/fiche.component';
+import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FicheComponent } from './components/pages/fiche/fiche.component';
     MainPageHeroComponent,
     BackgorundElementComponent,
     CategoryCardComponent,
-    FicheComponent
+    FicheComponent,
+    FicheCardComponent
   ],
   imports: [
     BrowserModule,
