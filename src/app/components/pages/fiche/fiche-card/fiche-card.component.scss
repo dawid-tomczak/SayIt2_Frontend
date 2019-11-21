@@ -6,6 +6,7 @@
   background-color:$purple;
   border-radius: 30px;
   display:grid;
+  overflow: hidden;
   grid-template-columns: 1fr 5fr 1fr;
   grid-template-rows: auto 110px auto;
   grid-template-areas:  "left actions right"
@@ -46,15 +47,13 @@
   display:flex;
   align-items:center;
   padding: 20px 0px 20px 0px;
-  transition: all 0.5s;
 }
 
 .container__navigation-div{
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.5s;
-
+  transition: background-color 200ms;
   .material-icons{
     font-size: 4rem;
   }
@@ -72,4 +71,9 @@
 
 .meaningHidden{
   height:0px
+}
+
+.container__navigation-div:hover{
+  cursor: pointer;
+  background-color: #00000021;
 }

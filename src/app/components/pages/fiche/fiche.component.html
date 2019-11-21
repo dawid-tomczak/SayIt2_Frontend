@@ -1,1 +1,4 @@
-<app-fiche-card></app-fiche-card>
+<app-fiche-card *ngIf="translations[0] != null" [translation]="translations[ficheIndex]" [ficheIndex]="ficheIndex"
+  (ficheChangeEmitter)="changeHandler($event)">
+</app-fiche-card>
+<mat-spinner *ngIf="translations[0] == null"></mat-spinner>
