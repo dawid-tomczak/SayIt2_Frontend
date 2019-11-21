@@ -14,7 +14,6 @@ import { CategoryCardComponent } from './components/pages/main-page/category-car
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatToolbarModule,
     MatIconModule,
     MatRippleModule,
-    HttpClientModule,
-    MatProgressSpinnerModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
