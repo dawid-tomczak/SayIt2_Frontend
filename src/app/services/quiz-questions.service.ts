@@ -14,7 +14,7 @@ export class QuizQuestionsService {
 
   constructor(private http: HttpClient) { }
 
-  public getQuizQuestions(): Observable<QuizQuestion> {
+  public getQuizQuestions(): Observable<QuizQuestion[]> {
     return this.http.get(this.url).pipe(
       pluck('value')
     );
