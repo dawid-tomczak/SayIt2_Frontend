@@ -11,6 +11,7 @@ import { MainPageComponent } from './components/pages/main-page/main-page.compon
 import { MainPageHeroComponent } from './components/pages/main-page/main-page-hero/main-page-hero.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CategoryCardComponent } from './components/pages/main-page/category-car
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
