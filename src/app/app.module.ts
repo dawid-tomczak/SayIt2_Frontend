@@ -10,6 +10,9 @@ import { BackgroundComponent } from './components/background/background.componen
 import { MainPageComponent } from './components/pages/main-page/main-page.component';
 import { MainPageHeroComponent } from './components/pages/main-page/main-page-hero/main-page-hero.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
+import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,16 @@ import { BackgorundElementComponent } from './components/background/backgorund-e
     BackgroundComponent,
     MainPageComponent,
     MainPageHeroComponent,
-    BackgorundElementComponent
+    BackgorundElementComponent,
+    CategoryCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
