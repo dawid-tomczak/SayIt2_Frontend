@@ -12,6 +12,7 @@ import { MainPageHeroComponent } from './components/pages/main-page/main-page-he
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
