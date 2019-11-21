@@ -1,0 +1,75 @@
+@import "../../../../../variables.scss";
+
+
+#container{
+  width:500px;
+  background-color:$purple;
+  border-radius: 30px;
+  display:grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: auto 110px auto;
+  grid-template-areas:  "left actions right"
+                        "left translation right"
+                        "left meaning right";
+
+  color:white;
+}
+
+#container__navigation-left{
+  grid-area: left;
+}
+#container__navigation-right{
+  grid-area: right;
+}
+
+#container__actions-div{
+  grid-area: actions;
+  display:flex;
+  justify-content: space-between;
+  color:whitesmoke
+}
+
+#container__translation-div{
+  grid-area: translation;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size:2rem;
+  font-weight: 500;
+}
+
+#container__meaning-div{
+  grid-area:meaning;
+  height: auto;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  padding: 20px 0px 20px 0px;
+  transition: all 0.5s;
+}
+
+.container__navigation-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+
+  .material-icons{
+    font-size: 4rem;
+  }
+}
+
+#container__translation-PL{
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #bebebe
+}
+
+.meaningShown {
+  height:50px
+}
+
+.meaningHidden{
+  height:0px
+}

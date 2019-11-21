@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-ca
     MatIconModule,
     MatRippleModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,33 @@
-<p>fiche-card works!</p>
+<div id="container">
+  <div class="container__navigation-div" id="container__navigation-left">
+    <i class="material-icons">
+      keyboard_arrow_left
+    </i>
+  </div>
+  <div class="container__navigation-div" id="container__navigation-right">
+    <i class="material-icons">
+      keyboard_arrow_right
+    </i>
+  </div>
+  <div id="container__actions-div">
+    <button mat-icon-button>
+      <i class="material-icons">volume_up</i>
+    </button>
+    <button mat-icon-button (click)="_meaningToggle()">
+      <i class="material-icons">info</i>
+    </button>
+  </div>
+  <div id="container__translation-div">
+    <span id="container__translation-EN">
+      Mouse
+    </span>
+    <span id="container__translation-PL">
+      Mysz
+    </span>
+  </div>
+  <div id="container__meaning-div">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus aut saepe vel laboriosam, dolores optio
+    similique soluta enim voluptate qui laudantium tempore adipisci tenetur. Reiciendis eveniet assumenda est rerum
+    harum!
+  </div>
+</div>
