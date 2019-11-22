@@ -14,6 +14,7 @@ export class FicheCardComponent implements OnInit {
 
   @Input() translation: Translation;
   @Input() ficheIndex: number;
+  @Input() maxIndex: number;
 
   @Output() ficheChangeEmitter = new EventEmitter();
 
@@ -28,9 +29,16 @@ export class FicheCardComponent implements OnInit {
   }
 
   _meaningToggle() {
-    const meaningDiv = document.getElementById('container__meaning-div');
+    const meaningDiv = document.getElementById('container__mainContent__meaning-div');
 
-    meaningDiv.classList.add('meaningShown');
-    console.log(meaningDiv.classList);
+    if (!this.meaningShown) {
+      meaningDiv.style.setProperty('height', 'auto');
+      meaningDiv.style.setProperty('padding', '20px 0px 20px 0px');
+    } else {
+      meaningDiv.style.setProperty('height', '0px');
+      meaningDiv.style.setProperty('padding', '0px');
+    }
+
+    this.meaningShown = !this.meaningShown;
   }
 }
