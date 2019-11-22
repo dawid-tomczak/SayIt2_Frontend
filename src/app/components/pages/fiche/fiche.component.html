@@ -1,4 +1,8 @@
-<app-fiche-card *ngIf="translations[0] != null" [translation]="translations[ficheIndex]" [ficheIndex]="ficheIndex"
-  [maxIndex]="translations.length - 1" (ficheChangeEmitter)="changeHandler($event)">
-</app-fiche-card>
-<mat-spinner *ngIf="translations[0] == null"></mat-spinner>
+<mat-progress-bar mode="determinate" color="accent" [value]="(ficheIndex / (translations.length - 1)) * 100">
+</mat-progress-bar>
+<div id="container">
+  <app-fiche-card *ngIf="translations[0] != null" [translation]="translations[ficheIndex]" [ficheIndex]="ficheIndex"
+    [maxIndex]="translations.length - 1" (ficheChangeEmitter)="changeHandler($event)">
+  </app-fiche-card>
+  <mat-spinner *ngIf="translations[0] == null"></mat-spinner>
+</div>
