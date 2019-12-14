@@ -8,10 +8,16 @@
   width: auto;
 }
 
+header{
+  z-index: 1;
+}
+
 mat-toolbar{
   display:flex;
   justify-content: space-between;
   flex-direction: row;
+  position: relative;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 600px) {

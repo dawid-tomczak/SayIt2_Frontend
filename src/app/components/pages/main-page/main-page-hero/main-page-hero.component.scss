@@ -8,7 +8,7 @@
 #container__img-wave{
   width:100%;
   height:auto;
-  z-index: 2;
+  z-index: 1;
 }
 #container__img-guy{
   position: absolute;
@@ -20,7 +20,7 @@
 }
 h1{
   position: absolute;
-  z-index:3;
+  z-index:2;
   top: 15%;
   left:10%;
   color:white;
