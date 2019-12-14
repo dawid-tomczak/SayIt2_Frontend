@@ -19,6 +19,7 @@ import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
