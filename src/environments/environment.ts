@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendURL: 'http://michalciernia.hostingasp.pl/odata/'
+  backendURL: 'http://localhost:53214/odata/'
 };
 
 /*
