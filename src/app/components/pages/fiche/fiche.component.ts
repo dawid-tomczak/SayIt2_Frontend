@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslationsService } from 'src/app/services/translations.service';
 import { Translation } from 'src/app/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fiche',
@@ -11,18 +12,22 @@ export class FicheComponent implements OnInit {
 
   translations: Translation[] = [];
   ficheIndex = 0;
+  selectedCategoryId: number;
 
-  constructor(private translationsService: TranslationsService) { }
+  constructor(private translationsService: TranslationsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.translationsService.getTranslationsForCategory(1).subscribe(res => {
+
+    this.route.queryParams.subscribe(params => this.selectedCategoryId = params.categoryId);
+
+    this.translationsService.getTranslationsForCategory(this.selectedCategoryId).subscribe(res => {
       this.translations = res;
     }, err => {
       console.log('can not donload translations for category', err);
     });
   }
 
-  changeHandler(event) {
+  changeHandler(event): void {
     if (event === 'next') {
       this.ficheIndex += 1;
     } else {
