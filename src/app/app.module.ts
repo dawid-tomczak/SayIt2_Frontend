@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
+import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { QuizComponent } from './components/pages/quiz/quiz.component';
     CategoryCardComponent,
     FicheComponent,
     FicheCardComponent,
-    QuizComponent
+    QuizComponent,
+    QuizCardComponent
   ],
   imports: [
     BrowserModule,
