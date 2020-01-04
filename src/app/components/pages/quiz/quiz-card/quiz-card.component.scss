@@ -1,0 +1,24 @@
+#container{
+  height: 500px;
+  width: 350px;
+  border-radius: 40px;
+  padding:0px;
+  background-color: #3F51B5;
+}
+
+#container__question{
+  display:flex;
+  height: 40%;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #778BE1;
+  border-radius: 40px 40px 0 0;
+  padding:21px 17px 21px 17px;
+
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 21px;
+  text-align: center;
+  color: white;
+}

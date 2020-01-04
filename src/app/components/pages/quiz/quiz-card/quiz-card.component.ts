@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Translation } from 'src/app/models';
 
 @Component({
   selector: 'app-quiz-card',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizCardComponent implements OnInit {
 
+  @Input() quizTranslation: Translation;
+
+  optionsArray: string[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.quizTranslation);
   }
 
 }
