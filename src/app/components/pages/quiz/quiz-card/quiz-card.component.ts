@@ -15,7 +15,22 @@ export class QuizCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.quizTranslation);
+    this.optionsArray = this._buildOptionsArray(this.quizTranslation);
   }
 
+  private _buildOptionsArray(translation: Translation): string[] {
+    const quizQuestion = translation.quizQuestion[0];
+
+    return this._shuffleArray([translation.translationEN, quizQuestion.option1, quizQuestion.option2, quizQuestion.option3]);
+  }
+
+  private _shuffleArray(array: any[]) {
+    const arrayCoppy = array;
+    for (let i = arrayCoppy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arrayCoppy[i], arrayCoppy[j]] = [arrayCoppy[j], arrayCoppy[i]];
+    }
+
+    return arrayCoppy;
+  }
 }
