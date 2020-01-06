@@ -11,6 +11,7 @@ export class QuizCardComponent implements OnInit {
   @Input() quizTranslation: Translation;
 
   optionsArray: string[] = [];
+  answerSelected = false;
 
   constructor() { }
 
@@ -32,5 +33,30 @@ export class QuizCardComponent implements OnInit {
     }
 
     return arrayCoppy;
+  }
+
+  private _optionSelect(option: string) {
+    this.answerSelected = true;
+
+    if (option === this.quizTranslation.translationEN) {
+      this._assignRightOptionStyles(true);
+    } else {
+      this._assignRightOptionStyles();
+      this._assignWrongOptionStyles(option);
+    }
+  }
+
+  private _assignRightOptionStyles(answeredRight: boolean = false) {
+    const rightOptionButton = document.getElementsByClassName('container__options__button')
+      .item(this.optionsArray.indexOf(this.quizTranslation.translationEN));
+
+    rightOptionButton.classList.add('animated', answeredRight ? 'tada' : null, 'container__options__button--right');
+  }
+
+  private _assignWrongOptionStyles(selectedOption: string) {
+    const wrongOptionButton = document.getElementsByClassName('container__options__button')
+      .item(this.optionsArray.indexOf(selectedOption));
+
+    wrongOptionButton.classList.add('animated', 'shake', 'container__options__button--wrong');
   }
 }

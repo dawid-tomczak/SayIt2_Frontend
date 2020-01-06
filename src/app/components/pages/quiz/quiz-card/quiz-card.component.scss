@@ -39,8 +39,8 @@
 
 .container__options__button{
   width:45%;
-  height: 40%;
-  border-radius: 8px;
+  height: 38%;
+  border-radius: 13px;
   border-style: none;
   display: inline-block;
   background-color: white;
@@ -51,7 +51,17 @@
   transition: background-color 250ms, color 250ms;
 }
 
-.container__options__button:hover{
+.container__options__button:hover:enabled{
   background-color: $pink;
   color:white;
+}
+
+.container__options__button--right{
+  background-color: $green;
+  color: white;
+}
+
+.container__options__button--wrong{
+  background-color: $red;
+  color:white
 }
