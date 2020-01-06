@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { Translation } from 'src/app/models';
 
 @Component({
@@ -6,18 +6,35 @@ import { Translation } from 'src/app/models';
   templateUrl: './quiz-card.component.html',
   styleUrls: ['./quiz-card.component.scss']
 })
-export class QuizCardComponent implements OnInit {
+export class QuizCardComponent implements OnInit, OnChanges {
+
+  constructor() { }
 
   @Input() quizTranslation: Translation;
+  @Input() quizEnd: boolean;
+  @Input() correctAnswers: number;
+  // emmit TRUE when the answer is correct and FALSE when it is wrong
+  @Output() answerEmitter = new EventEmitter();
 
   optionsArray: string[] = [];
   answerSelected = false;
 
-  constructor() { }
-
   ngOnInit() {
-    this.optionsArray = this._buildOptionsArray(this.quizTranslation);
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    if (changes.quizTranslation != null) {
+      this.optionsArray = this._buildOptionsArray(this.quizTranslation);
+    }
+
+    if (changes.quizEnd != null && changes.quizEnd.currentValue) {
+      this._quizEnded();
+    }
+    this.answerSelected = false;
+  }
+
+
 
   private _buildOptionsArray(translation: Translation): string[] {
     const quizQuestion = translation.quizQuestion[0];
@@ -39,11 +56,21 @@ export class QuizCardComponent implements OnInit {
     this.answerSelected = true;
 
     if (option === this.quizTranslation.translationEN) {
+      // the answer is right
+      this.answerEmitter.emit(true);
+
       this._assignRightOptionStyles(true);
     } else {
+      // the answer is wrong
+      this.answerEmitter.emit(false);
+
       this._assignRightOptionStyles();
       this._assignWrongOptionStyles(option);
     }
+  }
+
+  private _quizEnded() {
+    this._assignQuizEndStyles();
   }
 
   private _assignRightOptionStyles(answeredRight: boolean = false) {
@@ -58,5 +85,15 @@ export class QuizCardComponent implements OnInit {
       .item(this.optionsArray.indexOf(selectedOption));
 
     wrongOptionButton.classList.add('animated', 'shake', 'container__options__button--wrong');
+  }
+
+  private _assignQuizEndStyles() {
+    const questionContainer = document.getElementById('container__question');
+    const translationMeaning = document.getElementById('container__question__meaning');
+    const quizSummary = document.getElementById('container__question__summary');
+
+    questionContainer.classList.add('container__question--end');
+    translationMeaning.classList.add('container__question__meaning--end');
+    quizSummary.classList.add('container__question__summary--end');
   }
 }

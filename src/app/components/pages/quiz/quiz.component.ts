@@ -13,15 +13,35 @@ export class QuizComponent implements OnInit {
   selectedCategoryId: number;
   quizTranstations: Translation[];
   translationIndex = 0;
+  correctAnswersCounter = 0;
+  quizEnd = false;
 
   constructor(private translationsService: TranslationsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.translationIndex);
     this.route.queryParams.subscribe(params => this.selectedCategoryId = params.categoryId);
 
     this.translationsService.getQuizTranslations(this.selectedCategoryId).subscribe(res => {
       this.quizTranstations = res;
+      console.log(res);
     }, err => console.log('can not download quiz questions', err));
   }
 
+  private _answerHandler(correctAnswer) {
+    if (correctAnswer) {
+      this.correctAnswersCounter += 1;
+    }
+
+    // arrow function becouse without it setTimeout in TypeScript is not working with "this."
+    setTimeout(() => this._nextQuestion(), 2000);
+  }
+
+  private _nextQuestion() {
+    if (this.quizTranstations.length - 1 > this.translationIndex) {
+      ++this.translationIndex;
+    } else {
+      this.quizEnd = true;
+    }
+  }
 }

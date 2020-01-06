@@ -1,2 +1,3 @@
-<app-quiz-card *ngIf="quizTranstations[0] != null" [quizTranslation]="quizTranstations[translationIndex]">
+<app-quiz-card *ngIf="quizTranstations[0] != null" [quizTranslation]="quizTranstations[translationIndex]"
+  [quizEnd]="quizEnd" [correctAnswers]="correctAnswersCounter" (answerEmitter)="_answerHandler($event)">
 </app-quiz-card>

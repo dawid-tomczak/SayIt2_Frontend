@@ -1,6 +1,11 @@
 <div id="container">
   <div id="container__question">
-    {{quizTranslation.meaningEN}}
+    <span id="container__question__meaning">
+      {{quizTranslation.meaningEN}}
+    </span>
+    <span id="container__question__summary">
+      Podsumowanie
+    </span>
   </div>
   <div id="container__options">
     <button *ngFor="let option of optionsArray" class="container__options__button" (click)="_optionSelect(option)"
