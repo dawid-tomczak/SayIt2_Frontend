@@ -1,9 +1,11 @@
+@import "../../../../../variables.scss";
+
 #container{
   height: 500px;
   width: 350px;
   border-radius: 40px;
   padding:0px;
-  background-color: #3F51B5;
+  background-color: $purple;
 }
 
 #container__question{
@@ -21,4 +23,35 @@
   font-size: 21px;
   text-align: center;
   color: white;
+}
+
+#container__options{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 60%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  padding:25px 20px 25px 20px;
+}
+
+.container__options__button{
+  width:45%;
+  height: 40%;
+  border-radius: 8px;
+  border-style: none;
+  display: inline-block;
+  background-color: white;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'Open Sans';
+  transition: background-color 250ms, color 250ms;
+}
+
+.container__options__button:hover{
+  background-color: $pink;
+  color:white;
 }

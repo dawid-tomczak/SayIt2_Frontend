@@ -3,6 +3,8 @@
     {{quizTranslation.meaningEN}}
   </div>
   <div id="container__options">
-
+    <button *ngFor="let option of optionsArray" class="container__options__button">
+      {{option}}
+    </button>
   </div>
 </div>
