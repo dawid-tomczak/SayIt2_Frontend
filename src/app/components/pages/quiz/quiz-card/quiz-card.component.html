@@ -1,16 +1,43 @@
 <div id="container">
   <div id="container__question">
-    <span id="container__question__meaning">
+    <span id="container__question__meaning" *ngIf="!quizEnd">
       {{quizTranslation.meaningEN}}
     </span>
-    <span id="container__question__summary">
-      Podsumowanie
+
+    <span *ngIf="quizEnd">
+
+      <span *ngIf="correctAnswers / translationsAmount < 0.5" class="container__question__summary__mark">
+        Słabiutko😔
+      </span>
+      <span *ngIf="correctAnswers / translationsAmount >= 0.5 && correctAnswers / translationsAmount < 0.75"
+        class="container__question__summary__mark">
+        Całkiem nieźle👌
+      </span>
+      <span *ngIf="correctAnswers / translationsAmount >= 0.75" class="container__question__summary__mark">
+        Brawo!😃
+      </span>
+      <br />
+
+      <span class="container__question__summary__amount">
+        {{correctAnswers}}/{{translationsAmount}}
+      </span>
+
+      <br />
+      <span class="container__question__summary__amount__desc">
+        Poprawnych odpowiedzi
+      </span>
+
     </span>
   </div>
+
   <div id="container__options">
-    <button *ngFor="let option of optionsArray" class="container__options__button" (click)="_optionSelect(option)"
-      [disabled]="answerSelected">
+    <button [hidden]="quizEnd" *ngFor="let option of optionsArray" class="container__options__button"
+      (click)="_optionSelect(option)" [disabled]="answerSelected">
       {{option}}
+    </button>
+
+    <button class="container__question__summary__back__button" routerLink="/main" *ngIf="quizEnd">
+      Powrót
     </button>
   </div>
 </div>

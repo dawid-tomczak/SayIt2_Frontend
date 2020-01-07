@@ -13,6 +13,7 @@ export class QuizCardComponent implements OnInit, OnChanges {
   @Input() quizTranslation: Translation;
   @Input() quizEnd: boolean;
   @Input() correctAnswers: number;
+  @Input() translationsAmount: number;
   // emmit TRUE when the answer is correct and FALSE when it is wrong
   @Output() answerEmitter = new EventEmitter();
 
@@ -89,11 +90,9 @@ export class QuizCardComponent implements OnInit, OnChanges {
 
   private _assignQuizEndStyles() {
     const questionContainer = document.getElementById('container__question');
-    const translationMeaning = document.getElementById('container__question__meaning');
-    const quizSummary = document.getElementById('container__question__summary');
+    const optionsContainer = document.getElementById('container__options');
 
     questionContainer.classList.add('container__question--end');
-    translationMeaning.classList.add('container__question__meaning--end');
-    quizSummary.classList.add('container__question__summary--end');
+    optionsContainer.classList.add('container__options--end');
   }
 }
