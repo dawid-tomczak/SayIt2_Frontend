@@ -20,6 +20,8 @@ import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-ca
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule, Routes } from '@angular/router';
+import { QuizComponent } from './components/pages/quiz/quiz.component';
+import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { RouterModule, Routes } from '@angular/router';
     BackgorundElementComponent,
     CategoryCardComponent,
     FicheComponent,
-    FicheCardComponent
+    FicheCardComponent,
+    QuizComponent,
+    QuizCardComponent
   ],
   imports: [
     BrowserModule,

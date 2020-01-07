@@ -27,7 +27,9 @@ export class TranslationsService {
   }
 
   public getQuizTranslations(categoryId: number): Observable<any> {
-    return this.http.get(this.url + `?$filter=categoryId eq ${categoryId} &$expand=QuizQuestion`);
+    return this.http.get(this.url + `?$filter=categoryId eq ${categoryId} &$expand=quizQuestion`).pipe(
+      pluck('value')
+    );
   }
 
   public postTranslation(newTranslation: Translation): Observable<any> {

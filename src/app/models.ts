@@ -5,6 +5,7 @@ export class Translation {
   meaningEN: string;
   meaningPL: string;
   categoryId: number;
+  quizQuestion?: QuizQuestion;
 }
 
 export class Category {
