@@ -31,12 +31,12 @@
   </div>
 
   <div id="container__options">
-    <button [hidden]="quizEnd" *ngFor="let option of optionsArray" class="container__options__button"
+    <button matRipple [hidden]="quizEnd" *ngFor="let option of optionsArray" class="container__options__button"
       (click)="_optionSelect(option)" [disabled]="answerSelected">
       {{option}}
     </button>
 
-    <button class="container__question__summary__back__button" routerLink="/main" *ngIf="quizEnd">
+    <button matRipple class="container__question__summary__back__button" routerLink="/main" *ngIf="quizEnd">
       Powrót
     </button>
   </div>
