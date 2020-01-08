@@ -19,12 +19,10 @@ export class QuizComponent implements OnInit {
   constructor(private translationsService: TranslationsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.translationIndex);
     this.route.queryParams.subscribe(params => this.selectedCategoryId = params.categoryId);
 
     this.translationsService.getQuizTranslations(this.selectedCategoryId).subscribe(res => {
       this.quizTranstations = res;
-      console.log(res);
     }, err => console.log('can not download quiz questions', err));
   }
 

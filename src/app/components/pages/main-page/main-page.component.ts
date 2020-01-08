@@ -17,7 +17,6 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     this.categoriesService.getCategories().subscribe(res => {
       this.categories = res;
-      console.log(res);
     }, err => {
       console.log('can not get categories', err);
     });

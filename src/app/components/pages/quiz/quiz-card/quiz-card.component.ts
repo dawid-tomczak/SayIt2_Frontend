@@ -24,7 +24,6 @@ export class QuizCardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     if (changes.quizTranslation != null) {
       this.optionsArray = this._buildOptionsArray(this.quizTranslation);
     }

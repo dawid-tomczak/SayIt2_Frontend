@@ -35,7 +35,6 @@ export class BackgorundElementComponent implements AfterViewInit {
   private _assignSVGProperties(elementReference: HTMLElement, propertiesObj: BackgroundShape) {
 
     const delay = this.random.integer(0, 3000) * (propertiesObj.scaleThreshold * 100);
-    console.log(propertiesObj.animationDuration);
 
     elementReference.style.setProperty('--rotate', propertiesObj.rotate.toString() + 'deg');
     elementReference.style.setProperty('--positionY', propertiesObj.positionPercentageY.toString() + '%');
