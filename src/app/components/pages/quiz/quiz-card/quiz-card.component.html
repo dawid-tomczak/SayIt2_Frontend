@@ -32,7 +32,7 @@
 
   <div id="container__options">
     <button matRipple [hidden]="quizEnd" *ngFor="let option of optionsArray" class="container__options__button"
-      (click)="_optionSelect(option)" [disabled]="answerSelected">
+      (click)="optionSelect(option)" [disabled]="answerSelected">
       {{option}}
     </button>
 

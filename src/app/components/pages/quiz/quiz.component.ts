@@ -26,7 +26,7 @@ export class QuizComponent implements OnInit {
     }, err => console.log('can not download quiz questions', err));
   }
 
-  private _answerHandler(correctAnswer) {
+  answerHandler(correctAnswer) {
     if (correctAnswer) {
       this.correctAnswersCounter += 1;
     }

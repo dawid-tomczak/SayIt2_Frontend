@@ -1,6 +1,6 @@
 <div class="router__content__container">
   <app-quiz-card *ngIf="quizTranstations != null" [quizTranslation]="quizTranstations[translationIndex]"
     [quizEnd]="quizEnd" [correctAnswers]="correctAnswersCounter" [translationsAmount]="quizTranstations.length"
-    (answerEmitter)="_answerHandler($event)">
+    (answerEmitter)="answerHandler($event)">
   </app-quiz-card>
 </div>

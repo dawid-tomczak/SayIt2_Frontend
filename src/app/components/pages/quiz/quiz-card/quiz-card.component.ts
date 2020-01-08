@@ -52,7 +52,7 @@ export class QuizCardComponent implements OnInit, OnChanges {
     return arrayCoppy;
   }
 
-  private _optionSelect(option: string) {
+  optionSelect(option: string) {
     this.answerSelected = true;
 
     if (option === this.quizTranslation.translationEN) {
