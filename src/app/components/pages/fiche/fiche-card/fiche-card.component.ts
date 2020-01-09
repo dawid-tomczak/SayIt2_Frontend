@@ -28,12 +28,20 @@ export class FicheCardComponent implements OnInit {
   }
 
   changeFiche(direction: 'previous' | 'next') {
-    this.ficheChangeEmitter.emit(direction);
+    if ((direction === 'previous' && this.ficheIndex !== 0) || (direction === 'next' && this.ficheIndex !== this.maxIndex)) {
+      this.ficheChangeEmitter.emit(direction);
+    }
   }
 
   tapHandler() {
     if (this.mobileDevice) {
       this._meaningToggle();
+    }
+  }
+
+  swipeHandler(direction: 'previous' | 'next') {
+    if (this.mobileDevice) {
+      this.changeFiche(direction);
     }
   }
 
