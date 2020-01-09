@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container" (tap)="tapHandler()">
   <div matRipple class="container__navigation-div" id="container__navigation-left" (click)="changeFiche('previous')"
     *ngIf="ficheIndex != 0">
     <i class="material-icons">

@@ -11,6 +11,7 @@ export class FicheCardComponent implements OnInit {
 
   // tslint:disable-next-line:no-inferrable-types
   meaningShown: boolean = false;
+  mobileDevice = false;
 
   @Input() translation: Translation;
   @Input() ficheIndex: number;
@@ -21,11 +22,19 @@ export class FicheCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    if (window.innerWidth <= 414) {
+      this.mobileDevice = true;
+    }
   }
 
   changeFiche(direction: 'previous' | 'next') {
     this.ficheChangeEmitter.emit(direction);
+  }
+
+  tapHandler() {
+    if (this.mobileDevice) {
+      this._meaningToggle();
+    }
   }
 
   _meaningToggle() {
