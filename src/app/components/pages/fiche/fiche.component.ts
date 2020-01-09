@@ -46,7 +46,9 @@ export class FicheComponent implements OnInit {
   hideGesturesInfo() {
     const infoElement = document.getElementById('gesturesInfo');
 
-    infoElement.classList.add('fadeHide');
+    if (!infoElement.classList.contains('fadeHide')) {
+      infoElement.classList.add('fadeHide');
+    }
   }
 
 }

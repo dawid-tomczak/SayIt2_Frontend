@@ -1,12 +1,13 @@
-<div id="container" (tap)="tapHandler()" (swipeleft)="swipeHandler('next')" (swiperight)="swipeHandler('previous')">
-  <div matRipple class="container__navigation-div" id="container__navigation-left" (click)="changeFiche('previous')"
+<div id="card" class="fiche_card" (tap)="tapHandler()" (swipeleft)="swipeHandler('next')"
+  (swiperight)="swipeHandler('previous')">
+  <div matRipple class="card__navigation-div" id="card__navigation-left" (click)="changeFiche('previous')"
     *ngIf="ficheIndex != 0">
     <i class="material-icons">
       keyboard_arrow_left
     </i>
   </div>
 
-  <div id="container__mainContent__actions-div">
+  <div id="card__mainContent__actions-div">
     <button mat-icon-button>
       <i class="material-icons">volume_up</i>
     </button>
@@ -14,19 +15,19 @@
       <i class="material-icons">info</i>
     </button>
   </div>
-  <div id="container__mainContent__translation-div">
+  <div id="card__mainContent__translation-div">
     <span id="containe__mainContentr__translation-EN">
       {{translation.translationEN}}
     </span>
-    <span id="container__mainContent__translation-PL">
+    <span id="card__mainContent__translation-PL">
       {{translation.translationPL}}
     </span>
   </div>
-  <div id="container__mainContent__meaning-div">
+  <div id="card__mainContent__meaning-div">
     {{translation.meaningEN}}
   </div>
 
-  <div matRipple class="container__navigation-div" id="container__navigation-right" (click)="changeFiche('next')"
+  <div matRipple class="card__navigation-div" id="card__navigation-right" (click)="changeFiche('next')"
     *ngIf="ficheIndex != maxIndex">
     <i class="material-icons">
       keyboard_arrow_right
