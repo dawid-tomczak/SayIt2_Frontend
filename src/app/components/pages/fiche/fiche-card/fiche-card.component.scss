@@ -9,7 +9,13 @@
   color:white;
   padding: 0;
   overflow: hidden;
-  transition: height
+  transition: height;
+  display:grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-rows: 1fr 3fr auto;
+  grid-template-areas:"left actions right"
+                      "left translation right"
+                      "left meaning right";
 }
 
 .row{
@@ -28,6 +34,11 @@
 
 #container__navigation-right{
   float:right;
+  grid-area: right;
+}
+
+#container__navigation-left{
+  grid-area: left;
 }
 
 #container__mainContent{
@@ -39,7 +50,8 @@
   width:100%;
   display:flex;
   justify-content: space-between;
-  color:whitesmoke
+  color:whitesmoke;
+  grid-area: actions;
 }
 
 #container__mainContent__translation-div{
@@ -51,6 +63,7 @@
   justify-content: center;
   font-size:2rem;
   font-weight: 500;
+  grid-area: translation;
 }
 
 #container__mainContent__meaning-div{
@@ -59,6 +72,7 @@
   display:flex;
   align-items:center;
   transition: all 500ms;
+  grid-area: meaning;
 }
 
 #container__mainContent__translation-PL{
