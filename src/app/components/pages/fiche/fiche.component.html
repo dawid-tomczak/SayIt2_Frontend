@@ -5,4 +5,9 @@
     [maxIndex]="translations.length - 1" (ficheChangeEmitter)="changeHandler($event)">
   </app-fiche-card>
   <mat-spinner *ngIf="translations[0] == null"></mat-spinner>
+
+  <span id="gesturesInfo" *ngIf="mobileDevice">
+    <b>Tapnij</b>, aby zobaczyć znaczenie <br />
+    <b>Przesuń</b>, aby zmienić fiszkę
+  </span>
 </div>

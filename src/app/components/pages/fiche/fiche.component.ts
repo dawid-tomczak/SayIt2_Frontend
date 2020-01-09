@@ -13,10 +13,14 @@ export class FicheComponent implements OnInit {
   translations: Translation[] = [];
   ficheIndex = 0;
   selectedCategoryId: number;
+  mobileDevice = false;
 
   constructor(private translationsService: TranslationsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    if (window.innerWidth <= 414) {
+      this.mobileDevice = true;
+    }
 
     this.route.queryParams.subscribe(params => this.selectedCategoryId = params.categoryId);
 
@@ -28,10 +32,22 @@ export class FicheComponent implements OnInit {
   }
 
   changeHandler(event): void {
+    if (this.ficheIndex === 0 && this.mobileDevice) {
+      this.hideGesturesInfo();
+    }
+
     if (event === 'next') {
       this.ficheIndex += 1;
     } else {
       this.ficheIndex -= 1;
+    }
+  }
+
+  hideGesturesInfo() {
+    const infoElement = document.getElementById('gesturesInfo');
+
+    if (!infoElement.classList.contains('fadeHide')) {
+      infoElement.classList.add('fadeHide');
     }
   }
 

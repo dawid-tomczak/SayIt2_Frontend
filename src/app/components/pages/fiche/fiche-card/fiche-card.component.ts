@@ -11,6 +11,7 @@ export class FicheCardComponent implements OnInit {
 
   // tslint:disable-next-line:no-inferrable-types
   meaningShown: boolean = false;
+  mobileDevice = false;
 
   @Input() translation: Translation;
   @Input() ficheIndex: number;
@@ -21,15 +22,58 @@ export class FicheCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    if (window.innerWidth <= 414) {
+      this.mobileDevice = true;
+    }
   }
 
+
   changeFiche(direction: 'previous' | 'next') {
-    this.ficheChangeEmitter.emit(direction);
+    if ((direction === 'previous' && this.ficheIndex !== 0) || (direction === 'next' && this.ficheIndex !== this.maxIndex)) {
+      this._animationHandler(direction, 'out');
+
+      setTimeout(() => {
+        this.ficheChangeEmitter.emit(direction);
+        this._animationHandler(direction, 'in');
+      }
+        , 250);
+
+    }
+  }
+
+  tapHandler() {
+    if (this.mobileDevice) {
+      this._meaningToggle();
+    }
+  }
+
+  swipeHandler(direction: 'previous' | 'next') {
+    if (this.mobileDevice) {
+      this.changeFiche(direction);
+    }
+  }
+
+  private _animationHandler(direction: 'previous' | 'next', fade: 'in' | 'out') {
+    const cardRef = document.getElementById('card');
+    let animationName: string;
+
+    if (direction === 'previous' && fade === 'out') {
+      animationName = 'swipeOutRight';
+    } else if (direction === 'previous' && fade === 'in') {
+      animationName = 'swipeInLeft';
+    } else if (direction === 'next' && fade === 'out') {
+      animationName = 'swipeOutLeft';
+    } else if (direction === 'next' && fade === 'in') {
+      animationName = 'swipeInRight';
+    }
+
+    cardRef.style.animationDuration = '0.25s';
+    cardRef.style.animationFillMode = 'forward';
+    cardRef.style.animationName = animationName;
   }
 
   _meaningToggle() {
-    const meaningDiv = document.getElementById('container__mainContent__meaning-div');
+    const meaningDiv = document.getElementById('card__mainContent__meaning-div');
 
     if (!this.meaningShown) {
       meaningDiv.style.setProperty('height', 'auto');
@@ -41,4 +85,5 @@ export class FicheCardComponent implements OnInit {
 
     this.meaningShown = !this.meaningShown;
   }
+
 }

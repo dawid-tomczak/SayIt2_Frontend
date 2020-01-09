@@ -1,45 +1,36 @@
-<div id="container">
-  <div class="row">
-    <div matRipple class="container__navigation-div col-2" id="container__navigation-left"
-      (click)="changeFiche('previous')" *ngIf="ficheIndex != 0">
-      <i class="material-icons">
-        keyboard_arrow_left
-      </i>
-    </div>
+<div id="card" class="fiche_card" (tap)="tapHandler()" (swipeleft)="swipeHandler('next')"
+  (swiperight)="swipeHandler('previous')">
+  <div matRipple class="card__navigation-div" id="card__navigation-left" (click)="changeFiche('previous')"
+    *ngIf="ficheIndex != 0">
+    <i class="material-icons">
+      keyboard_arrow_left
+    </i>
+  </div>
 
-    <div class="container__navigation-spacer col-2" *ngIf="ficheIndex == 0">
-    </div>
+  <div id="card__mainContent__actions-div">
+    <button mat-icon-button>
+      <i class="material-icons">volume_up</i>
+    </button>
+    <button mat-icon-button (click)="_meaningToggle()">
+      <i class="material-icons">info</i>
+    </button>
+  </div>
+  <div id="card__mainContent__translation-div">
+    <span id="containe__mainContentr__translation-EN">
+      {{translation.translationEN}}
+    </span>
+    <span id="card__mainContent__translation-PL">
+      {{translation.translationPL}}
+    </span>
+  </div>
+  <div id="card__mainContent__meaning-div">
+    {{translation.meaningEN}}
+  </div>
 
-    <div id="container__mainContent" class="col">
-      <div id="container__mainContent__actions-div">
-        <button mat-icon-button>
-          <i class="material-icons">volume_up</i>
-        </button>
-        <button mat-icon-button (click)="_meaningToggle()">
-          <i class="material-icons">info</i>
-        </button>
-      </div>
-      <div id="container__mainContent__translation-div">
-        <span id="containe__mainContentr__translation-EN">
-          {{translation.translationEN}}
-        </span>
-        <span id="container__mainContent__translation-PL">
-          {{translation.translationPL}}
-        </span>
-      </div>
-      <div id="container__mainContent__meaning-div">
-        {{translation.meaningEN}}
-      </div>
-    </div>
-
-    <div class="container__navigation-spacer col-2" *ngIf="ficheIndex == maxIndex">
-    </div>
-
-    <div matRipple class="container__navigation-div col-2" id="container__navigation-right"
-      (click)="changeFiche('next')" *ngIf="ficheIndex != maxIndex">
-      <i class="material-icons">
-        keyboard_arrow_right
-      </i>
-    </div>
+  <div matRipple class="card__navigation-div" id="card__navigation-right" (click)="changeFiche('next')"
+    *ngIf="ficheIndex != maxIndex">
+    <i class="material-icons">
+      keyboard_arrow_right
+    </i>
   </div>
 </div>

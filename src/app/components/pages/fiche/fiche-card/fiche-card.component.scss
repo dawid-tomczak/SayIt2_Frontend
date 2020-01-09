@@ -1,7 +1,7 @@
 @import "../../../../../variables.scss";
 
 
-#container{
+#card{
   width:500px;
   height:auto;
   background: linear-gradient(172deg, rgba(63,81,181,1) 45%, rgba(248,160,252,1) 130%);
@@ -9,14 +9,21 @@
   color:white;
   padding: 0;
   overflow: hidden;
-  transition: height
+  transition: height;
+  justify-self: center;
+  display:grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  grid-template-rows: 1fr 3fr auto;
+  grid-template-areas:"left actions right"
+                      "left translation right"
+                      "left meaning right";
 }
 
 .row{
   height: 100%;
 }
 
-.container__navigation-div, .container__navigation-spacer{
+.card__navigation-div{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,23 +33,29 @@
   }
 }
 
-#container__navigation-right{
+#card__navigation-right{
   float:right;
+  grid-area: right;
 }
 
-#container__mainContent{
+#card__navigation-left{
+  grid-area: left;
+}
+
+#card__mainContent{
   height:100%;
   margin:0;
 }
 
-#container__mainContent__actions-div{
+#card__mainContent__actions-div{
   width:100%;
   display:flex;
   justify-content: space-between;
-  color:whitesmoke
+  color:whitesmoke;
+  grid-area: actions;
 }
 
-#container__mainContent__translation-div{
+#card__mainContent__translation-div{
   display:flex;
   height: 110px;
   width:100%;
@@ -51,23 +64,77 @@
   justify-content: center;
   font-size:2rem;
   font-weight: 500;
+  grid-area: translation;
 }
 
-#container__mainContent__meaning-div{
+#card__mainContent__meaning-div{
   height: 0px;
   overflow: hidden;
   display:flex;
   align-items:center;
   transition: all 500ms;
+  grid-area: meaning;
 }
 
-#container__mainContent__translation-PL{
+#card__mainContent__translation-PL{
   font-size: 1.25rem;
   font-weight: 400;
   color: #bebebe
 }
 
-.container__navigation-div:hover{
+.card__navigation-div:hover{
   cursor: pointer;
   background-color: #00000021;
 }
+
+@media (max-width: 414px){
+  #card{
+    width: 90%;
+    margin:auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr auto;
+    grid-template-areas:  "translation"
+                          "meaning";
+  }
+
+  #card__navigation-left, #card__navigation-right, #card__mainContent__actions-div{
+    display: none;
+  }
+}
+
+@keyframes swipeOutLeft{
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes swipeOutRight{
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes swipeInLeft{
+  0%{
+    transform: translateX(-100vw);
+  }
+  100%{
+    transform: translateX(0vw);
+  }
+}
+
+@keyframes swipeInRight{
+  0%{
+    transform: translateX(100vw);
+  }
+  100%{
+    transform: translateX(0vw);
+  }
+}
+
