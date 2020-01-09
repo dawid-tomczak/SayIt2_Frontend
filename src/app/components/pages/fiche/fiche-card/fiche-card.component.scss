@@ -22,7 +22,7 @@
   height: 100%;
 }
 
-.container__navigation-div, .container__navigation-spacer{
+.container__navigation-div{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,4 +84,18 @@
 .container__navigation-div:hover{
   cursor: pointer;
   background-color: #00000021;
+}
+
+@media (max-width: 414px){
+  #container{
+    width: 90%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr auto;
+    grid-template-areas:  "translation"
+                          "meaning";
+  }
+
+  #container__navigation-left, #container__navigation-right, #container__mainContent__actions-div{
+    display: none;
+  }
 }
