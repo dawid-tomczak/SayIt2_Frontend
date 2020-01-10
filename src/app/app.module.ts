@@ -22,6 +22,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -50,7 +51,9 @@ import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.c
     MatButtonModule,
     MatProgressBarModule
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
