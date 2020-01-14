@@ -101,3 +101,11 @@ button:hover:enabled{
   height: 10% !important;
   padding: 0 !important;
 }
+
+
+@media only screen and (max-height: 640px){
+  #container{
+    width: 90vw;
+    height: 80vh
+  }
+}
