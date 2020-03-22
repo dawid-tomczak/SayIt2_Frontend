@@ -21,6 +21,15 @@ mat-toolbar{
   z-index: 1;
 }
 
+::ng-deep .mat-menu-content{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.menu__button_logout{
+  background-color: rgb(255,0,0,0.10)
+}
+
 @media only screen and (max-width: 600px) {
   #header__toolbar-user {
     display: none;
