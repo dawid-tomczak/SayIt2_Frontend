@@ -1,6 +1,41 @@
 <header>
   <mat-toolbar color="primary">
     <img src="assets/img/sayIt logo.png" alt="SayIt" id="header__toolbar-logo" routerLink="/main">
-    <img src="assets//img/user.png" alt="UserImg" id="header__toolbar-user" class="rounded-circle">
+    <img src="assets//img/user.png" alt="UserImg" id="header__toolbar-user" class="rounded-circle"
+      [matMenuTriggerFor]="menu">
   </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>
+        assignment_ind
+      </mat-icon>
+      <span>
+        Mój profil
+      </span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>
+        assessment
+      </mat-icon>
+      <span>
+        Postępy
+      </span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>
+        table_chart
+      </mat-icon>
+      <span>
+        Tłumaczenia
+      </span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
+      <span>
+        Wyloguj
+      </span>
+    </button>
+  </mat-menu>
 </header>

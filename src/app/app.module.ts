@@ -23,6 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
