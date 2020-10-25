@@ -1,0 +1,42 @@
+.wrapper{
+  width:100vw;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(341deg, rgba(248,160,252,1)10%,rgba(63,81,181,1) 60%);
+  background-size: 200% 200%;
+  animation: gradientSlide 15s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  z-index:1
+}
+
+.wrapper__formCard{
+  width:600px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+
+  h3{
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+}
+
+.formCard__image{
+  height:100px;
+  width:auto;
+}
+
+@keyframes gradientSlide {
+	0% {
+		background-position: 30% 0%;
+	}
+	100% {
+		background-position: 80% 100%;
+	}
+}

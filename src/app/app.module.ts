@@ -24,6 +24,8 @@ import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/pages/login/login.component';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { LoginComponent } from './components/pages/login/login.component';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
