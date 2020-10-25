@@ -32,6 +32,12 @@
   width:auto;
 }
 
+.formCard_external{
+  width:50%;
+  display: flex;
+  justify-content: space-between;
+}
+
 @keyframes gradientSlide {
 	0% {
 		background-position: 30% 0%;

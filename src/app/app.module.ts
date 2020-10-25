@@ -25,6 +25,7 @@ import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.c
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/pages/login/login.component';
 import { MatCardModule } from '@angular/material/card';
+import { ExternalServiceLoginComponent } from './components/pages/login/external-service-login/external-service-login.component';
 
 
 
@@ -41,7 +42,8 @@ import { MatCardModule } from '@angular/material/card';
     FicheCardComponent,
     QuizComponent,
     QuizCardComponent,
-    LoginComponent
+    LoginComponent,
+    ExternalServiceLoginComponent
   ],
   imports: [
     BrowserModule,
