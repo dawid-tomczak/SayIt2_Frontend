@@ -23,6 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { LoginComponent } from './components/pages/login/login.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FicheComponent,
     FicheCardComponent,
     QuizComponent,
-    QuizCardComponent
+    QuizCardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
