@@ -22,7 +22,7 @@ export class ExternalLoginItem {
         break;
       }
       case ExternalLoginItemType.Google: {
-        this.backgroundColor = '#D94821';
+        this.backgroundColor = '#F4F6F5';
         break;
       }
       default: {
