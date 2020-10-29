@@ -14,12 +14,16 @@
 
 .wrapper__formCard{
   width:600px;
-  background-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0.85);
+  border-radius: 15px;
+  padding: 15px 30px 25px 30px;
+}
+
+.formCard__content{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
 
   h3{
     font-size: 1rem;
@@ -27,16 +31,28 @@
   }
 }
 
-.formCard__image{
+.content__image{
   height:100px;
   width:auto;
 }
 
-.formCard_external{
+.content__external{
   width:50%;
+  min-width:200px;
   display: flex;
   justify-content: space-between;
 }
+
+.content__loginForm{
+  width:70%;
+  margin-top:40px;
+}
+
+.actions__button{
+  margin-right: 10px;
+  margin-left:10px;
+}
+
 
 @keyframes gradientSlide {
 	0% {
