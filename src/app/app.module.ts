@@ -26,6 +26,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/pages/login/login.component';
 import { MatCardModule } from '@angular/material/card';
 import { ExternalServiceLoginComponent } from './components/pages/login/external-service-login/external-service-login.component';
+import { LoginFormComponent } from './components/pages/login/login-form/login-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule, MatInputModule } from '@angular/material';
 
 
 
@@ -43,7 +47,8 @@ import { ExternalServiceLoginComponent } from './components/pages/login/external
     QuizComponent,
     QuizCardComponent,
     LoginComponent,
-    ExternalServiceLoginComponent
+    ExternalServiceLoginComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,11 @@ import { ExternalServiceLoginComponent } from './components/pages/login/external
     MatProgressSpinnerModule,
     MatButtonModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDividerModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

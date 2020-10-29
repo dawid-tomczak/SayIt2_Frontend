@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" *ngIf="loginForm">
+  <mat-form-field>
+    <mat-label>Login</mat-label>
+    <input matInput placeholder="Login" formControlName="login">
+    <mat-error *ngIf="loginForm.get('login').invalid">Login jest wymagany</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Hasło</mat-label>
+    <input matInput typre="password" placeholder="Hasło" formControlName="password">
+    <mat-error *ngIf="loginForm.get('password').invalid">Hasło jest wymagane</mat-error>
+  </mat-form-field>
+</form>
