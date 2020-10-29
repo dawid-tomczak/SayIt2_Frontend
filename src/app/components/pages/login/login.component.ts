@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
-    console.log(this.externalLoginServicesTypes);
   }
 
 }
