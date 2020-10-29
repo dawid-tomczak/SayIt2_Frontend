@@ -20,4 +20,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.loginService.generateNewLoginFormGroup();
   }
 
+  submit(): void {
+    this.loginService.loginFormSubmit();
+  }
 }

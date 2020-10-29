@@ -24,7 +24,15 @@ export class LoginService {
     return this.loginForm;
   }
 
-  GetLoginFormGroup(): FormGroup {
-    return this.loginForm;
+  loginFormSubmit(): void {
+    this.markLoginFormFieldsTouched();
+
+    if (this.loginForm.valid) {
+      console.log('login not implemented', this.loginForm.value);
+    }
+  }
+
+  private markLoginFormFieldsTouched(): void {
+    this.loginForm.markAllAsTouched();
   }
 }

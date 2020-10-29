@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" *ngIf="loginForm">
+<form [formGroup]="loginForm" *ngIf="loginForm" (keydown.enter)="enterSubmit.emit($event)">
   <mat-form-field>
     <mat-label>Login</mat-label>
     <input matInput placeholder="Login" formControlName="login">
@@ -6,7 +6,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Hasło</mat-label>
-    <input matInput typre="password" placeholder="Hasło" formControlName="password">
+    <input matInput type="password" placeholder="Hasło" formControlName="password">
     <mat-error *ngIf="loginForm.get('password').invalid">Hasło jest wymagane</mat-error>
   </mat-form-field>
 </form>

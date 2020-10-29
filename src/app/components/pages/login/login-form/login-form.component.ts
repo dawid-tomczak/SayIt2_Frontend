@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginCredentials } from '../models/login-credentials';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -10,6 +9,7 @@ import { LoginCredentials } from '../models/login-credentials';
 export class LoginFormComponent implements OnInit {
 
   @Input() loginForm: FormGroup;
+  @Output() enterSubmit: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
 
   constructor() { }
 
