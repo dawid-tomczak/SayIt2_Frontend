@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ExternalLoginItem, ExternalLoginItemType } from '../models/externalLoginService';
+import { ExternalLoginItem } from '../models/externalLoginItem';
 
 @Component({
   selector: 'app-external-service-login',
@@ -8,16 +8,14 @@ import { ExternalLoginItem, ExternalLoginItemType } from '../models/externalLogi
 })
 export class ExternalServiceLoginComponent implements OnInit {
 
-  @Input() externalLoginItemKey: ExternalLoginItemType;
+  @Input() externalLoginItem: ExternalLoginItem;
 
-  externalLoginItem: ExternalLoginItem;
   // using hover flag in ts to pass background color from variable in ngStype
   hover = false;
 
   constructor() { }
 
   ngOnInit() {
-    this.externalLoginItem = new ExternalLoginItem(this.externalLoginItemKey);
   }
 
 }

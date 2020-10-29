@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExternalLoginItem, ExternalLoginItemType } from './models/externalLoginService';
+import { ExternalLoginItem } from './models/externalLoginItem';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,13 @@ import { ExternalLoginItem, ExternalLoginItemType } from './models/externalLogin
 })
 export class LoginComponent implements OnInit {
 
-  // filtering to get only keys from enum
-  externalLoginServicesTypes = Object.keys(ExternalLoginItemType).filter(type => {
-    return !isNaN(+type);
-  });
+  externalLoginServicesTypes: ExternalLoginItem[] = [];
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+    this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
+    console.log(this.externalLoginServicesTypes);
   }
 
 }
