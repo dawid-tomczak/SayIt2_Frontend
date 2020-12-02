@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { LOGIN_ENDPOINT } from 'src/app/shared/consts';
-import { ExternalLoginItem, ExternalLoginItemType } from '../models/externalLoginItem';
+import { ExternalLoginItem } from '../models/externalLoginItem';
 import { LoggedUserInfo } from '../models/logged-user-info';
 import { LoginCredentials } from '../models/login-credentials';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class LoginService {
   private loginForm: FormGroup;
   private loggedUser: Subject<LoggedUserInfo> = new Subject<LoggedUserInfo>();
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   getPossibleExternalLoginServices(): ExternalLoginItem[] {
     return [new ExternalLoginItem('Facebook'), new ExternalLoginItem('Google'), new ExternalLoginItem('Microsoft')];
@@ -52,8 +53,12 @@ export class LoginService {
     sessionStorage.setItem('SayIT_Token', user.token);
   }
 
-  getUserToken() {
-    sessionStorage.getItem('SayIT_Token');
+  getUserToken(): string {
+    return sessionStorage.getItem('SayIT_Token');
+  }
+
+  isAuthenticated(): boolean {
+    return !this.jwtHelper.isTokenExpired(this.getUserToken());
   }
 
   private markLoginFormFieldsTouched(): void {

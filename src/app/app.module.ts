@@ -30,8 +30,7 @@ import { LoginFormComponent } from './components/pages/login/login-form/login-fo
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule, MatInputModule } from '@angular/material';
-
-
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -68,7 +67,9 @@ import { MatDividerModule, MatInputModule } from '@angular/material';
     MatDividerModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

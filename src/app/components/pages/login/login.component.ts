@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   invalidLoginOrPassword = false;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   private loginSuccessful(user: LoggedUserInfo): void {
     this.invalidLoginOrPassword = false;
     this.loginService.storeUserInfo(user);
+
+    this.router.navigate(['main']);
   }
 
   ngOnDestroy() {
