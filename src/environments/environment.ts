@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  backendURL: 'http://michalciernia.hostingasp.pl/odata/'
-  // Jira commit test comment
+  backendURL: 'http://michalciernia.hostingasp.pl/odata/',
+  newBackendUrl: 'https://api.sayit.hostingasp.pl'
 };
 
 /*

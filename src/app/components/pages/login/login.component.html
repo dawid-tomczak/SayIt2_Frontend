@@ -12,6 +12,10 @@
       <section class="content__loginForm">
         <mat-divider></mat-divider>
         <app-login-form [loginForm]="loginForm" (enterSubmit)="submit()"></app-login-form>
+
+        <div *ngIf="invalidLoginOrPassword" class="loginForm__invalidInfo animated shake">
+          Login lub hasło niepoprawne
+        </div>
       </section>
     </mat-card-content>
 

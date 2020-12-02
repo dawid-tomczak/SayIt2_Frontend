@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ExternalLoginItem } from './models/externalLoginItem';
+import { LoggedUserInfo } from './models/logged-user-info';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -8,10 +11,12 @@ import { LoginService } from './services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   externalLoginServicesTypes: ExternalLoginItem[] = [];
+  subscriptions: Subscription[] = [];
+  invalidLoginOrPassword = false;
 
   constructor(private loginService: LoginService) { }
 
@@ -21,6 +26,27 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.loginService.loginFormSubmit();
+    this.invalidLoginOrPassword = false;
+
+    this.subscriptions.push(
+      this.loginService.loginFormSubmit().subscribe(res => {
+        this.loginSuccessful(res);
+      }, err => {
+        if (err.status === 400) {
+          this.invalidLoginOrPassword = true;
+        }
+      })
+    );
+  }
+
+  private loginSuccessful(user: LoggedUserInfo): void {
+    this.invalidLoginOrPassword = false;
+    this.loginService.storeUserInfo(user);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    })
   }
 }

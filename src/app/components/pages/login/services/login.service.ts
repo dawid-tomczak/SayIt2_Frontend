@@ -1,6 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import { LOGIN_ENDPOINT } from 'src/app/shared/consts';
 import { ExternalLoginItem, ExternalLoginItemType } from '../models/externalLoginItem';
+import { LoggedUserInfo } from '../models/logged-user-info';
+import { LoginCredentials } from '../models/login-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +13,9 @@ import { ExternalLoginItem, ExternalLoginItemType } from '../models/externalLogi
 export class LoginService {
 
   private loginForm: FormGroup;
+  private loggedUser: Subject<LoggedUserInfo> = new Subject<LoggedUserInfo>();
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   getPossibleExternalLoginServices(): ExternalLoginItem[] {
     return [new ExternalLoginItem('Facebook'), new ExternalLoginItem('Google'), new ExternalLoginItem('Microsoft')];
@@ -17,19 +23,37 @@ export class LoginService {
 
   generateNewLoginFormGroup(): FormGroup {
     this.loginForm = this.fb.group({
-      login: ['', Validators.required],
+      userName: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     return this.loginForm;
   }
 
-  loginFormSubmit(): void {
+  loginFormSubmit(): Observable<LoggedUserInfo> {
     this.markLoginFormFieldsTouched();
 
     if (this.loginForm.valid) {
-      console.log('login not implemented', this.loginForm.value);
+      return this.loginUser(this.loginForm.getRawValue() as LoginCredentials);
     }
+  }
+
+  loginUser(credentials: LoginCredentials): Observable<LoggedUserInfo> {
+    const url = LOGIN_ENDPOINT;
+    return this.http.post<LoggedUserInfo>(url, credentials);
+  }
+
+  getLoggedUser(): Observable<LoggedUserInfo> {
+    return this.loggedUser.asObservable();
+  }
+
+  storeUserInfo(user: LoggedUserInfo) {
+    this.loggedUser.next(user);
+    sessionStorage.setItem('SayIT_Token', user.token);
+  }
+
+  getUserToken() {
+    sessionStorage.getItem('SayIT_Token');
   }
 
   private markLoginFormFieldsTouched(): void {
