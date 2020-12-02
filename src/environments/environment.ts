@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  backendURL: 'http://michalciernia.hostingasp.pl/odata/'
+  backendURL: 'http://michalciernia.hostingasp.pl/odata/',
+  newBackendUrl: 'https://api.sayit.hostingasp.pl'
 };
 
 /*

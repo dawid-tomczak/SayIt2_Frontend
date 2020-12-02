@@ -1,0 +1,71 @@
+.wrapper{
+  width:100vw;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(341deg, rgba(248,160,252,1)10%,rgba(63,81,181,1) 60%);
+  background-size: 200% 200%;
+  animation: gradientSlide 15s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  z-index:1
+}
+
+.wrapper__formCard{
+  width:600px;
+  background-color: rgba(240, 248, 255, 0.85);
+  border-radius: 15px;
+  padding: 15px 30px 25px 30px;
+}
+
+.formCard__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3{
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+}
+
+.content__image{
+  height:100px;
+  width:auto;
+}
+
+.content__external{
+  width:50%;
+  min-width:200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content__loginForm{
+  width:70%;
+  margin-top:40px;
+}
+
+.actions__button{
+  margin-right: 10px;
+  margin-left:10px;
+}
+
+.loginForm__invalidInfo{
+  padding:10px;
+  background-color: #FF000020;
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+@keyframes gradientSlide {
+	0% {
+		background-position: 30% 0%;
+	}
+	100% {
+		background-position: 80% 100%;
+	}
+}

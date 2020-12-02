@@ -1,0 +1,4 @@
+<button class="button" (mouseover)="hover = true" (mouseleave)="hover=false" *ngIf="externalLoginItem"
+  [ngStyle]="{'background-color': hover ? externalLoginItem.backgroundColor : '#525252'}">
+  <img [src]="externalLoginItem.iconPath" [alt]="externalLoginItem.type" class="button__logo" />
+</button>

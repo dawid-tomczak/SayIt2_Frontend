@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <mat-card class="wrapper__formCard mat-elevation-z8">
+    <mat-card-content class="formCard__content">
+      <img mat-card-image src="assets/svg/SayIT_black.svg" alt="SayIT" class="content__image">
+      <h3>
+        Zaloguj się i zacznij uczyć się angielskiego razem z nami
+      </h3>
+      <section class="content__external">
+        <app-external-service-login *ngFor="let externalLogin of externalLoginServicesTypes"
+          [externalLoginItem]="externalLogin"></app-external-service-login>
+      </section>
+      <section class="content__loginForm">
+        <mat-divider></mat-divider>
+        <app-login-form [loginForm]="loginForm" (enterSubmit)="submit()"></app-login-form>
+
+        <div *ngIf="invalidLoginOrPassword" class="loginForm__invalidInfo animated shake">
+          Login lub hasło niepoprawne
+        </div>
+      </section>
+    </mat-card-content>
+
+    <mat-card-actions align="right" class="formCard__actions">
+      <button mat-button class="actions__button">
+        Rejestracja
+      </button>
+      <button mat-flat-button color="primary" class="actions__button" [formGroup]="loginForm"
+        [disabled]="loginForm.invalid" type="submit" (click)="submit()">
+        Zaloguj
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
