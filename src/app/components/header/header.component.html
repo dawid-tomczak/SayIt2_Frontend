@@ -1,6 +1,16 @@
 <header>
   <mat-toolbar color="primary">
     <img src="assets/img/sayIt logo.png" alt="SayIt" id="header__toolbar-logo" routerLink="/main">
-    <img src="assets//img/user.png" alt="UserImg" id="header__toolbar-user" class="rounded-circle">
+    <img src="assets//img/user.png" alt="UserImg" id="header__toolbar-user" class="rounded-circle"
+      [matMenuTriggerFor]="userMenu">
   </mat-toolbar>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>
+        logout
+      </mat-icon>
+      Wyloguj
+    </button>
+  </mat-menu>
 </header>
