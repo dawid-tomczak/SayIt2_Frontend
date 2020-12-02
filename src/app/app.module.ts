@@ -13,7 +13,7 @@ import { BackgorundElementComponent } from './components/background/backgorund-e
 import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
@@ -31,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule, MatInputModule } from '@angular/material';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,12 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
