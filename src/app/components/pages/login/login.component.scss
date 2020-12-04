@@ -31,9 +31,12 @@
   }
 }
 
-.content__image{
+.content__logo{
   height:100px;
   width:auto;
+
+  // overwriting card image styling
+  margin-top: 0px !important;
 }
 
 .content__external{
