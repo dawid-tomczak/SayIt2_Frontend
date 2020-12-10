@@ -71,7 +71,7 @@ export class LoginService {
     return !this.jwtHelper.isTokenExpired(this.getUserToken());
   }
 
-  toggleRegisterForm(registerMode: boolean) {
+  toggleRegisterForm(registerMode: boolean): void {
     if (registerMode) {
       const confirmationControl = this.fb.control('', [Validators.required, this.passwordConfirmationMatchValidator]);
       this.loginForm.addControl('passwordConfirmation', confirmationControl);
@@ -85,7 +85,7 @@ export class LoginService {
     this.loginForm.markAllAsTouched();
   }
 
-  private passwordConfirmationMatchValidator(control: AbstractControl) {
+  private passwordConfirmationMatchValidator(control: AbstractControl): any | null {
     if (control.parent && (<FormGroup>control.parent).get('password').value !== control.value) {
       return { passwordMatch: false };
     }

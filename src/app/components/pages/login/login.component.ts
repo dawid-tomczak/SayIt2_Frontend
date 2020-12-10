@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
     this.loginForm = this.loginService.generateNewLoginFormGroup();
   }
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  registerToggle() {
+  registerToggle(): void {
     this.registerMode = !this.registerMode;
     // needed to handle reactive form fields
     this.loginService.toggleRegisterForm(this.registerMode);
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate(['main']);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
     })
