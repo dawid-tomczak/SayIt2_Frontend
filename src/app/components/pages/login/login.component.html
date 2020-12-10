@@ -11,7 +11,7 @@
       </section>
       <section class="content__loginForm">
         <mat-divider></mat-divider>
-        <app-login-form [loginForm]="loginForm" (enterSubmit)="submit()"></app-login-form>
+        <app-login-form [loginForm]="loginForm" [registerMode]="registerMode" (enterSubmit)="submit()"></app-login-form>
 
         <div *ngIf="invalidLoginOrPassword" class="loginForm__invalidInfo animated shake">
           Login lub hasło niepoprawne
@@ -20,12 +20,23 @@
     </mat-card-content>
 
     <mat-card-actions align="right" class="formCard__actions">
-      <button mat-button class="actions__button">
-        Rejestracja
+      <button mat-button class="actions__button" (click)="registerToggle()">
+        <span *ngIf="!registerMode; else signInLabel">
+          Rejestracja
+        </span>
+        <ng-template #signInLabel>
+          Logowanie
+        </ng-template>
       </button>
+
       <button mat-flat-button color="primary" class="actions__button" [formGroup]="loginForm"
         [disabled]="loginForm.invalid" type="submit" (click)="submit()">
-        Zaloguj
+        <span *ngIf="!registerMode; else register">
+          Zaloguj
+        </span>
+        <ng-template #register>
+          Zarejestruj
+        </ng-template>
       </button>
     </mat-card-actions>
   </mat-card>

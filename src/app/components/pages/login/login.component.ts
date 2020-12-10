@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   externalLoginServicesTypes: ExternalLoginItem[] = [];
   subscriptions: Subscription[] = [];
   invalidLoginOrPassword = false;
+  registerMode = false;
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -37,6 +38,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  registerToggle() {
+    this.registerMode = !this.registerMode;
+    // needed to handle reactive form fields
+    this.loginService.toggleRegisterForm(this.registerMode);
   }
 
   private loginSuccessful(user: LoggedUserInfo): void {

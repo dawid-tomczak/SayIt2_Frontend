@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { LOGIN_ENDPOINT, LOGOFF_ENDPOINT } from 'src/app/shared/consts';
 import { ExternalLoginItem } from '../models/externalLoginItem';
@@ -71,7 +71,26 @@ export class LoginService {
     return !this.jwtHelper.isTokenExpired(this.getUserToken());
   }
 
+  toggleRegisterForm(registerMode: boolean) {
+    if (registerMode) {
+      const confirmationControl = this.fb.control('', [Validators.required, this.passwordConfirmationMatchValidator]);
+      this.loginForm.addControl('passwordConfirmation', confirmationControl);
+    }
+    else {
+      this.loginForm.removeControl('passwordConfirmation');
+    }
+  }
+
   private markLoginFormFieldsTouched(): void {
     this.loginForm.markAllAsTouched();
+  }
+
+  private passwordConfirmationMatchValidator(control: AbstractControl) {
+    if (control.parent && (<FormGroup>control.parent).get('password').value !== control.value) {
+      return { passwordMatch: false };
+    }
+    else {
+      return null;
+    }
   }
 }
