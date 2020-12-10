@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { LOGIN_ENDPOINT, LOGOFF_ENDPOINT } from 'src/app/shared/consts';
 import { ExternalLoginItem } from '../models/externalLoginItem';
@@ -72,12 +72,28 @@ export class LoginService {
   }
 
   toggleRegisterForm(registerMode: boolean): void {
+    // creating controls
+    const registerFields: { key: string, control: FormControl }[] = [
+      {
+        key: 'passwordConfirmation',
+        control: this.fb.control('', [Validators.required, this.passwordConfirmationMatchValidator])
+      },
+      {
+        key: 'firstName',
+        control: this.fb.control('', [Validators.required])
+      },
+      {
+        key: 'lastName',
+        control: this.fb.control('', [Validators.required])
+      }
+    ];
+
+    // adding or deleting controls
     if (registerMode) {
-      const confirmationControl = this.fb.control('', [Validators.required, this.passwordConfirmationMatchValidator]);
-      this.loginForm.addControl('passwordConfirmation', confirmationControl);
+      registerFields.forEach(field => this.loginForm.addControl(field.key, field.control))
     }
     else {
-      this.loginForm.removeControl('passwordConfirmation');
+      registerFields.forEach(field => this.loginForm.removeControl(field.key))
     }
   }
 
