@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
-import { LOGIN_ENDPOINT, LOGOFF_ENDPOINT } from 'src/app/shared/consts';
+import { LOGIN_ENDPOINT, LOGOFF_ENDPOINT, REGISTER_ENDPOINT } from 'src/app/shared/consts';
 import { ExternalLoginItem } from '../models/externalLoginItem';
 import { LoggedUserInfo } from '../models/logged-user-info';
 import { LoginCredentials } from '../models/login-credentials';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ResponseMessage } from 'src/app/shared/models/response-message';
+import { RegisterCredentials } from '../models/register-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -32,17 +33,38 @@ export class LoginService {
     return this.loginForm;
   }
 
-  loginFormSubmit(): Observable<LoggedUserInfo> {
+  loginSubmit(registration: boolean = false): Observable<LoggedUserInfo> | Observable<any> {
     this.markLoginFormFieldsTouched();
 
     if (this.loginForm.valid) {
-      return this.loginUser(this.loginForm.getRawValue() as LoginCredentials);
+      let formValue = this.loginForm.getRawValue();
+
+      if (!registration) {
+        return this.loginUser(formValue as LoginCredentials);
+      }
+      else {
+        // backend is not receiving password confirmation
+        delete formValue.passwordConfirmation;
+
+        // ! Bug to be fixed at backend
+        formValue.email = formValue.userName;
+        delete formValue.userName;
+
+        return this.registerUser(formValue as RegisterCredentials);
+      }
     }
   }
+
+
 
   loginUser(credentials: LoginCredentials): Observable<LoggedUserInfo> {
     const url = LOGIN_ENDPOINT;
     return this.http.post<LoggedUserInfo>(url, credentials);
+  }
+
+  registerUser(credentials: RegisterCredentials): Observable<any> {
+    const url = REGISTER_ENDPOINT;
+    return this.http.post(url, credentials);
   }
 
   logoutUser(): Observable<ResponseMessage> {

@@ -29,15 +29,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   submit(): void {
     this.invalidLoginOrPassword = false;
 
-    this.subscriptions.push(
-      this.loginService.loginFormSubmit().subscribe(res => {
-        this.loginSuccessful(res);
-      }, err => {
-        if (err.status === 400) {
-          this.invalidLoginOrPassword = true;
-        }
-      })
-    );
+    if (!this.registerMode) {
+      this.loginAction();
+    }
+    else {
+      this.registerAction();
+    }
   }
 
   registerToggle(): void {
@@ -51,6 +48,27 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginService.storeUserInfo(user);
 
     this.router.navigate(['main']);
+  }
+
+  private loginAction() {
+    this.subscriptions.push(
+      this.loginService.loginSubmit().subscribe(res => {
+        this.loginSuccessful(res);
+      }, err => {
+        if (err.status === 400) {
+          this.invalidLoginOrPassword = true;
+        }
+      })
+    );
+  }
+
+  private registerAction() {
+    this.subscriptions.push(
+      this.loginService.loginSubmit(true).subscribe(res => {
+        // TODO add actions when backend will return some data
+        console.log(res);
+      })
+    )
   }
 
   ngOnDestroy(): void {
