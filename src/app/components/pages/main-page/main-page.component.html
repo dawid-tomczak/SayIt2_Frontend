@@ -1,4 +1,4 @@
-<app-main-page-hero></app-main-page-hero>
+<app-main-page-hero class="mobileHide"></app-main-page-hero>
 <div id="container">
   <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
   <mat-spinner *ngIf="!categories"></mat-spinner>
