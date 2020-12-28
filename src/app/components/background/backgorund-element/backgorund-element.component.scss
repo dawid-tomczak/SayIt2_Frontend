@@ -7,7 +7,6 @@ path, line, circle, rect{
   stroke-linecap: round;
 }
 
-
 svg{
   opacity: 0.35;
   z-index:auto;
@@ -43,7 +42,6 @@ svg{
 @media (max-width: 414px) {
   svg{
     animation-name: scaleAnimationMobile;
-
   }
 }
 
