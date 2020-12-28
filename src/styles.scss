@@ -28,8 +28,16 @@ body {
   align-items: center;
 }
 
+.mobileOnly{
+  display: none !important;
+}
+
 @media (max-width: 414px){
   .mobileHide{
-    display: none;
+    display: none !important;
+  }
+
+  .mobileOnly{
+    display: initial !important;
   }
 }

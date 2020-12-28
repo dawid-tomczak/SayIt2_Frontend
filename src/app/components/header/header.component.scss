@@ -1,15 +1,15 @@
-#header__toolbar-logo{
+.toolbar__logo{
   width:100px;
   height: auto;
   cursor: pointer;
 }
 
-#header__toolbar-user{
+.toolbar__user{
   height: 40px;
   width: auto;
 }
 
-header{
+.header__toolbar{
   z-index: 1;
 }
 
@@ -21,12 +21,16 @@ mat-toolbar{
   z-index: 1;
 }
 
-@media only screen and (max-width: 600px) {
-  #header__toolbar-user {
-    display: none;
+@media (max-width: 414px) {
+  mat-toolbar{
+    justify-content: center;
+    position: relative;
   }
 
-  mat-toolbar{
-  justify-content: center;
+  .toolbar__mobileLogout{
+    position: absolute;
+    right: 0;
+    width: auto;
+    margin-right: 10px;
   }
 }
