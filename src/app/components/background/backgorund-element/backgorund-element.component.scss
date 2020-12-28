@@ -16,17 +16,34 @@ svg{
   left:var(--positionY);
   transform: rotate(var(--rotate));
 
-  animation-name: scaleAnimation;
+  animation-name: scaleAnimationDesktop;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-@keyframes scaleAnimation{
+@keyframes scaleAnimationDesktop{
   from{
-    transfrom: scale(calc(1 - var(--scaleThreshold))) rotate(var(--rotate));
+    transform: scale(calc(1.5 - var(--scaleThreshold))) rotate(var(--rotate));
   }
   to{
     transform: scale(calc(1 + var(--scaleThreshold))) rotate(var(--rotate));
+  }
+}
+
+// added multiply by 0.35 on scale
+@keyframes scaleAnimationMobile{
+  from{
+    transform: scale(calc((1.5 - var(--scaleThreshold)) * 0.35)) rotate(var(--rotate));
+  }
+  to{
+    transform: scale(calc((1 + var(--scaleThreshold)) * 0.35)) rotate(var(--rotate));
+  }
+}
+
+@media (max-width: 414px) {
+  svg{
+    animation-name: scaleAnimationMobile;
+
   }
 }
 
