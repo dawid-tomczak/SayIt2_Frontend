@@ -28,14 +28,19 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard]
   },
   {
+    path: 'categories',
+    loadChildren: () => import('./modules/categories/categories.module').then(m => m.CategoriesModule),
+    canActivate: [AuthGuardGuard]
+  },
+  {
     path: '',
-    redirectTo: '/main',
+    redirectTo: '/categories',
     pathMatch: 'full',
     canActivate: [AuthGuardGuard]
   },
   {
     path: '**',
-    redirectTo: '/main',
+    redirectTo: '/categories',
     pathMatch: 'full',
     canActivate: [AuthGuardGuard]
   }
