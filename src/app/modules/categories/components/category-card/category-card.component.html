@@ -1,0 +1,18 @@
+<div class="card">
+  <h1 class="card__header">
+    <span class="header__span">
+      {{category.name}}
+    </span>
+  </h1>
+  <section class="card__icon">
+    <i class="material-icons">{{category.materialIconName}}</i>
+  </section>
+  <section class="card__actions">
+    <button matRipple class="card__actions-button" routerLink="/fiche" [queryParams]="{categoryId: category.id}">
+      Fiszki
+    </button>
+    <button matRipple class="card__actions-button" routerLink="/quiz" [queryParams]="{categoryId: category.id}">
+      Quiz
+    </button>
+  </section>
+</div>
