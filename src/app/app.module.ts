@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { MaterialModule } from './shared/modules/material/material.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MaterialModule } from './shared/modules/material/material.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    CategoriesModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
