@@ -21,6 +21,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { FlashcardsModule } from './modules/flashcards/flashcards.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CategoriesModule } from './modules/categories/categories.module';
     HttpClientModule,
     ReactiveFormsModule,
     MaterialModule,
-    CategoriesModule
+    CategoriesModule,
+    FlashcardsModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
