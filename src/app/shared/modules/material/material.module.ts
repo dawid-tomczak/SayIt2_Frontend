@@ -19,7 +19,8 @@ import { MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule, M
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   exports: [
     MatMenuModule,
@@ -33,7 +34,8 @@ import { MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule, M
     MatFormFieldModule,
     MatInputModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ]
 })
 export class MaterialModule { }

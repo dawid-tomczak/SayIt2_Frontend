@@ -1,6 +1,7 @@
 <app-hero-header class="mobileHide"></app-hero-header>
-<section class="container">
+<section class="wrapper">
   <mat-spinner *ngIf="loadingCategories"></mat-spinner>
 
-  <app-category-card *ngFor="let category of categories" [category]="category"></app-category-card>
+  <app-category-card class="wrapper__card" *ngFor="let category of categories" [category]="category">
+  </app-category-card>
 </section>

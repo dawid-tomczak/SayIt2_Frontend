@@ -1,18 +1,20 @@
-<div class="card">
-  <h1 class="card__header">
+<div class="categoryCard">
+  <h1 class="categoryCard__header">
     <span class="header__span">
       {{category.name}}
     </span>
   </h1>
-  <section class="card__icon">
-    <i class="material-icons">{{category.materialIconName}}</i>
-  </section>
-  <section class="card__actions">
-    <button matRipple class="card__actions-button" routerLink="/fiche" [queryParams]="{categoryId: category.id}">
+  <div class="categoryCard__iconSection">
+    <mat-icon class="iconSection__icon" aria-label="category icon">
+      {{category.materialIconName ? category.materialIconName : fallbackMaterialIcon}}
+    </mat-icon>
+  </div>
+  <div class="categoryCard__actions">
+    <button matRipple class="actions__button" routerLink="/fiche" [queryParams]="{categoryclass: category.class}">
       Fiszki
     </button>
-    <button matRipple class="card__actions-button" routerLink="/quiz" [queryParams]="{categoryId: category.id}">
+    <button matRipple class="actions__button" routerLink="/quiz" [queryParams]="{categoryclass: category.class}">
       Quiz
     </button>
-  </section>
+  </div>
 </div>

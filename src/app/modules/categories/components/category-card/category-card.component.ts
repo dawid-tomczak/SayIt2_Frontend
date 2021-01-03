@@ -10,6 +10,8 @@ export class CategoryCardComponent implements OnInit {
 
   @Input() category: Category;
 
+  fallbackMaterialIcon = "school";
+
   constructor() { }
 
   ngOnInit(): void {
