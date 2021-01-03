@@ -1,7 +1,14 @@
 <app-hero-header class="mobileHide"></app-hero-header>
+
 <section class="wrapper">
+  <!-- not using ngIf-else because you cannot assign animation to ng-template  -->
   <mat-spinner *ngIf="loadingCategories"></mat-spinner>
 
-  <app-category-card class="wrapper__card" *ngFor="let category of categories" [category]="category">
-  </app-category-card>
+  <div *ngIf="!loadingCategories" [@staggerScale]="categories.length" class="wrapper__categories">
+    <!-- need to wrap component in a div to detect :enter in animation -->
+    <div *ngFor="let category of categories" class="categories__card">
+      <app-category-card [category]="category">
+      </app-category-card>
+    </div>
+  </div>
 </section>

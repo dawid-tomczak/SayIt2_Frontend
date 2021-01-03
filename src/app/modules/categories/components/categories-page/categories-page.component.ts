@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { staggerScale } from 'src/app/shared/animations';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
   templateUrl: './categories-page.component.html',
-  styleUrls: ['./categories-page.component.scss']
+  styleUrls: ['./categories-page.component.scss'],
+  animations: [staggerScale]
 })
 export class CategoriesPageComponent implements OnInit, OnDestroy {
 
