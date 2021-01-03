@@ -17,10 +17,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   externalLoginServicesTypes: ExternalLoginItem[] = [];
   subscriptions: Subscription[] = [];
   invalidLoginOrPassword = false;
+  registerMode = false;
 
   constructor(private loginService: LoginService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
     this.loginForm = this.loginService.generateNewLoginFormGroup();
   }
@@ -28,8 +29,30 @@ export class LoginComponent implements OnInit, OnDestroy {
   submit(): void {
     this.invalidLoginOrPassword = false;
 
+    if (!this.registerMode) {
+      this.loginAction();
+    }
+    else {
+      this.registerAction();
+    }
+  }
+
+  registerToggle(): void {
+    this.registerMode = !this.registerMode;
+    // needed to handle reactive form fields
+    this.loginService.toggleRegisterForm(this.registerMode);
+  }
+
+  private loginSuccessful(user: LoggedUserInfo): void {
+    this.invalidLoginOrPassword = false;
+    this.loginService.storeUserInfo(user);
+
+    this.router.navigate(['categories']);
+  }
+
+  private loginAction() {
     this.subscriptions.push(
-      this.loginService.loginFormSubmit().subscribe(res => {
+      this.loginService.loginSubmit().subscribe(res => {
         this.loginSuccessful(res);
       }, err => {
         if (err.status === 400) {
@@ -39,14 +62,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  private loginSuccessful(user: LoggedUserInfo): void {
-    this.invalidLoginOrPassword = false;
-    this.loginService.storeUserInfo(user);
-
-    this.router.navigate(['main']);
+  private registerAction() {
+    this.subscriptions.push(
+      this.loginService.loginSubmit(true).subscribe(res => {
+        // TODO add actions when backend will return some data
+        console.log(res);
+      })
+    )
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
     })

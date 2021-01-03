@@ -1,0 +1,21 @@
+.wrapper, .wrapper__categories{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.wrapper{
+  height:60%;
+  width:100%;
+}
+
+.wrapper__categories{
+  height:100%;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.categories__card{
+  margin: 15px 10px 15px 10px;
+}

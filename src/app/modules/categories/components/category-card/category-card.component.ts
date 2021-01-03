@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Category } from 'src/app/models';
+import { Component, Input, OnInit } from '@angular/core';
+import { Category } from '../../models/category';
 
 @Component({
   selector: 'app-category-card',
@@ -10,9 +10,11 @@ export class CategoryCardComponent implements OnInit {
 
   @Input() category: Category;
 
+  fallbackMaterialIcon = "school";
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

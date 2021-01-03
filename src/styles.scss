@@ -12,6 +12,7 @@ html, body {
   width:100%;
 
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -25,4 +26,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.mobileOnly{
+  display: none !important;
+}
+
+@media (max-width: 414px){
+  .mobileHide{
+    display: none !important;
+  }
+
+  .mobileOnly{
+    display: initial !important;
+  }
 }

@@ -6,10 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { BackgroundComponent } from './components/background/background.component';
-import { MainPageComponent } from './components/pages/main-page/main-page.component';
-import { MainPageHeroComponent } from './components/pages/main-page/main-page-hero/main-page-hero.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
-import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
@@ -23,16 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { MaterialModule } from './shared/modules/material/material.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BackgroundComponent,
-    MainPageComponent,
-    MainPageHeroComponent,
     BackgorundElementComponent,
-    CategoryCardComponent,
     FicheComponent,
     FicheCardComponent,
     QuizComponent,
@@ -47,7 +42,8 @@ import { MaterialModule } from './shared/modules/material/material.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    CategoriesModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

@@ -9,4 +9,24 @@
     <input matInput type="password" placeholder="Hasło" formControlName="password">
     <mat-error *ngIf="loginForm.get('password').invalid">Hasło jest wymagane</mat-error>
   </mat-form-field>
+
+  <!-- need to wrap form field in section for slide animation -->
+  <section class="form__registerSection" *ngIf="registerMode" @slideHeight>
+    <mat-form-field>
+      <mat-label>Potwierdzenie hasła</mat-label>
+      <input matInput type="password" placeholder="Potwierdzenie hasła" formControlName="passwordConfirmation">
+      <mat-error *ngIf="loginForm.get('passwordConfirmation').invalid">Hasła nie są take same</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Imię</mat-label>
+      <input matInput placeholder="Imię" formControlName="firstName">
+      <mat-error *ngIf="loginForm.get('firstName').invalid">Imię jest wymagane</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nazwisko</mat-label>
+      <input matInput placeholder="Nazwisko" formControlName="lastName">
+      <mat-error *ngIf="loginForm.get('lastName').invalid">Nazwisko jest wymagane</mat-error>
+    </mat-form-field>
+  </section>
 </form>
