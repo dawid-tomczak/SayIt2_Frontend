@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FlashcardsRoutingModule } from './flashcards-routing.module';
+import { FlashcardsPageComponent } from './components/flashcards-page/flashcards-page.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [FlashcardsPageComponent],
   imports: [
-    CommonModule,
-    FlashcardsRoutingModule
+    CommonModule
   ]
 })
 export class FlashcardsModule { }
