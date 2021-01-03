@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Flashcard } from '../../models/flashcard';
+import { FlashcardService } from '../../services/flashcard.service';
 
 @Component({
   templateUrl: './flashcards-page.component.html',
@@ -6,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlashcardsPageComponent implements OnInit {
 
-  constructor() { }
+  initLoading: boolean;
+  subscriptions: Subscription[] = [];
+  flashcards: Flashcard[] = [];
+
+  constructor(private flashcardService: FlashcardService) { }
 
   ngOnInit() {
+    this.initLoading = true;
+    this.subscriptions.push(this.downloadFlashcards());
   }
 
+  private downloadFlashcards(): Subscription {
+    return this.flashcardService.getAllFlashcards().subscribe(res => {
+      this.flashcards = res;
+      this.initLoading = false;
+    }, err => { this.initLoading = false; });
+  }
 }
