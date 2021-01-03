@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
 import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { LoginComponent } from './components/pages/login/login.component';
-import { MainPageComponent } from './components/pages/main-page/main-page.component';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
+import { CategoriesPageComponent } from './modules/categories/components/categories-page/categories-page.component';
 
 
 const routes: Routes = [
@@ -23,13 +23,8 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard]
   },
   {
-    path: 'main',
-    component: MainPageComponent,
-    canActivate: [AuthGuardGuard]
-  },
-  {
     path: 'categories',
-    loadChildren: () => import('./modules/categories/categories.module').then(m => m.CategoriesModule),
+    component: CategoriesPageComponent,
     canActivate: [AuthGuardGuard]
   },
   {

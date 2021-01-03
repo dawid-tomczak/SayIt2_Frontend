@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.invalidLoginOrPassword = false;
     this.loginService.storeUserInfo(user);
 
-    this.router.navigate(['main']);
+    this.router.navigate(['categories']);
   }
 
   private loginAction() {

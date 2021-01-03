@@ -6,10 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { BackgroundComponent } from './components/background/background.component';
-import { MainPageComponent } from './components/pages/main-page/main-page.component';
-import { MainPageHeroComponent } from './components/pages/main-page/main-page-hero/main-page-hero.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
-import { CategoryCardComponent } from './components/pages/main-page/category-card/category-card.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
@@ -30,10 +27,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
     AppComponent,
     HeaderComponent,
     BackgroundComponent,
-    MainPageComponent,
-    MainPageHeroComponent,
     BackgorundElementComponent,
-    CategoryCardComponent,
     FicheComponent,
     FicheCardComponent,
     QuizComponent,
