@@ -1,4 +1,4 @@
-import { FlashcardExtendedInfo } from "./flashcard-extended-info";
+import { FlashcardExtendedInfo } from './flashcard-extended-info';
 
 export interface Flashcard {
   id: number;

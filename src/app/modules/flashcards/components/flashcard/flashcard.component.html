@@ -1,0 +1,36 @@
+<div class="card" (tap)="descriptionToggle()" (swipeleft)="ficheChangeEmitter.emit(changeDirection.next)"
+  (swiperight)="ficheChangeEmitter.emit(changeDirection.previous)">
+  <div matRipple class="card__navigation card__navigation--left"
+    (click)="ficheChangeEmitter.emit(changeDirection.previous)" *ngIf="index != 0">
+    <mat-icon>
+      keyboard_arrow_left
+    </mat-icon>
+  </div>
+
+  <div class="card__actions">
+    <button mat-icon-button>
+      <mat-icon>volume_up</mat-icon>
+    </button>
+    <button mat-icon-button (click)="descriptionToggle()">
+      <mat-icon>info</mat-icon>
+    </button>
+  </div>
+  <div class="card__mainContent">
+    <span class="mainContent__translation--EN">
+      {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'content', 'EN')}}
+    </span>
+    <span class="mainContent__translation--PL">
+      {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'content', 'PL')}}
+    </span>
+  </div>
+  <div class="mainContent__meaning">
+    {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'description', 'PL')}}
+  </div>
+
+  <div matRipple class="card__navigation card__navigation--right"
+    (click)="ficheChangeEmitter.emit(changeDirection.next)" *ngIf="index != maxIndex">
+    <mat-icon>
+      keyboard_arrow_right
+    </mat-icon>
+  </div>
+</div>
