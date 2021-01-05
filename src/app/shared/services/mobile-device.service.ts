@@ -8,14 +8,14 @@ import { filter } from 'rxjs/operators';
 })
 export class MobileDeviceService {
 
-  private $onMobileDevice: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private $onMobileDevice: BehaviorSubject<boolean> = new BehaviorSubject(this.checkIfOnMobileDevice(window.innerWidth));
 
   constructor(private router: Router) {
     // subscribing router to check window size
     router.events.pipe(
       // filtering only to get NavigationStart events
       filter(event => event instanceof NavigationStart)
-    ).subscribe(() => this.checkIfOnMobileDevice(window.innerWidth));
+    ).subscribe(() => this.$onMobileDevice.next(this.checkIfOnMobileDevice(window.innerWidth)));
   }
 
   getMobileDeviceObservable(): Observable<boolean> {
@@ -23,10 +23,6 @@ export class MobileDeviceService {
   }
 
   private checkIfOnMobileDevice(windowWidth: number) {
-    if (windowWidth <= 414) {
-      this.$onMobileDevice.next(true);
-    } else {
-      this.$onMobileDevice.next(false);
-    }
+    return windowWidth <= 414;
   }
 }
