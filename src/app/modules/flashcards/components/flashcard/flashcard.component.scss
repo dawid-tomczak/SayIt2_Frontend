@@ -70,6 +70,7 @@
   display:flex;
   align-items:center;
   height:100px;
+  // using margin instead of padding because otherwise the animation is not working properly
   margin-bottom: 15px;
   grid-area: meaning;
 }
@@ -97,6 +98,11 @@
 
   .card__navigation--left, .card__navigation--right, .card__actions{
     display: none;
+  }
+
+  .mainContent__meaning{
+    // using margin instead of padding because otherwise the animation is not working properly
+    margin: 15px 10px 15px 10px;
   }
 }
 

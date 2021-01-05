@@ -1,5 +1,4 @@
-<!-- TODO add (tap) -->
-<div class="card" (swipeleft)="ficheChangeEmitter.emit(changeDirection.next)"
+<div class="card" (tap)="tapHandler()" (swipeleft)="ficheChangeEmitter.emit(changeDirection.next)"
   (swiperight)="ficheChangeEmitter.emit(changeDirection.previous)">
   <button mat-icon-button class="card__navigation card__navigation--left"
     (click)="ficheChangeEmitter.emit(changeDirection.previous)" *ngIf="index != 0">
@@ -8,7 +7,7 @@
     </mat-icon>
   </button>
 
-  <section class="card__actions">
+  <section class="card__actions" *ngIf="!displayedOnMobileDevice">
     <button mat-icon-button>
       <mat-icon>volume_up</mat-icon>
     </button>
@@ -16,6 +15,7 @@
       <mat-icon>info</mat-icon>
     </button>
   </section>
+
   <section class="card__mainContent">
     <span class="mainContent__translation--EN">
       {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'content', 'EN')}}
@@ -24,6 +24,7 @@
       {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'content', 'PL')}}
     </span>
   </section>
+
   <section @slideHeight *ngIf="showDescription" class="mainContent__meaning">
     {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'description', 'PL')}}
   </section>
