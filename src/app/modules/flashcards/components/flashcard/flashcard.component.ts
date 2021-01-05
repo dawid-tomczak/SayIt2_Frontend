@@ -38,7 +38,6 @@ export class FlashcardComponent implements OnInit, OnDestroy {
 
   // need to create a separate function with if because (tap) in html is also triggered on mouse clicks
   tapHandler() {
-    console.log(this.displayedOnMobileDevice);
     if (this.displayedOnMobileDevice) {
       this.descriptionToggle();
     }
@@ -48,7 +47,6 @@ export class FlashcardComponent implements OnInit, OnDestroy {
     if (!this.$mobileDeviceSubscription) {
       this.$mobileDeviceSubscription = this.mobileService.getMobileDeviceObservable().subscribe(res => {
         this.displayedOnMobileDevice = res;
-        console.log(res);
       });
     }
   }
