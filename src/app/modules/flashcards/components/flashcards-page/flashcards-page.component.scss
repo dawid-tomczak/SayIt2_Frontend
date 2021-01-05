@@ -1,0 +1,13 @@
+@import "../../../../../variables.scss";
+
+.wrapper{
+  height:calc(100% - #{$headerHeight});
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper__card{
+  width:500px;
+}
