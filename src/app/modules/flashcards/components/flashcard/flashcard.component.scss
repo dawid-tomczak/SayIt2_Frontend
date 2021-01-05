@@ -67,11 +67,10 @@
 }
 
 .mainContent__meaning{
-  height: 0px;
-  overflow: hidden;
   display:flex;
   align-items:center;
-  transition: all 500ms;
+  height:100px;
+  margin-bottom: 15px;
   grid-area: meaning;
 }
 
