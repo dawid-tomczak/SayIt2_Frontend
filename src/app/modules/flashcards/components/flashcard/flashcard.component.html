@@ -1,7 +1,7 @@
-<div class="card" (tap)="tapHandler()" (swipeleft)="ficheChangeEmitter.emit(changeDirection.next)"
-  (swiperight)="ficheChangeEmitter.emit(changeDirection.previous)">
+<div class="card" (tap)="tapHandler()" (swipeleft)="flashcardChangeEmitter.emit(changeDirection.next)"
+  (swiperight)="flashcardChangeEmitter.emit(changeDirection.previous)">
   <button mat-icon-button class="card__navigation card__navigation--left"
-    (click)="ficheChangeEmitter.emit(changeDirection.previous)" *ngIf="index != 0">
+    (click)="flashcardChangeEmitter.emit(changeDirection.previous)" *ngIf="index != 0">
     <mat-icon>
       keyboard_arrow_left
     </mat-icon>
@@ -30,7 +30,7 @@
   </section>
 
   <button mat-icon-button class="card__navigation card__navigation--right"
-    (click)="ficheChangeEmitter.emit(changeDirection.next)" *ngIf="index != maxIndex">
+    (click)="flashcardChangeEmitter.emit(changeDirection.next)" *ngIf="index != maxIndex">
     <mat-icon>
       keyboard_arrow_right
     </mat-icon>

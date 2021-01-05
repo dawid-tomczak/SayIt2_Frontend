@@ -17,7 +17,7 @@ export class FlashcardComponent implements OnInit, OnDestroy {
   @Input() flashcard: Flashcard;
   @Input() index: number;
   @Input() maxIndex: number;
-  @Output() ficheChangeEmitter = new EventEmitter<FlashcardChangeDirection>();
+  @Output() flashcardChangeEmitter = new EventEmitter<FlashcardChangeDirection>();
 
   showDescription = false;
   // ref to enum for using in HTML

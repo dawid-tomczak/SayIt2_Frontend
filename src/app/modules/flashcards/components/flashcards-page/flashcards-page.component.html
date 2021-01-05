@@ -1,5 +1,5 @@
-<!-- !added for testing of display -->
 <div class="wrapper">
-  <app-flashcard class="wrapper__card" *ngIf="flashcards[0]" [flashcard]="flashcards[0]" [index]="0" [maxIndex]="2">
+  <app-flashcard class="wrapper__card" *ngIf="selectedFlashcard" [flashcard]="selectedFlashcard" [index]="selectedIndex"
+    [maxIndex]="maxIndex" (flashcardChangeEmitter)="flashcardChangeHandler($event)">
   </app-flashcard>
 </div>
