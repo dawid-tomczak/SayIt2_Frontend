@@ -14,3 +14,6 @@ export const CATEGORIES_CONTROLLER = BASE_URL + '/Categories';
 // flashcards
 export const FLASHCARDS_CONTROLLER = BASE_URL + '/Flashcard';
 export const ALL_FLASHCARDS_ENDPOINT = FLASHCARDS_CONTROLLER + '/getall';
+
+// quizzes
+export const QUIZ_CONTROLLER = BASE_URL + '/Quiz';
