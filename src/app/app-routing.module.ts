@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
-import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { CategoriesPageComponent } from './modules/categories/components/categories-page/categories-page.component';

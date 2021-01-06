@@ -8,8 +8,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FicheComponent } from './components/pages/fiche/fiche.component';
-import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -29,8 +27,6 @@ import { FlashcardsModule } from './modules/flashcards/flashcards.module';
     HeaderComponent,
     BackgroundComponent,
     BackgorundElementComponent,
-    FicheComponent,
-    FicheCardComponent,
     QuizComponent,
     QuizCardComponent,
     LoginComponent,
