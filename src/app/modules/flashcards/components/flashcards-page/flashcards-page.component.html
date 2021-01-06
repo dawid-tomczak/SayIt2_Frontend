@@ -1,9 +1,9 @@
 <div class="wrapper">
-  <mat-progress-bar class="wrapper__progress" color="accent" mode="determinate"
+  <mat-progress-bar class="wrapper__progress" color="accent" [mode]="initLoading ? 'query' : 'determinate'"
     [value]="(selectedIndex / (flashcards.length - 1)) * 100">
   </mat-progress-bar>
 
-  <swiper #swiper *ngIf="flashcards.length > 0" class="wrapper__carousel" [config]="swipperConfig"
+  <swiper #swiper *ngIf="!initLoading; else spinner" class="wrapper__carousel" [config]="swiperConfig"
     [(index)]="selectedIndex" (indexChange)="showHelp = false">
     <!-- need to use a wrapping div for centering -->
     <div class="carousel__cardWrap" *ngFor="let flashcard of flashcards; let i = index">
@@ -12,6 +12,10 @@
       </app-flashcard>
     </div>
   </swiper>
+
+  <ng-template #spinner>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 
   <app-flashcard-change-help @scaleInOut *ngIf="showHelp" class="wrapper__help">
   </app-flashcard-change-help>
