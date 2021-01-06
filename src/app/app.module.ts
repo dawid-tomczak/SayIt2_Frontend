@@ -8,8 +8,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FicheComponent } from './components/pages/fiche/fiche.component';
-import { FicheCardComponent } from './components/pages/fiche/fiche-card/fiche-card.component';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -21,6 +19,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { FlashcardsModule } from './modules/flashcards/flashcards.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,6 @@ import { CategoriesModule } from './modules/categories/categories.module';
     HeaderComponent,
     BackgroundComponent,
     BackgorundElementComponent,
-    FicheComponent,
-    FicheCardComponent,
     QuizComponent,
     QuizCardComponent,
     LoginComponent,
@@ -43,7 +40,8 @@ import { CategoriesModule } from './modules/categories/categories.module';
     HttpClientModule,
     ReactiveFormsModule,
     MaterialModule,
-    CategoriesModule
+    CategoriesModule,
+    FlashcardsModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

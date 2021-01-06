@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
-import { FicheComponent } from './components/pages/fiche/fiche.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { CategoriesPageComponent } from './modules/categories/components/categories-page/categories-page.component';
+import { FlashcardsPageComponent } from './modules/flashcards/components/flashcards-page/flashcards-page.component';
 
 
 const routes: Routes = [
@@ -13,8 +13,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'fiche',
-    component: FicheComponent,
+    path: 'flashcards',
+    component: FlashcardsPageComponent,
     canActivate: [AuthGuardGuard]
   },
   {

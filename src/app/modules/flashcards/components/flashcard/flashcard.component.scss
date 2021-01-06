@@ -1,7 +1,7 @@
 @import "../../../../../variables.scss";
 
 
-#card{
+.card{
   width:500px;
   height:auto;
   background: linear-gradient(172deg, rgba(63,81,181,1) 45%, rgba(248,160,252,1) 130%);
@@ -19,35 +19,34 @@
                       "left meaning right";
 }
 
-.row{
-  height: 100%;
-}
-
-.card__navigation-div{
+.card__navigation{
   display: flex;
+  height:100%;
+  width:100%;
   justify-content: center;
   align-items: center;
   transition: background-color 200ms;
-  .material-icons{
-    font-size: 4rem;
+  border-radius: 0;
+  mat-icon{
+    transform: scale(2.5);
   }
 }
 
-#card__navigation-right{
+.card__navigation--right{
   float:right;
   grid-area: right;
 }
 
-#card__navigation-left{
+.card__navigation--left{
   grid-area: left;
 }
 
-#card__mainContent{
+.card__mainContent{
   height:100%;
   margin:0;
 }
 
-#card__mainContent__actions-div{
+.card__actions{
   width:100%;
   display:flex;
   justify-content: space-between;
@@ -55,7 +54,7 @@
   grid-area: actions;
 }
 
-#card__mainContent__translation-div{
+.card__mainContent{
   display:flex;
   height: 110px;
   width:100%;
@@ -67,28 +66,28 @@
   grid-area: translation;
 }
 
-#card__mainContent__meaning-div{
-  height: 0px;
-  overflow: hidden;
+.mainContent__meaning{
   display:flex;
   align-items:center;
-  transition: all 500ms;
+  height:100px;
+  // using margin instead of padding because otherwise the animation is not working properly
+  margin-bottom: 15px;
   grid-area: meaning;
 }
 
-#card__mainContent__translation-PL{
+.mainContent__translation--PL{
   font-size: 1.25rem;
   font-weight: 400;
   color: #bebebe
 }
 
-.card__navigation-div:hover{
+.card__navigation:hover{
   cursor: pointer;
   background-color: #00000021;
 }
 
 @media (max-width: 414px){
-  #card{
+  .card{
     width: 90%;
     margin:auto;
     grid-template-columns: 1fr;
@@ -97,8 +96,13 @@
                           "meaning";
   }
 
-  #card__navigation-left, #card__navigation-right, #card__mainContent__actions-div{
+  .card__navigation--left, .card__navigation--right, .card__actions{
     display: none;
+  }
+
+  .mainContent__meaning{
+    // using margin instead of padding because otherwise the animation is not working properly
+    margin: 15px 10px 15px 10px;
   }
 }
 

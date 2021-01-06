@@ -13,7 +13,7 @@ export const slideHeight = trigger('slideHeight', [
   transition('* <=> void', [
     animate(200)
   ])
-])
+]);
 
 export const staggerScale = trigger('staggerScale', [
   transition('* => *', [
@@ -25,4 +25,30 @@ export const staggerScale = trigger('staggerScale', [
       optional: true
     })
   ])
-])
+]);
+
+export const opacityInOut = trigger('opacityInOut', [
+  state('void', style({
+    opacity: 0
+  })),
+  state('*', style({
+    opacity: 1,
+  })),
+
+  transition('* <=> void', [
+    animate(200)
+  ])
+]);
+
+export const scaleInOut = trigger('scaleInOut', [
+  state('void', style({
+    transform: 'scale(0)'
+  })),
+  state('*', style({
+    transform: 'scale(1)'
+  })),
+
+  transition('* <=> void', [
+    animate(200)
+  ])
+]);

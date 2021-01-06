@@ -1,0 +1,37 @@
+<div class="card" (tap)="tapHandler()">
+  <button mat-icon-button class="card__navigation card__navigation--left"
+    (click)="flashcardChangeEmitter.emit(changeDirection.previous)" *ngIf="prevPossible">
+    <mat-icon>
+      keyboard_arrow_left
+    </mat-icon>
+  </button>
+
+  <section class="card__actions" *ngIf="!displayedOnMobileDevice">
+    <button mat-icon-button>
+      <mat-icon>volume_up</mat-icon>
+    </button>
+    <button mat-icon-button (click)="descriptionToggle()">
+      <mat-icon>info</mat-icon>
+    </button>
+  </section>
+
+  <section class="card__mainContent">
+    <span class="mainContent__translation--EN">
+      {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'content', 'EN')}}
+    </span>
+    <span class="mainContent__translation--PL">
+      {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'content', 'PL')}}
+    </span>
+  </section>
+
+  <section @slideHeight *ngIf="showDescription" class="mainContent__meaning">
+    {{flashcardService.extractTextFromFlashcardInLanguage(flashcard, 'description', 'PL')}}
+  </section>
+
+  <button mat-icon-button class="card__navigation card__navigation--right"
+    (click)="flashcardChangeEmitter.emit(changeDirection.next)" *ngIf="nextPossible">
+    <mat-icon>
+      keyboard_arrow_right
+    </mat-icon>
+  </button>
+</div>
