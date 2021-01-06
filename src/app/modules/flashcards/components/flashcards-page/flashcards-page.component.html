@@ -5,8 +5,8 @@
 
     <!-- need to use a wrapping div for centering -->
     <div class="carousel__cardWrap" *ngFor="let flashcard of flashcards; let i = index">
-      <app-flashcard class="cardWrap__card" [flashcard]="flashcard" [index]="i" [maxIndex]="flashcards.length"
-        (flashcardChangeEmitter)="flashcardChangeHandler($event)">
+      <app-flashcard class="cardWrap__card" [flashcard]="flashcard" [prevPossible]="i != 0"
+        [nextPossible]="i != flashcards.length -1" (flashcardChangeEmitter)="flashcardChangeHandler($event)">
       </app-flashcard>
     </div>
 

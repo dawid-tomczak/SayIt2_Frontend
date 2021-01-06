@@ -15,8 +15,8 @@ import { FlashcardService } from '../../services/flashcard.service';
 export class FlashcardComponent implements OnInit, OnDestroy {
 
   @Input() flashcard: Flashcard;
-  @Input() index: number;
-  @Input() maxIndex: number;
+  @Input() nextPossible: boolean = true;
+  @Input() prevPossible: boolean = true;
   @Output() flashcardChangeEmitter = new EventEmitter<FlashcardChangeDirection>();
 
   showDescription = false;

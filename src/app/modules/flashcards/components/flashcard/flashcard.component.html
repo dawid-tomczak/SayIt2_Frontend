@@ -1,6 +1,6 @@
 <div class="card" (tap)="tapHandler()">
   <button mat-icon-button class="card__navigation card__navigation--left"
-    (click)="flashcardChangeEmitter.emit(changeDirection.previous)" *ngIf="index != 0">
+    (click)="flashcardChangeEmitter.emit(changeDirection.previous)" *ngIf="prevPossible">
     <mat-icon>
       keyboard_arrow_left
     </mat-icon>
@@ -29,7 +29,7 @@
   </section>
 
   <button mat-icon-button class="card__navigation card__navigation--right"
-    (click)="flashcardChangeEmitter.emit(changeDirection.next)" *ngIf="index != maxIndex">
+    (click)="flashcardChangeEmitter.emit(changeDirection.next)" *ngIf="nextPossible">
     <mat-icon>
       keyboard_arrow_right
     </mat-icon>
