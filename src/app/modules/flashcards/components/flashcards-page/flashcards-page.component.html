@@ -1,5 +1,15 @@
 <div class="wrapper">
-  <app-flashcard class="wrapper__card" *ngIf="selectedFlashcard" [flashcard]="selectedFlashcard" [index]="selectedIndex"
-    [maxIndex]="maxIndex" (flashcardChangeEmitter)="flashcardChangeHandler($event)">
-  </app-flashcard>
+
+  <swiper #swiper *ngIf="flashcards.length > 0" class="wrapper__carousel" [config]="swipperConfig"
+    [(index)]="selectedIndex">
+
+    <!-- need to use a wrapping div for centering -->
+    <div class="carousel__cardWrap" *ngFor="let flashcard of flashcards; let i = index">
+      <app-flashcard class="cardWrap__card" [flashcard]="flashcard" [index]="i" [maxIndex]="flashcards.length"
+        (flashcardChangeEmitter)="flashcardChangeHandler($event)">
+      </app-flashcard>
+    </div>
+
+  </swiper>
+
 </div>

@@ -8,6 +8,15 @@
   align-items: center;
 }
 
-.wrapper__card{
+.wrapper__carousel{
+  width:100%;
+}
+
+.carousel__cardWrap{
+  display: flex;
+  justify-content: center;
+}
+
+.cardWrap__card{
   width:500px;
 }

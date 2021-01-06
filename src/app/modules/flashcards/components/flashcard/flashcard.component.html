@@ -1,5 +1,4 @@
-<div class="card" (tap)="tapHandler()" (swipeleft)="flashcardChangeEmitter.emit(changeDirection.next)"
-  (swiperight)="flashcardChangeEmitter.emit(changeDirection.previous)">
+<div class="card" (tap)="tapHandler()">
   <button mat-icon-button class="card__navigation card__navigation--left"
     (click)="flashcardChangeEmitter.emit(changeDirection.previous)" *ngIf="index != 0">
     <mat-icon>

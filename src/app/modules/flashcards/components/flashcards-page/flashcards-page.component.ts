@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { SwiperOptions } from 'swiper';
 import { Flashcard } from '../../models/flashcard';
 import { FlashcardChangeDirection } from '../../models/flashcard-change-direction.enum';
 import { FlashcardService } from '../../services/flashcard.service';
@@ -17,6 +18,14 @@ export class FlashcardsPageComponent implements OnInit {
   selectedIndex = 0;
   maxIndex = 0;
 
+  swipperConfig: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    centeredSlides: true,
+  }
+
+  @ViewChild('swiper', { static: false }) swiper;
+
   constructor(private flashcardService: FlashcardService) { }
 
   ngOnInit() {
@@ -28,7 +37,6 @@ export class FlashcardsPageComponent implements OnInit {
     const modifier = (direction === FlashcardChangeDirection.next ? 1 : -1);
 
     this.selectedIndex += modifier;
-    this.selectedFlashcard = this.flashcards[this.selectedIndex];
   }
 
   private downloadFlashcards(initDownload: boolean = false): Subscription {
