@@ -1,4 +1,4 @@
-import { Language } from "./language";
+import { Language } from "../../../shared/models/language";
 
 export interface FlashcardExtendedInfo {
   text: string;
