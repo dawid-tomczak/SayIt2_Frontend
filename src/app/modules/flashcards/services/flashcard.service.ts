@@ -28,7 +28,11 @@ export class FlashcardService {
       arrayToSearchIn = flashcard.contentWithTranslation;
     }
 
-    response = arrayToSearchIn.find(element => element.langCode === langCode).text;
+    try {
+      response = arrayToSearchIn.find(element => element.langCode === langCode).text;
+    } catch {
+      response = 'Not Found'
+    }
 
     return response ? response : 'Not Found';
   }
