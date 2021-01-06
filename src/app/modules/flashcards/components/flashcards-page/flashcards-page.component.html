@@ -1,15 +1,16 @@
 <div class="wrapper">
+  <mat-progress-bar class="wrapper__progress" color="accent" mode="determinate"
+    [value]="(selectedIndex / (flashcards.length - 1)) * 100">
+  </mat-progress-bar>
 
   <swiper #swiper *ngIf="flashcards.length > 0" class="wrapper__carousel" [config]="swipperConfig"
     [(index)]="selectedIndex">
-
     <!-- need to use a wrapping div for centering -->
     <div class="carousel__cardWrap" *ngFor="let flashcard of flashcards; let i = index">
       <app-flashcard class="cardWrap__card" [flashcard]="flashcard" [prevPossible]="i != 0"
         [nextPossible]="i != flashcards.length -1" (flashcardChangeEmitter)="flashcardChangeHandler($event)">
       </app-flashcard>
     </div>
-
   </swiper>
 
 </div>

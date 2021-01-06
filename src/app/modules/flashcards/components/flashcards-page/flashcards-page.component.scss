@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position:relative;
 }
 
 .wrapper__carousel{
@@ -19,4 +20,10 @@
 
 .cardWrap__card{
   width:500px;
+}
+
+.wrapper__progress{
+  width:100%;
+  position: absolute;
+  top:0;
 }
