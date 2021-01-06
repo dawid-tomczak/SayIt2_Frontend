@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }, err => {
         if (err.status === 400) {
           this.invalidLoginOrPassword = true;
+          this.requestLoading = false;
         }
       })
     );
