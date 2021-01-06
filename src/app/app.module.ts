@@ -20,6 +20,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { FlashcardsModule } from './modules/flashcards/flashcards.module';
+import { QuizzesModule } from './modules/quizzes/quizzes.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FlashcardsModule } from './modules/flashcards/flashcards.module';
     ReactiveFormsModule,
     MaterialModule,
     CategoriesModule,
-    FlashcardsModule
+    FlashcardsModule,
+    QuizzesModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
