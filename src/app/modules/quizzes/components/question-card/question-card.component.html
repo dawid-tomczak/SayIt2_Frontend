@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card__question">
+    <span class="question__text">
+      {{translationService.extractTextFromTranslationInLanguage(quizQuestion.questionTranslation, 'EN')}}
+    </span>
+
+    <!-- TODO add handling of quiz end -->
+    <!-- <span *ngIf="quizEnd" class="question__summary">
+      <span *ngIf="correctAnswers / translationsAmount < 0.5" class="summary__mark">
+        Słabiutko😔
+      </span>
+      <span *ngIf="correctAnswers / translationsAmount >= 0.5 && correctAnswers / translationsAmount < 0.75"
+        class="summary__mark">
+        Całkiem nieźle👌
+      </span>
+      <span *ngIf="correctAnswers / translationsAmount >= 0.75" class="summary__mark">
+        Brawo!😃
+      </span>
+      <br />
+
+      <span class="summary__amount">
+        {{correctAnswers}}/{{translationsAmount}}
+      </span>
+
+      <br />
+      <span class="amount__desc">
+        Poprawnych odpowiedzi
+      </span>
+
+    </span> -->
+  </div>
+
+  <div class="card__options">
+    <button matRipple *ngFor="let answer of answers" class="options__button" (click)="checkAnswer(answer)"
+      [disabled]="afterAnswer">
+      {{translationService.extractTextFromTranslationInLanguage(answer.translations, 'PL')}}
+    </button>
+
+    <!-- TODO add handling of quiz end -->
+    <!-- <button matRipple class="options__back" routerLink="/main" *ngIf="quizEnd">
+      Powrót
+    </button> -->
+  </div>
