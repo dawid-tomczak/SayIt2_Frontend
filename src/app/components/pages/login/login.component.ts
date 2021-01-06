@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   invalidLoginOrPassword = false;
   registerMode = false;
+  requestLoading = false;
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -51,8 +52,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private loginAction() {
+    this.requestLoading = true;
+
     this.subscriptions.push(
       this.loginService.loginSubmit().subscribe(res => {
+        this.requestLoading = false;
         this.loginSuccessful(res);
       }, err => {
         if (err.status === 400) {
@@ -63,11 +67,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private registerAction() {
+    this.requestLoading = true;
+
     this.subscriptions.push(
       this.loginService.loginSubmit(true).subscribe(res => {
-        // TODO add actions when backend will return some data
-        console.log(res);
-      })
+        this.requestLoading = false;
+      }, err => this.requestLoading = false)
     )
   }
 

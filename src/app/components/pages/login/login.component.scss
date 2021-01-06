@@ -54,6 +54,7 @@
 .actions__button{
   margin-right: 10px;
   margin-left:10px;
+  position: relative;
 }
 
 .loginForm__invalidInfo{
@@ -61,6 +62,15 @@
   background-color: #FF000020;
   border-radius: 8px;
   text-align: center;
+}
+
+.button__overlaySpinner{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom: 0;
 }
 
 
