@@ -1,9 +1,9 @@
-import { FlashcardExtendedInfo } from './flashcard-extended-info';
+import { Translation } from 'src/app/shared/models/translation';
 
 export interface Flashcard {
   id: number;
   content: string;
   description: string;
-  contentWithTranslation: FlashcardExtendedInfo[];
-  descriptionWithTranslation: FlashcardExtendedInfo[];
+  contentWithTranslation: Translation[];
+  descriptionWithTranslation: Translation[];
 }
