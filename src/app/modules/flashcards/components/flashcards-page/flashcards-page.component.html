@@ -4,7 +4,7 @@
   </mat-progress-bar>
 
   <swiper #swiper *ngIf="flashcards.length > 0" class="wrapper__carousel" [config]="swipperConfig"
-    [(index)]="selectedIndex">
+    [(index)]="selectedIndex" (indexChange)="showHelp = false">
     <!-- need to use a wrapping div for centering -->
     <div class="carousel__cardWrap" *ngFor="let flashcard of flashcards; let i = index">
       <app-flashcard class="cardWrap__card" [flashcard]="flashcard" [prevPossible]="i != 0"
@@ -13,4 +13,6 @@
     </div>
   </swiper>
 
+  <app-flashcard-change-help @scaleInOut *ngIf="showHelp" class="wrapper__help">
+  </app-flashcard-change-help>
 </div>
