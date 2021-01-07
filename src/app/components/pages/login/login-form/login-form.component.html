@@ -1,7 +1,7 @@
 <form [formGroup]="loginForm" *ngIf="loginForm" (keydown.enter)="enterSubmit.emit($event)">
   <mat-form-field>
-    <mat-label>Login</mat-label>
-    <input matInput placeholder="Login" formControlName="userName">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" formControlName="userName">
     <mat-error *ngIf="loginForm.get('userName').invalid">Login jest wymagany</mat-error>
   </mat-form-field>
   <mat-form-field>

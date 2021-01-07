@@ -37,16 +37,14 @@ export class LoginService {
     this.markLoginFormFieldsTouched();
 
     if (this.loginForm.valid) {
-      let formValue = this.loginForm.getRawValue();
+      const formValue = this.loginForm.getRawValue();
 
       if (!registration) {
         return this.loginUser(formValue as LoginCredentials);
-      }
-      else {
+      } else {
         // backend is not receiving password confirmation
         delete formValue.passwordConfirmation;
 
-        // ! Bug to be fixed at backend
         formValue.email = formValue.userName;
         delete formValue.userName;
 
@@ -112,10 +110,9 @@ export class LoginService {
 
     // adding or deleting controls
     if (registerMode) {
-      registerFields.forEach(field => this.loginForm.addControl(field.key, field.control))
-    }
-    else {
-      registerFields.forEach(field => this.loginForm.removeControl(field.key))
+      registerFields.forEach(field => this.loginForm.addControl(field.key, field.control));
+    } else {
+      registerFields.forEach(field => this.loginForm.removeControl(field.key));
     }
   }
 
@@ -124,10 +121,9 @@ export class LoginService {
   }
 
   private passwordConfirmationMatchValidator(control: AbstractControl): any | null {
-    if (control.parent && (<FormGroup>control.parent).get('password').value !== control.value) {
+    if (control.parent && (control.parent as FormGroup).get('password').value !== control.value) {
       return { passwordMatch: false };
-    }
-    else {
+    } else {
       return null;
     }
   }
