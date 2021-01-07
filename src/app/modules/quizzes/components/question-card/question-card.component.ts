@@ -19,22 +19,30 @@ export class QuestionCardComponent implements OnInit {
   answers: Answer[] = [];
   afterAnswer = false;
 
+  selectedAnswerId: number;
+  correctAnswerId: number;
+
+  answeredCorrect: boolean;
+
   constructor(public translationService: TranslationService, private quizService: QuizService) { }
 
   ngOnInit(): void {
     this.answers = this.quizService.buildQuestionsArray(this.quizQuestion);
   }
 
-  checkAnswer(userAnswer: Answer): boolean {
+  checkAnswer(userAnswer: Answer) {
     this.afterAnswer = true;
+    // using variables outside of function because HTML needs to access them
+    this.selectedAnswerId = userAnswer.id;
+    this.correctAnswerId = this.quizQuestion.correctAnswer.id;
 
-    if (userAnswer.id === this.quizQuestion.correctAnswer.id) {
-      this.answered.emit(true);
-      return true;
+    if (this.selectedAnswerId === this.correctAnswerId) {
+      this.answeredCorrect = true;
     } else {
-      this.answered.emit(false);
-      return false;
+      this.answeredCorrect = false;
     }
+
+    this.answered.emit(this.answeredCorrect);
   }
 
 }

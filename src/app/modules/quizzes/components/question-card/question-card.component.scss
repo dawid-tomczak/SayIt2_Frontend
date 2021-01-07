@@ -83,7 +83,7 @@ button:hover:enabled{
   font-weight: 600;
 }
 
-.options__button--right{
+.options__button--correct{
   background-color: $green;
   color: white;
 }
@@ -101,7 +101,6 @@ button:hover:enabled{
   height: 10% !important;
   padding: 0 !important;
 }
-
 
 @media only screen and (max-height: 640px){
   .card{

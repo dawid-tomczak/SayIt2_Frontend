@@ -31,8 +31,12 @@
   </div>
 
   <div class="card__options">
-    <button matRipple *ngFor="let answer of answers" class="options__button" (click)="checkAnswer(answer)"
+    <button matRipple *ngFor="let answer of answers; let i = index" class="options__button animated"
+      (click)="checkAnswer(answer)" [class.options__button--correct]="answer.id === correctAnswerId"
+      [class.tada]="answer.id === correctAnswerId && answeredCorrect"
+      [ngClass]="{'options__button--wrong shake' : !answeredCorrect && selectedAnswerId === answer.id}"
       [disabled]="afterAnswer">
+
       {{translationService.extractTextFromTranslationInLanguage(answer.translations, 'PL')}}
     </button>
 
