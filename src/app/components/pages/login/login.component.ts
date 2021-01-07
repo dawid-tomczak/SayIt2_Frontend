@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { ExternalLoginItem } from './models/externalLoginItem';
 import { LoggedUserInfo } from './models/logged-user-info';
 import { LoginService } from './services/login.service';
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   registerMode = false;
   requestLoading = false;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
@@ -32,8 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (!this.registerMode) {
       this.loginAction();
-    }
-    else {
+    } else {
       this.registerAction();
     }
   }
@@ -73,13 +73,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.loginService.loginSubmit(true).subscribe(res => {
         this.requestLoading = false;
+        this.registerMode = false;
+        this.loginService.toggleRegisterForm(false);
+
+        this.snackbarService.showSnackbar('Użytkownik zarejestrowany, możesz się zalogować');
       }, err => this.requestLoading = false)
-    )
+    );
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
-    })
+    });
   }
 }
