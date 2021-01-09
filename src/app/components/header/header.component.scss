@@ -23,14 +23,7 @@ mat-toolbar{
 
 @media (max-width: 414px) {
   mat-toolbar{
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
-  }
-
-  .toolbar__mobileLogout{
-    position: absolute;
-    right: 0;
-    width: auto;
-    margin-right: 10px;
   }
 }

@@ -1,8 +1,15 @@
 <header class="header">
   <mat-toolbar class="header__toolbar" color="primary">
+    <button mat-icon-button alt="Wyloguj" (click)="back()" class="toolbar__mobileLogout mobileOnly">
+      <mat-icon>
+        arrow_back_ios
+      </mat-icon>
+    </button>
+
     <img src="assets/img/sayIt logo.png" alt="SayIt" class="toolbar__logo" routerLink="/main">
     <img src="assets//img/user.png" alt="UserImg" class="toolbar__user rounded-circle mobileHide"
       [matMenuTriggerFor]="userMenu">
+
     <button mat-icon-button alt="Wyloguj" (click)="logout()" color="warn" class="toolbar__mobileLogout mobileOnly">
       <mat-icon>
         logout

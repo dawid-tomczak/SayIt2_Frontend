@@ -30,13 +30,15 @@
       </button>
 
       <button mat-flat-button color="primary" class="actions__button" [formGroup]="loginForm"
-        [disabled]="loginForm.invalid" type="submit" (click)="submit()">
+        [disabled]="loginForm.invalid || requestLoading" type="submit" (click)="submit()">
         <span *ngIf="!registerMode; else register">
           Zaloguj
         </span>
         <ng-template #register>
           Zarejestruj
         </ng-template>
+
+        <mat-spinner *ngIf="requestLoading" diameter="30" class="button__overlaySpinner"></mat-spinner>
       </button>
     </mat-card-actions>
   </mat-card>

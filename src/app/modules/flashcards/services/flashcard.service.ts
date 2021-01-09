@@ -31,7 +31,7 @@ export class FlashcardService {
     try {
       response = arrayToSearchIn.find(element => element.langCode === langCode).text;
     } catch {
-      response = 'Not Found'
+      response = 'Not Found';
     }
 
     return response ? response : 'Not Found';

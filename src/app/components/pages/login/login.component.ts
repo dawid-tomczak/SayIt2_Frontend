@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { ExternalLoginItem } from './models/externalLoginItem';
 import { LoggedUserInfo } from './models/logged-user-info';
 import { LoginService } from './services/login.service';
@@ -18,8 +19,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   invalidLoginOrPassword = false;
   registerMode = false;
+  requestLoading = false;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.externalLoginServicesTypes = this.loginService.getPossibleExternalLoginServices();
@@ -31,8 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (!this.registerMode) {
       this.loginAction();
-    }
-    else {
+    } else {
       this.registerAction();
     }
   }
@@ -51,29 +52,38 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private loginAction() {
+    this.requestLoading = true;
+
     this.subscriptions.push(
       this.loginService.loginSubmit().subscribe(res => {
+        this.requestLoading = false;
         this.loginSuccessful(res);
       }, err => {
         if (err.status === 400) {
           this.invalidLoginOrPassword = true;
+          this.requestLoading = false;
         }
       })
     );
   }
 
   private registerAction() {
+    this.requestLoading = true;
+
     this.subscriptions.push(
       this.loginService.loginSubmit(true).subscribe(res => {
-        // TODO add actions when backend will return some data
-        console.log(res);
-      })
-    )
+        this.requestLoading = false;
+        this.registerMode = false;
+        this.loginService.toggleRegisterForm(false);
+
+        this.snackbarService.showSnackbar('Użytkownik zarejestrowany, możesz się zalogować');
+      }, err => this.requestLoading = false)
+    );
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
-    })
+    });
   }
 }
