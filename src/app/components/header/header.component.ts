@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logoutSubscription: Subscription;
 
   constructor(private loginService: LoginService, private router: Router,
-    private snackbarService: SnackbarService, private location: Location) { }
+              private snackbarService: SnackbarService, private location: Location) { }
 
   ngOnInit() {
   }

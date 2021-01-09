@@ -11,7 +11,7 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoriesPageComponent implements OnInit, OnDestroy {
 
-  loadingCategories: boolean = false;
+  loadingCategories = false;
   categories: Category[] = [];
   private subscriptions: Subscription[] = [];
 
@@ -29,7 +29,7 @@ export class CategoriesPageComponent implements OnInit, OnDestroy {
       this.loadingCategories = false;
     }, err => {
       this.loadingCategories = false;
-    })
+    });
   }
 
   ngOnDestroy() {

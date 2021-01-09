@@ -10,7 +10,7 @@ export class CategoryCardComponent implements OnInit {
 
   @Input() category: Category;
 
-  fallbackMaterialIcon = "school";
+  fallbackMaterialIcon = 'school';
 
   constructor() { }
 
