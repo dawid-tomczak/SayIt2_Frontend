@@ -37,14 +37,17 @@
   </div>
 
   <div class="card__options">
-    <button matRipple *ngFor="let answer of answers; let i = index" class="options__button animated"
-      (click)="checkAnswer(answer)" [class.options__button--correct]="answer.id === correctAnswerId"
-      [class.tada]="answer.id === correctAnswerId && answeredCorrect"
-      [ngClass]="{'options__button--wrong shake' : !answeredCorrect && selectedAnswerId === answer.id}"
-      [disabled]="afterAnswer">
+    <div class="options__grid">
+      <button matRipple *ngFor="let answer of answers; let i = index" class="options__button animated"
+        (click)="checkAnswer(answer)" [class.options__button--correct]="answer.id === correctAnswerId"
+        [class.tada]="answer.id === correctAnswerId && answeredCorrect"
+        [ngClass]="{'options__button--wrong shake' : !answeredCorrect && selectedAnswerId === answer.id}"
+        [disabled]="afterAnswer">
 
-      {{translationService.extractTextFromTranslationInLanguage(answer.translations, 'PL')}}
-    </button>
+        {{translationService.extractTextFromTranslationInLanguage(answer.translations, 'PL')}}
+      </button>
+    </div>
+
 
     <!-- TODO add handling of quiz end -->
     <!-- <button matRipple class="options__back" routerLink="/main" *ngIf="quizEnd">

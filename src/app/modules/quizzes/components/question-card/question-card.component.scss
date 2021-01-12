@@ -72,6 +72,16 @@
   padding:25px 20px 25px 20px;
 }
 
+.options__grid{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(2, 47%);
+  grid-template-rows: repeat(2, 45%);
+  row-gap: 10%;
+  column-gap: 6%;
+}
+
 button{
   border-radius: 13px;
   border-style: none;
@@ -87,8 +97,6 @@ button:hover:enabled{
 }
 
 .options__button{
-  width:45%;
-  height: 38%;
   font-size: 1.25rem;
   font-weight: 600;
 }
@@ -122,9 +130,23 @@ button:hover:enabled{
   padding: 0 !important;
 }
 
-@media only screen and (max-height: 640px){
+@media (max-width: 414px){
   .card{
     width: 90vw;
-    height: 80vh
+    height: 80vh;
+  }
+
+  .card__question{
+    height: 35%;
+  }
+
+  .card__options{
+    height: 65%;
+  }
+
+  .options__grid{
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, 20%);
+    row-gap: 6%;
   }
 }
