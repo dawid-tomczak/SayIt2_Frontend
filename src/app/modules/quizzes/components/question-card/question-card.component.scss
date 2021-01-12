@@ -11,12 +11,12 @@
 
 .card__question{
   display:flex;
+  flex-direction: column;
   height: 40%;
   width:100%;
-  justify-content: center;
-  align-items: center;
+  align-content: center;
   background-color: #778BE1;
-  padding:21px 17px 21px 17px;
+  padding:10px 17px 21px 17px;
   transition: height 400ms;
 
 
@@ -25,6 +25,17 @@
   font-size: 21px;
   text-align: center;
   color: white;
+}
+
+.question__info{
+  height:20%;
+}
+
+.question__description{
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .summary__mark{

@@ -1,8 +1,13 @@
 <div class="card">
   <div class="card__question">
-    <span class="question__text">
-      {{translationService.extractTextFromTranslationInLanguage(quizQuestion.questionTranslation, 'EN')}}
-    </span>
+    <div class="question__info">
+      <app-quiz-timer></app-quiz-timer>
+    </div>
+    <div class="question__description">
+      <span class="description__text">
+        {{translationService.extractTextFromTranslationInLanguage(quizQuestion.questionTranslation, 'EN')}}
+      </span>
+    </div>
 
     <!-- TODO add handling of quiz end -->
     <!-- <span *ngIf="quizEnd" class="question__summary">
