@@ -1,0 +1,18 @@
+
+@import "../../../../../variables.scss";
+
+.dot{
+  fill: white;
+  margin: 0 3px 0 3px;
+  opacity: 0.6;
+}
+
+.dot--true{
+  fill: $green;
+  opacity: 0.9;
+}
+
+.dot--false{
+  fill: $red;
+  opacity: 0.9;
+}
