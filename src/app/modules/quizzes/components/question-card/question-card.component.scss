@@ -29,6 +29,15 @@
 
 .question__info{
   height:20%;
+  display: flex;
+  justify-content: center;
+  position:relative;
+  align-items: flex-start;
+}
+
+.info__timer{
+  position: absolute;
+  right: 30px;
 }
 
 .question__description{
