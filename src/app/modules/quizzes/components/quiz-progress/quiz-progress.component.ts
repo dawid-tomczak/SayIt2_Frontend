@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-progress',
@@ -8,8 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class QuizProgressComponent implements OnInit {
 
-  // TODO delete default value;
-  @Input() answersProgress: boolean[] = [true, true, false, true, null];
+  @Input() $answersProgress: Observable<(boolean | null)[]>;
 
   constructor() { }
 

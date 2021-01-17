@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-import { Translation } from 'src/app/models';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { questionSeconds } from 'src/app/shared/consts';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 import { Answer } from '../../models/answer';
-import { QuizQuestion } from '../../models/quiz-question';
-import { QuizService } from '../../services/quiz.service';
+import { QuizQuestionComplex } from '../../models/quiz-question-complex';
 
 @Component({
   selector: 'app-question-card',
@@ -11,38 +11,59 @@ import { QuizService } from '../../services/quiz.service';
   styleUrls: ['./question-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionCardComponent implements OnInit {
+export class QuestionCardComponent implements OnInit, OnDestroy {
 
-  @Input() quizQuestion: QuizQuestion;
+  @Input() $quizQuestion: Observable<QuizQuestionComplex>;
+  @Input() $answers: Observable<boolean | null[]>;
   @Output() answered = new EventEmitter<boolean>();
 
-  answers: Answer[] = [];
-  afterAnswer = false;
-
+  answeredCorrect: boolean;
   selectedAnswerId: number;
   correctAnswerId: number;
+  afterAnswer: boolean;
+  actualQuestion: QuizQuestionComplex;
+  questionSubscription: Subscription;
 
-  answeredCorrect: boolean;
+  // ref to config variable for using inside of HTML
+  fullTime = questionSeconds;
+  timeLeftObservable$: Observable<number>;
 
-  constructor(public translationService: TranslationService, private quizService: QuizService) { }
+
+  constructor(public translationService: TranslationService) {
+  }
 
   ngOnInit(): void {
-    this.answers = this.quizService.buildQuestionsArray(this.quizQuestion);
+    this.subscribeToQuestions();
   }
 
   checkAnswer(userAnswer: Answer) {
-    this.afterAnswer = true;
-    // using variables outside of function because HTML needs to access them
     this.selectedAnswerId = userAnswer.id;
-    this.correctAnswerId = this.quizQuestion.correctAnswer.id;
+    this.correctAnswerId = this.actualQuestion.correctAnswer.id;
+    this.afterAnswer = true;
 
-    if (this.selectedAnswerId === this.correctAnswerId) {
-      this.answeredCorrect = true;
-    } else {
-      this.answeredCorrect = false;
-    }
-
-    this.answered.emit(this.answeredCorrect);
+    this.answeredCorrect = this.actualQuestion.checkAnswer(userAnswer);
   }
 
+  subscribeToQuestions() {
+    if (!this.questionSubscription) {
+      this.$quizQuestion.subscribe(question => {
+        this.reset();
+        this.actualQuestion = question;
+        this.timeLeftObservable$ = this.actualQuestion.getTimeLeftObservable();
+      });
+    }
+  }
+
+  private reset() {
+    this.timeLeftObservable$ = null;
+    this.selectedAnswerId = null;
+    this.correctAnswerId = null;
+    this.afterAnswer = false;
+  }
+
+  ngOnDestroy() {
+    if (this.questionSubscription) {
+      this.questionSubscription.unsubscribe();
+    }
+  }
 }

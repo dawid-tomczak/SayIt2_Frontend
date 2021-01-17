@@ -1,3 +1,4 @@
 <div class="wrapper">
-  <app-question-card *ngIf="quizQuestions.length > 0" [quizQuestion]="quizQuestions[0]"></app-question-card>
+  <app-question-card *ngIf="quiz" [$quizQuestion]="$questionObservable" [$answers]="$answersObservable">
+  </app-question-card>
 </div>

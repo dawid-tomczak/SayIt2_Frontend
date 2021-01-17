@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuizQuestion } from '../../models/quiz-question';
+import { Observable } from 'rxjs';
+import { Quiz } from '../../models/quiz';
+import { QuizQuestionComplex } from '../../models/quiz-question-complex';
 import { QuizService } from '../../services/quiz.service';
 
 @Component({
   templateUrl: './quiz-page.component.html',
   styleUrls: ['./quiz-page.component.scss']
 })
-export class QuizPageComponent implements OnInit {
+export class QuizPageComponent implements OnInit, OnDestroy {
 
-  quizQuestions: QuizQuestion[] = [];
+  quiz: Quiz;
+  $answersObservable: Observable<(boolean | null)[]>;
+  $questionObservable: Observable<QuizQuestionComplex>;
 
   constructor(private quizService: QuizService, private route: ActivatedRoute, private router: Router) {
   }
@@ -30,10 +34,15 @@ export class QuizPageComponent implements OnInit {
   }
 
   private downloadQuiz(categoryId: number) {
-    this.quizService.getQuizForCategory(categoryId).subscribe(res => {
-      this.quizQuestions = res;
-      console.log(this.quizQuestions);
+    this.quizService.getQuizForCategory(categoryId).subscribe(questions => {
+      this.quiz = new Quiz(questions);
+      this.$answersObservable = this.quiz.getAnswersObservable();
+      this.$questionObservable = this.quiz.getActualQuestionObservable();
     });
+  }
+
+  ngOnDestroy() {
+    this.quiz.closeSubscriptions();
   }
 
 }

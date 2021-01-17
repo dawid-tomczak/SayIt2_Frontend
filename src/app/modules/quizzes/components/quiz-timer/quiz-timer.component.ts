@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-timer',
@@ -21,8 +22,8 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class QuizTimerComponent implements OnInit {
 
-  @Input() fullTime: number = 100;
-  @Input() timeLeft: number = 100;
+  @Input() fullTime: number;
+  @Input() $timeLeft: Observable<number>;
 
   constructor() { }
 
