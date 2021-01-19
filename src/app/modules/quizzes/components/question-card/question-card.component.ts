@@ -4,6 +4,7 @@ import { questionSeconds } from 'src/app/shared/consts';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 import { Answer } from '../../models/answer';
 import { QuizQuestionComplex } from '../../models/quiz-question-complex';
+import { QuizResult } from '../../models/quiz-result';
 
 @Component({
   selector: 'app-question-card',
@@ -15,6 +16,7 @@ export class QuestionCardComponent implements OnInit, OnChanges {
 
   @Input() quizQuestion: QuizQuestionComplex;
   @Input() answers$: Observable<boolean | null[]>;
+  @Input() quizResult: QuizResult;
 
   answeredCorrect: boolean;
   selectedAnswerId: number;

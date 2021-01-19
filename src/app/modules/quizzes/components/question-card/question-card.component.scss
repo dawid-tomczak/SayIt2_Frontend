@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.card__question{
+.card__top{
   display:flex;
   flex-direction: column;
   height: 40%;
@@ -25,6 +25,16 @@
   font-size: 21px;
   text-align: center;
   color: white;
+}
+
+.top__question, .top__result{
+  height: 100%;
+}
+
+.top__result{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .question__info{
@@ -47,21 +57,21 @@
   align-items: center;
 }
 
-.summary__mark{
+.result__desc{
   font-size: 32px;
 }
 
-.summary__amount{
+.result__numeric{
   font-size: 46px;
   font-weight: 700;
 }
 
-.amount__desc{
+.result__additionalText{
   font-size: 21px;
   color:rgba(255, 255, 255, 0.65);
 }
 
-.card__options{
+.card__bottom{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -72,7 +82,7 @@
   padding:25px 20px 25px 20px;
 }
 
-.options__grid{
+.bottom__answersGrid{
   display: grid;
   height: 100%;
   width: 100%;
@@ -82,7 +92,12 @@
   column-gap: 6%;
 }
 
-button{
+.options__button{
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.options__button{
   border-radius: 13px;
   border-style: none;
   display: inline-block;
@@ -91,24 +106,29 @@ button{
   transition: background-color 250ms, color 250ms;
 }
 
-button:hover:enabled{
+.options__button:hover:enabled{
   background-color: $pink;
   color:white;
 }
 
-.options__button{
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.options__back{
+.bottom__back{
+  position: relative;
   width:100%;
   height:100%;
   background-color: $purple;
-  border-radius: 0px;
+  border: none;
   font-size: 28px;
   color:white;
   font-weight: 600;
+}
+
+.back__icon{
+  position: absolute;
+  left:6%;
+  top:0;
+  bottom:0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .options__button--correct{
@@ -118,16 +138,16 @@ button:hover:enabled{
 
 .options__button--wrong{
   background-color: $red;
-  color:white
+  color:white;
 }
 
-.card__question--end{
-  height: 90% !important
+.card__top--finish{
+  height: 90%;
 }
 
-.card__options--end{
-  height: 10% !important;
-  padding: 0 !important;
+.card__bottom--finish{
+  height: 10%;
+  padding: 0;
 }
 
 @media (max-width: 414px){
@@ -136,15 +156,23 @@ button:hover:enabled{
     height: 80vh;
   }
 
-  .card__question{
+  .card__top{
     height: 35%;
   }
 
-  .card__options{
+  .card__bottom{
     height: 65%;
   }
 
-  .options__grid{
+  .card__top--finish{
+    height: 85%;
+  }
+
+  .card__bottom--finish{
+    height: 15%;
+  }
+
+  .bottom__answersGrid{
     grid-template-columns: 100%;
     grid-template-rows: repeat(4, 20%);
     row-gap: 6%;

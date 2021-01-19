@@ -1,5 +1,6 @@
 import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
 import { QuizQuestionComplex } from "./quiz-question-complex";
+import { QuizResult } from "./quiz-result";
 
 export class Quiz {
   private actualIndex = 0;
@@ -23,6 +24,10 @@ export class Quiz {
   constructor(public questions: QuizQuestionComplex[]) {
     this._answers$.next(this.generateAnswersArray(questions.length));
     this.assignActualQuestion(this.actualIndex);
+  }
+
+  getResult(): QuizResult {
+    return new QuizResult(this._answers$.value);
   }
 
 

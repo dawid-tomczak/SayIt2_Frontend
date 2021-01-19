@@ -1,4 +1,5 @@
 <div class="wrapper">
-  <app-question-card *ngIf="quiz" [quizQuestion]="selectedQuestion" [answers$]="answersObservable$">
+  <app-question-card *ngIf="quiz" [quizQuestion]="selectedQuestion" [answers$]="answersObservable$"
+    [quizResult]="quizResult">
   </app-question-card>
 </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Quiz } from '../../models/quiz';
 import { QuizQuestionComplex } from '../../models/quiz-question-complex';
+import { QuizResult } from '../../models/quiz-result';
 import { QuizService } from '../../services/quiz.service';
 
 @Component({
@@ -12,7 +13,9 @@ import { QuizService } from '../../services/quiz.service';
 export class QuizPageComponent implements OnInit, OnDestroy {
 
   quiz: Quiz;
+  quizResult: QuizResult;
   answersObservable$: Observable<(boolean | null)[]>;
+  subscriptions: Subscription[] = [];
   questionSubscription: Subscription;
 
   selectedQuestion: QuizQuestionComplex;
@@ -40,19 +43,31 @@ export class QuizPageComponent implements OnInit, OnDestroy {
       this.quiz = new Quiz(questions);
       this.answersObservable$ = this.quiz.answers$
 
-      this.questionSubscription = this.quiz.actualQuestion$.subscribe(question => {
-        this.selectedQuestion = question;
-      });
+      this.subscriptions.push(this.listenToQuestion(), this.listenToFinish())
     });
+  }
+
+  private listenToFinish(): Subscription {
+    return this.quiz.quizFinished$.subscribe(finish => {
+      if (finish) {
+        this.quizResult = this.quiz.getResult();
+      }
+    })
+  }
+
+  private listenToQuestion(): Subscription {
+    return this.quiz.actualQuestion$.subscribe(question => {
+      this.selectedQuestion = question;
+    })
   }
 
 
   ngOnDestroy() {
     this.quiz.closeSubscriptions();
 
-    if (this.questionSubscription) {
-      this.questionSubscription.unsubscribe();
-    }
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    })
   }
 
 }
