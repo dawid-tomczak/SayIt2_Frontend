@@ -1,0 +1,53 @@
+<div class="card" *ngIf="quizQuestion">
+  <div class="card__top" [class.card__top--finish]="quizResult">
+    <div class="top__question" *ngIf="!quizResult; else result">
+      <div class="question__info">
+        <app-quiz-progress class="info__progress" [answersProgress$]="answers$"></app-quiz-progress>
+        <app-quiz-timer class="info__timer" [fullTime]="fullTime" [timeLeft$]="quizQuestion.timeLeft$">
+        </app-quiz-timer>
+      </div>
+      <div class="question__description">
+        <span class="description__text">
+          {{quizQuestion.question}}
+        </span>
+      </div>
+    </div>
+
+    <ng-template #result>
+      <div class="top__result">
+        <span class="result__desc">
+          {{quizResult | quizResultDesc}}
+        </span>
+        <br />
+        <span class="result__numeric">
+          {{quizResult | quizResultNumeric}}
+        </span>
+        <br />
+        <span class="result__additionalText">
+          Poprawnych odpowiedzi
+        </span>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="card__bottom" [class.card__bottom--finish]="quizResult">
+    <div class="bottom__answersGrid" *ngIf="!quizResult; else finishActions">
+      <button matRipple *ngFor="let answer of quizQuestion.answers; let i = index" class="options__button animated"
+        (click)="checkAnswer(answer)" [class.options__button--correct]="answer.id === correctAnswerId"
+        [class.tada]="answer.id === correctAnswerId && answeredCorrect"
+        [ngClass]="{'options__button--wrong shake' : !answeredCorrect && selectedAnswerId === answer.id}"
+        [disabled]="afterAnswer">
+
+        {{translationService.extractTextFromTranslationInLanguage(answer.translations, 'PL')}}
+      </button>
+    </div>
+
+    <ng-template #finishActions>
+      <button matRipple class="bottom__back" routerLink="/main">
+        <mat-icon class="back__icon">
+          arrow_back_ios
+        </mat-icon>
+        Powrót
+      </button>
+    </ng-template>
+  </div>
