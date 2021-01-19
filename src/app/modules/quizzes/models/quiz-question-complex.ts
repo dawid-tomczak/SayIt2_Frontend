@@ -5,7 +5,7 @@ import { questionSeconds } from 'src/app/shared/consts';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 import { Answer } from './answer';
 import { QuizQuestion } from './quiz-question';
-import { Injector } from "@angular/core";
+import { Injector } from '@angular/core';
 
 // need to use reflective injector, because when it was in constructor you needed to pass it on "new QuizQuestionComplex()"
 const injector = Injector.create({

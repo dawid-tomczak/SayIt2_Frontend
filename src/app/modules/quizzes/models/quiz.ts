@@ -1,6 +1,6 @@
-import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
-import { QuizQuestionComplex } from "./quiz-question-complex";
-import { QuizResult } from "./quiz-result";
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { QuizQuestionComplex } from './quiz-question-complex';
+import { QuizResult } from './quiz-result';
 
 export class Quiz {
   private actualIndex = 0;

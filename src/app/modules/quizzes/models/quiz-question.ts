@@ -1,5 +1,5 @@
-import { Translation } from "src/app/shared/models/translation";
-import { Answer } from "./answer";
+import { Translation } from 'src/app/shared/models/translation';
+import { Answer } from './answer';
 
 export interface QuizQuestion {
   id: number;

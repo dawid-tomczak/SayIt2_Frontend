@@ -22,7 +22,7 @@ export class QuestionCardComponent implements OnInit, OnChanges {
   selectedAnswerId: number;
   correctAnswerId: number;
   afterAnswer: boolean;
-  answeredSubscription: Subscription
+  answeredSubscription: Subscription;
 
   // ref to config variable for using inside of HTML
   fullTime = questionSeconds;
@@ -55,7 +55,7 @@ export class QuestionCardComponent implements OnInit, OnChanges {
         this.correctAnswerId = this.quizQuestion.correctAnswer.id;
         this.afterAnswer = true;
       }
-    })
+    });
   }
 
   private reset() {

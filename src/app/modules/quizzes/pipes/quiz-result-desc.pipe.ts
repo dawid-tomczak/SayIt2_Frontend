@@ -10,11 +10,11 @@ export class QuizResultDescPipe implements PipeTransform {
     const ratio = result.correctAnswers / result.totalAnswers;
 
     if (ratio < 0.5) {
-      return 'Słabiutko 😔'
+      return 'Słabiutko 😔';
     } else if (ratio >= 0.5 && ratio < 0.75) {
-      return 'Całkiem nieźle 👌'
+      return 'Całkiem nieźle 👌';
     } else {
-      return 'Brawo! 😃'
+      return 'Brawo! 😃';
     }
   }
 

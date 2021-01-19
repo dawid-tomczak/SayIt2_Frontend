@@ -41,9 +41,9 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   private downloadQuiz(categoryId: number) {
     this.quizService.getQuizForCategory(categoryId).subscribe(questions => {
       this.quiz = new Quiz(questions);
-      this.answersObservable$ = this.quiz.answers$
+      this.answersObservable$ = this.quiz.answers$;
 
-      this.subscriptions.push(this.listenToQuestion(), this.listenToFinish())
+      this.subscriptions.push(this.listenToQuestion(), this.listenToFinish());
     });
   }
 
@@ -52,13 +52,13 @@ export class QuizPageComponent implements OnInit, OnDestroy {
       if (finish) {
         this.quizResult = this.quiz.getResult();
       }
-    })
+    });
   }
 
   private listenToQuestion(): Subscription {
     return this.quiz.actualQuestion$.subscribe(question => {
       this.selectedQuestion = question;
-    })
+    });
   }
 
 
@@ -67,7 +67,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
 
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
-    })
+    });
   }
 
 }
