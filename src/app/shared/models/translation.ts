@@ -1,6 +1,6 @@
 import { Language } from './language';
 
-export interface FlashcardExtendedInfo {
+export interface Translation {
   text: string;
   langCodeId: number;
   langCode: string;

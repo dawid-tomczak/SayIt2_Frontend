@@ -8,8 +8,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { QuizComponent } from './components/pages/quiz/quiz.component';
-import { QuizCardComponent } from './components/pages/quiz/quiz-card/quiz-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/pages/login/login.component';
 import { ExternalServiceLoginComponent } from './components/pages/login/external-service-login/external-service-login.component';
@@ -20,6 +18,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { FlashcardsModule } from './modules/flashcards/flashcards.module';
+import { QuizzesModule } from './modules/quizzes/quizzes.module';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,6 @@ import { FlashcardsModule } from './modules/flashcards/flashcards.module';
     HeaderComponent,
     BackgroundComponent,
     BackgorundElementComponent,
-    QuizComponent,
-    QuizCardComponent,
     LoginComponent,
     ExternalServiceLoginComponent,
     LoginFormComponent
@@ -41,7 +38,8 @@ import { FlashcardsModule } from './modules/flashcards/flashcards.module';
     ReactiveFormsModule,
     MaterialModule,
     CategoriesModule,
-    FlashcardsModule
+    FlashcardsModule,
+    QuizzesModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

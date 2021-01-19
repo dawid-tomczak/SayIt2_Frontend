@@ -1,0 +1,8 @@
+<div class="wrapper" *ngIf="timeLeft$">
+  <mat-progress-spinner class="wrapper__spinner" color="accent" mode="determinate"
+    [value]="((timeLeft$|async) / fullTime) * 100" diameter="30">
+  </mat-progress-spinner>
+  <span class="wrapper__text">
+    {{(timeLeft$|async)}}
+  </span>
+</div>

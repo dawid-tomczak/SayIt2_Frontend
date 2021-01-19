@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Category } from 'src/app/models';
 import { CATEGORIES_CONTROLLER } from 'src/app/shared/consts';
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root'
