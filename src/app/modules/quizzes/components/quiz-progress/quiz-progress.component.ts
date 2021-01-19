@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class QuizProgressComponent implements OnInit {
 
-  @Input() $answersProgress: Observable<(boolean | null)[]>;
+  @Input() answersProgress$: Observable<(boolean | null)[]>;
 
   constructor() { }
 

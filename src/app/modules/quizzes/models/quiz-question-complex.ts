@@ -19,17 +19,25 @@ export class QuizQuestionComplex {
   answers: Answer[];
   correctAnswer: Answer;
 
-  private $timeLeft: BehaviorSubject<number>;
+  private _timeLeft$: BehaviorSubject<number>;
+  public get timeLeft$(): Observable<number> {
+    return this._timeLeft$.asObservable();
+  }
   // using Subject, because we are not creating it with a default value
   // after correct answer we will send true, and otherwise false
-  private $answered: Subject<boolean> = new Subject<boolean>();
+  private _answered$: Subject<boolean> = new Subject<boolean>();
+  public get answered$(): Observable<boolean> {
+    return this._answered$.asObservable();
+  }
+
   private countdownInterval: NodeJS.Timer;
 
+  // need to inject service outside of constructor, because we are creating class instance with "new QuizQuestionComplex"
   private translationService = injector.get(TranslationService);
 
   constructor(quizQuestion: QuizQuestion) {
     this.assignFieldsFromQuestion(quizQuestion);
-    this.$timeLeft = new BehaviorSubject<number>(questionSeconds);
+    this._timeLeft$ = new BehaviorSubject<number>(questionSeconds);
   }
 
   checkAnswer(answer: Answer): boolean {
@@ -38,34 +46,26 @@ export class QuizQuestionComplex {
 
     this.stopTimer();
 
-    this.$answered.next(correct);
+    this._answered$.next(correct);
     return correct;
-  }
-
-  getTimeLeftObservable(): Observable<number> {
-    return this.$timeLeft.asObservable();
-  }
-
-  getAnsweredObservable(): Observable<boolean> {
-    return this.$answered.asObservable();
   }
 
   startTimer(): Observable<number> {
     this.countdownInterval = setInterval(() => {
-      const newTimeLeft = this.$timeLeft.value - 1;
+      const newTimeLeft = this._timeLeft$.value - 1;
 
       if (newTimeLeft >= 0) {
-        this.$timeLeft.next(newTimeLeft);
+        this._timeLeft$.next(newTimeLeft);
       } else {
         this.stopTimer();
         // sending false, because time is over
-        this.$answered.next(false);
+        this._answered$.next(false);
       }
 
       console.log('pozostało sekund', newTimeLeft);
     }, 1000);
 
-    return this.getTimeLeftObservable();
+    return this._timeLeft$.asObservable();
   }
 
   stopTimer() {

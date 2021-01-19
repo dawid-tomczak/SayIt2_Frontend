@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnDestroy, OnChanges } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { questionSeconds } from 'src/app/shared/consts';
 import { TranslationService } from 'src/app/shared/services/translation.service';
@@ -11,59 +11,58 @@ import { QuizQuestionComplex } from '../../models/quiz-question-complex';
   styleUrls: ['./question-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionCardComponent implements OnInit, OnDestroy {
+export class QuestionCardComponent implements OnInit, OnChanges {
 
-  @Input() $quizQuestion: Observable<QuizQuestionComplex>;
-  @Input() $answers: Observable<boolean | null[]>;
-  @Output() answered = new EventEmitter<boolean>();
+  @Input() quizQuestion: QuizQuestionComplex;
+  @Input() answers$: Observable<boolean | null[]>;
 
   answeredCorrect: boolean;
   selectedAnswerId: number;
   correctAnswerId: number;
   afterAnswer: boolean;
-  actualQuestion: QuizQuestionComplex;
-  questionSubscription: Subscription;
+  answeredSubscription: Subscription
 
   // ref to config variable for using inside of HTML
   fullTime = questionSeconds;
-  timeLeftObservable$: Observable<number>;
 
 
   constructor(public translationService: TranslationService) {
   }
 
   ngOnInit(): void {
-    this.subscribeToQuestions();
   }
 
-  checkAnswer(userAnswer: Answer) {
-    this.selectedAnswerId = userAnswer.id;
-    this.correctAnswerId = this.actualQuestion.correctAnswer.id;
+  ngOnChanges() {
+    this.reset();
+    this.listenToTimeOut();
+  }
+
+  checkAnswer(userAnswer?: Answer) {
+    if (userAnswer) {
+      this.selectedAnswerId = userAnswer.id;
+    }
+    this.correctAnswerId = this.quizQuestion.correctAnswer.id;
     this.afterAnswer = true;
 
-    this.answeredCorrect = this.actualQuestion.checkAnswer(userAnswer);
+    this.answeredCorrect = this.quizQuestion.checkAnswer(userAnswer);
   }
 
-  subscribeToQuestions() {
-    if (!this.questionSubscription) {
-      this.$quizQuestion.subscribe(question => {
-        this.reset();
-        this.actualQuestion = question;
-        this.timeLeftObservable$ = this.actualQuestion.getTimeLeftObservable();
-      });
-    }
+  private listenToTimeOut() {
+    this.answeredSubscription = this.quizQuestion.answered$.subscribe(res => {
+      if (res === false && this.afterAnswer === false) {
+        this.correctAnswerId = this.quizQuestion.correctAnswer.id;
+        this.afterAnswer = true;
+      }
+    })
   }
 
   private reset() {
-    this.timeLeftObservable$ = null;
+    if (this.answeredSubscription) {
+      this.answeredSubscription.unsubscribe();
+    }
+
     this.selectedAnswerId = null;
     this.correctAnswerId = null;
     this.afterAnswer = false;
-  }
-
-  ngOnDestroy() {
-    if (this.questionSubscription) {
-      this.questionSubscription.unsubscribe();
-    }
   }
 }

@@ -23,7 +23,7 @@ import { Observable } from 'rxjs';
 export class QuizTimerComponent implements OnInit {
 
   @Input() fullTime: number;
-  @Input() $timeLeft: Observable<number>;
+  @Input() timeLeft$: Observable<number>;
 
   constructor() { }
 

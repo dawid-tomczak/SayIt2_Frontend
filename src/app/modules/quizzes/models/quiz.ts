@@ -3,14 +3,25 @@ import { QuizQuestionComplex } from "./quiz-question-complex";
 
 export class Quiz {
   private actualIndex = 0;
-  private $answers: BehaviorSubject<(boolean | null)[]> = new BehaviorSubject<(boolean | null)[]>([]);
-  private $actualQuestion: BehaviorSubject<QuizQuestionComplex>;
-  private $quizFinished: Subject<boolean> = new Subject<boolean>();
+  private _answers$: BehaviorSubject<(boolean | null)[]> = new BehaviorSubject<(boolean | null)[]>([]);
+  public get answers$(): Observable<(boolean | null)[]> {
+    return this._answers$.asObservable();
+  }
+
+  private _actualQuestion$: BehaviorSubject<QuizQuestionComplex>;
+  public get actualQuestion$(): Observable<QuizQuestionComplex> {
+    return this._actualQuestion$.asObservable();
+  }
+
+  private _quizFinished$: Subject<boolean> = new Subject<boolean>();
+  public get quizFinished$(): Observable<boolean> {
+    return this._quizFinished$.asObservable();
+  }
 
   private subscriptions: Subscription[] = [];
 
   constructor(public questions: QuizQuestionComplex[]) {
-    this.$answers.next(this.generateAnswersArray(questions.length));
+    this._answers$.next(this.generateAnswersArray(questions.length));
     this.assignActualQuestion(this.actualIndex);
   }
 
@@ -29,39 +40,31 @@ export class Quiz {
     this.unsubscribe();
   }
 
-  getActualQuestionObservable(): Observable<QuizQuestionComplex> {
-    return this.$actualQuestion.asObservable();
-  }
-
-  getAnswersObservable(): Observable<(boolean | null)[]> {
-    return this.$answers.asObservable();
-  }
-
   private assignActualQuestion(index: number) {
     const questionRef = this.questions[index];
 
     // if BehaviorSubject is already created
-    if (this.$actualQuestion) {
-      this.$actualQuestion.next(questionRef);
+    if (this._actualQuestion$) {
+      this._actualQuestion$.next(questionRef);
     } else {
       // init of Behavior Subject
-      this.$actualQuestion = new BehaviorSubject<QuizQuestionComplex>(questionRef);
+      this._actualQuestion$ = new BehaviorSubject<QuizQuestionComplex>(questionRef);
     }
 
     questionRef.startTimer();
 
     this.subscriptions.push(
       // subscribing to answers
-      questionRef.getAnsweredObservable().subscribe((correct) => {
-        const updatedAnswers = this.$answers.getValue();
+      questionRef.answered$.subscribe((correct) => {
+        const updatedAnswers = this._answers$.getValue();
         updatedAnswers[this.actualIndex] = correct;
-        this.$answers.next(updatedAnswers);
+        this._answers$.next(updatedAnswers);
 
         setTimeout(() => {
           if (this.actualIndex < this.questions.length - 1) {
             this.nextQuestion();
           } else {
-            this.$quizFinished.next(true);
+            this._quizFinished$.next(true);
           }
           console.log('weszło w timeout');
         }, 3000);
