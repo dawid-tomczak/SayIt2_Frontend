@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardGuard } from './auth/auth-guard.guard';
 import { LoginComponent } from './components/pages/login/login.component';
-import { QuizComponent } from './components/pages/quiz/quiz.component';
 import { CategoriesPageComponent } from './modules/categories/components/categories-page/categories-page.component';
 import { FlashcardsPageComponent } from './modules/flashcards/components/flashcards-page/flashcards-page.component';
 import { QuizPageComponent } from './modules/quizzes/components/quiz-page/quiz-page.component';
