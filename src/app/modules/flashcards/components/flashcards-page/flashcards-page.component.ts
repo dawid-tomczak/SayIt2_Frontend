@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { scaleInOut } from 'src/app/shared/animations';
@@ -26,6 +26,9 @@ export class FlashcardsPageComponent implements OnInit {
   seenBeforeQty = 0;
   allFlashcardsCount = 0;
 
+  // handling progress as separate variable to prevent ExpressionChangedAfterItHasBeenCheckedError
+  progress = 0;
+
   swiperConfig: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -35,7 +38,7 @@ export class FlashcardsPageComponent implements OnInit {
   @ViewChild('swiper', { static: false }) swiper;
 
   constructor(private flashcardService: FlashcardService, private mobileService: MobileDeviceService,
-              private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute, private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.initLoading = true;
@@ -46,16 +49,10 @@ export class FlashcardsPageComponent implements OnInit {
     );
   }
 
-  flashcardChangeHandler(direction: FlashcardChangeDirection) {
+  flashcardClickChange(direction: FlashcardChangeDirection) {
     const modifier = (direction === FlashcardChangeDirection.next ? 1 : -1);
 
     this.selectedIndex += modifier;
-
-    if (!this.flashcards[this.selectedIndex].seenInCurrentSession) {
-      this.markFlashcardAsSeen(this.selectedIndex);
-    }
-
-    this.showHelp = false;
   }
 
   countProgress(): number {
@@ -65,6 +62,19 @@ export class FlashcardsPageComponent implements OnInit {
     }
     return (this.seenBeforeQty / this.allFlashcardsCount) * 100;
 
+  }
+
+  indexChangeHandler(index: number) {
+    this.showHelp = false;
+
+    if (!this.flashcards[index].seenInCurrentSession) {
+      this.markFlashcardAsSeen(index);
+    }
+
+    this.progress = this.countProgress();
+
+    // preventing ExpressionChangedAfterItHasBeenCheckedError
+    this.changeDetector.detectChanges();
   }
 
   private markFlashcardAsSeen(index: number) {
