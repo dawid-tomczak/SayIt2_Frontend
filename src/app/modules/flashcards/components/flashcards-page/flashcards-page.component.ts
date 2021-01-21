@@ -35,7 +35,7 @@ export class FlashcardsPageComponent implements OnInit {
   @ViewChild('swiper', { static: false }) swiper;
 
   constructor(private flashcardService: FlashcardService, private mobileService: MobileDeviceService,
-    private activeRoute: ActivatedRoute) { }
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.initLoading = true;

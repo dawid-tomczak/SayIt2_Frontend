@@ -1,4 +1,4 @@
-import { Flashcard } from "./flashcard";
+import { Flashcard } from './flashcard';
 
 export interface FlashcardsDataResponse {
   allFlashcardsCount: number;
