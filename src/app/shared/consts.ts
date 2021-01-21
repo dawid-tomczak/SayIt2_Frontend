@@ -13,7 +13,7 @@ export const CATEGORIES_CONTROLLER = BASE_URL + '/Categories';
 
 // flashcards
 export const FLASHCARDS_CONTROLLER = BASE_URL + '/Flashcard';
-export const FLASHCARD_FROM_CATEGORY = FLASHCARDS_CONTROLLER + '/:ID';
+export const ALL_FLASHCARDS_FROM_CATEGORY = FLASHCARDS_CONTROLLER + '/getAllInCategory/:ID';
 export const ALL_FLASHCARDS_ENDPOINT = FLASHCARDS_CONTROLLER + '/getall';
 
 // quizzes
