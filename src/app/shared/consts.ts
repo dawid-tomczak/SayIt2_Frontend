@@ -15,6 +15,7 @@ export const CATEGORIES_CONTROLLER = BASE_URL + '/Categories';
 export const FLASHCARDS_CONTROLLER = BASE_URL + '/Flashcard';
 export const ALL_FLASHCARDS_FROM_CATEGORY = FLASHCARDS_CONTROLLER + '/getAllInCategory/:ID';
 export const ALL_FLASHCARDS_ENDPOINT = FLASHCARDS_CONTROLLER + '/getall';
+export const MARK_FLASHCARD_AS_SEEN = FLASHCARDS_CONTROLLER + '/setAsSeen';
 
 // quizzes
 export const QUIZ_CONTROLLER = BASE_URL + '/Quiz';

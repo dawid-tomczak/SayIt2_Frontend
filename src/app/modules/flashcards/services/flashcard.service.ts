@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ALL_FLASHCARDS_ENDPOINT, ALL_FLASHCARDS_FROM_CATEGORY } from 'src/app/shared/consts';
+import { ALL_FLASHCARDS_ENDPOINT, ALL_FLASHCARDS_FROM_CATEGORY, MARK_FLASHCARD_AS_SEEN } from 'src/app/shared/consts';
 import { Translation } from 'src/app/shared/models/translation';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 import { Flashcard } from '../models/flashcard';
@@ -24,6 +24,12 @@ export class FlashcardService {
     const url = ALL_FLASHCARDS_FROM_CATEGORY.replace(/:ID/, categoryId.toString());
 
     return this.http.get<FlashcardsDataResponse>(url);
+  }
+
+  postFlashcardSeen(flashcardId: number) {
+    const url = MARK_FLASHCARD_AS_SEEN;
+
+    return this.http.post(url, flashcardId);
   }
 
   extractTextFromFlashcardInLanguage(flashcard: Flashcard, prop: 'content' | 'description', langCode: string): string {

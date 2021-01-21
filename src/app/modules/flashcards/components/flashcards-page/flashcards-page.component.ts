@@ -80,6 +80,8 @@ export class FlashcardsPageComponent implements OnInit {
   private markFlashcardAsSeen(index: number) {
     this.flashcards[index].seenInCurrentSession = true;
     ++this.seenBeforeQty;
+
+    this.flashcardService.postFlashcardSeen(this.flashcards[index].id).subscribe();
   }
 
   private downloadDataFromURL() {
