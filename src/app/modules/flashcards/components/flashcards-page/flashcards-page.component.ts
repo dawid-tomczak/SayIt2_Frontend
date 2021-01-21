@@ -38,7 +38,7 @@ export class FlashcardsPageComponent implements OnInit {
   @ViewChild('swiper', { static: false }) swiper;
 
   constructor(private flashcardService: FlashcardService, private mobileService: MobileDeviceService,
-              private activeRoute: ActivatedRoute, private changeDetector: ChangeDetectorRef) { }
+    private activeRoute: ActivatedRoute, private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.initLoading = true;
@@ -70,16 +70,15 @@ export class FlashcardsPageComponent implements OnInit {
     if (!this.flashcards[index].seenInCurrentSession) {
       this.markFlashcardAsSeen(index);
     }
-
-    this.progress = this.countProgress();
-
-    // preventing ExpressionChangedAfterItHasBeenCheckedError
-    this.changeDetector.detectChanges();
   }
 
   private markFlashcardAsSeen(index: number) {
     this.flashcards[index].seenInCurrentSession = true;
     ++this.seenBeforeQty;
+    this.progress = this.countProgress();
+
+    // preventing ExpressionChangedAfterItHasBeenCheckedError
+    this.changeDetector.detectChanges();
 
     this.flashcardService.postFlashcardSeen(this.flashcards[index].id).subscribe();
   }
