@@ -1,6 +1,6 @@
 <div class="wrapper">
   <mat-progress-bar class="wrapper__progress" color="accent" [mode]="initLoading ? 'query' : 'determinate'"
-    [value]="(selectedIndex / (flashcards.length - 1)) * 100">
+    [value]="countProgress()">
   </mat-progress-bar>
 
   <swiper #swiper *ngIf="!initLoading; else spinner" class="wrapper__carousel" [config]="swiperConfig"
