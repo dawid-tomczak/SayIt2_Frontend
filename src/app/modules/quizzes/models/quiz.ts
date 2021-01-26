@@ -21,7 +21,7 @@ export class Quiz {
 
   private subscriptions: Subscription[] = [];
 
-  constructor(public questions: QuizQuestionComplex[]) {
+  constructor(public id: number, public questions: QuizQuestionComplex[]) {
     this._answers$.next(this.generateAnswersArray(questions.length));
     this.assignActualQuestion(this.actualIndex);
   }
