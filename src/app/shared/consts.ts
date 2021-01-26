@@ -20,6 +20,8 @@ export const MARK_FLASHCARD_AS_SEEN = FLASHCARDS_CONTROLLER + '/setAsSeen';
 
 // quizzes
 export const QUIZ_CONTROLLER = BASE_URL + '/Quiz';
+export const QUIZ_WON = QUIZ_CONTROLLER + '/SetAsWin';
+export const QUIZ_LOOSED = QUIZ_CONTROLLER + '/SetAsLoose';
 
 // config consts
 export const questionSeconds = 25;
