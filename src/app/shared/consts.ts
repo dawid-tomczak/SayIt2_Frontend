@@ -7,6 +7,7 @@ export const USER_CONTROLLER = BASE_URL + '/User';
 export const LOGIN_ENDPOINT = USER_CONTROLLER + '/LoginUser';
 export const LOGOFF_ENDPOINT = USER_CONTROLLER + '/Logoff';
 export const REGISTER_ENDPOINT = USER_CONTROLLER + '/Register';
+export const LEVEL_ENDPOINT = USER_CONTROLLER + '/GetLevel';
 
 // categories
 export const CATEGORIES_CONTROLLER = BASE_URL + '/Categories';
