@@ -19,7 +19,7 @@ export class LoginService {
   private loggedUser: Subject<LoggedUserInfo> = new Subject<LoggedUserInfo>();
 
   constructor(private fb: FormBuilder, private userService: UserService, private jwtHelper: JwtHelperService,
-              private cookiesService: CookiesService) { }
+    private cookiesService: CookiesService) { }
 
   getPossibleExternalLoginServices(): ExternalLoginItem[] {
     return [new ExternalLoginItem('Facebook'), new ExternalLoginItem('Google'), new ExternalLoginItem('Microsoft')];
@@ -27,7 +27,7 @@ export class LoginService {
 
   generateNewLoginFormGroup(): FormGroup {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
