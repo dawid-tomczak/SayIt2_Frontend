@@ -1,4 +1,4 @@
-<div class="cookiesWarning mat-elevation-z5" @cookiesSlide>
+<div class="cookiesWarning mat-elevation-z5" @cookiesSlide *ngIf="!(cookiesService.cookiesApproved$ | async)">
   <div class="cookiesWarning__text">
     <span>
       Ta strona wykorzystuje pliki cookies w celu autoryzacji użytkowników oraz przechowywania danych umożliwiających
@@ -7,7 +7,7 @@
     </span>
   </div>
   <div class="cookiesWarning__actions">
-    <button mat-flat-button color="primary">
+    <button mat-flat-button color="primary" (click)="cookiesDecision(true)">
       Akceptuj
     </button>
   </div>

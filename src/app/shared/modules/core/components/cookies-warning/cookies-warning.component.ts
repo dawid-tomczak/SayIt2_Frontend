@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { cookiesSlide } from 'src/app/shared/animations';
+import { CookiesService } from 'src/app/shared/services/cookies.service';
 
 @Component({
   selector: 'app-cookies-warning',
@@ -9,9 +10,13 @@ import { cookiesSlide } from 'src/app/shared/animations';
 })
 export class CookiesWarningComponent implements OnInit {
 
-  constructor() { }
+  constructor(public cookiesService: CookiesService) { }
 
   ngOnInit(): void {
+  }
+
+  cookiesDecision(approved: boolean) {
+    this.cookiesService.cookiesDecision(approved);
   }
 
 }

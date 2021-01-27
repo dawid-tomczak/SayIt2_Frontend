@@ -25,3 +25,9 @@ export const QUIZ_LOOSED = QUIZ_CONTROLLER + '/SetAsLoose';
 
 // config consts
 export const questionSeconds = 25;
+
+// localStorage keys
+export const COOKIES_APPROVED_KEY = 'SayIT--cookiesApproved';
+export const AUTH_TOKEN_KEY = 'SayIT--token';
+
+export const allLocalStorageKeys = [COOKIES_APPROVED_KEY, AUTH_TOKEN_KEY];

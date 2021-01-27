@@ -7,6 +7,8 @@ import { LoginCredentials } from '../models/login-credentials';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { RegisterCredentials } from '../models/register-credentials';
 import { UserService } from 'src/app/shared/services/user.service';
+import { CookiesService } from 'src/app/shared/services/cookies.service';
+import { AUTH_TOKEN_KEY } from 'src/app/shared/consts';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class LoginService {
   private loginForm: FormGroup;
   private loggedUser: Subject<LoggedUserInfo> = new Subject<LoggedUserInfo>();
 
-  constructor(private fb: FormBuilder, private userService: UserService, private jwtHelper: JwtHelperService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private jwtHelper: JwtHelperService,
+    private cookiesService: CookiesService) { }
 
   getPossibleExternalLoginServices(): ExternalLoginItem[] {
     return [new ExternalLoginItem('Facebook'), new ExternalLoginItem('Google'), new ExternalLoginItem('Microsoft')];
@@ -57,16 +60,16 @@ export class LoginService {
 
   storeUserInfo(user: LoggedUserInfo): void {
     this.loggedUser.next(user);
-    sessionStorage.setItem('SayIT_Token', user.token);
+    this.cookiesService.setItem(AUTH_TOKEN_KEY, user.token);
   }
 
   clearUserInfo(): void {
     this.loggedUser.next(null);
-    sessionStorage.removeItem('SayIT_Token');
+    this.cookiesService.removeItem(AUTH_TOKEN_KEY);
   }
 
   getUserToken(): string {
-    return sessionStorage.getItem('SayIT_Token');
+    return this.cookiesService.getItem(AUTH_TOKEN_KEY);
   }
 
   isAuthenticated(): boolean {
