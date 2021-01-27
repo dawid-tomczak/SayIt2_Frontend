@@ -1,0 +1,30 @@
+.cookiesWarning{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width:90vw;
+  padding: 20px 10px 20px 10px;
+  z-index: 3;
+  position:fixed;
+  left: 5vw;
+  right: 5vw;
+  background-color: #f7a0fccc;
+  border-radius: 15px;
+}
+
+.cookiesWarning__text{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+}
+
+.cookiesWarning__actions{
+  margin-left: 15px;
+}
+
+@media (max-width: 414px){
+  .cookiesWarning{
+    flex-direction: column;
+  }
+}

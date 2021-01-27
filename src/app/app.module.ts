@@ -19,6 +19,7 @@ import { MaterialModule } from './shared/modules/material/material.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { FlashcardsModule } from './modules/flashcards/flashcards.module';
 import { QuizzesModule } from './modules/quizzes/quizzes.module';
+import { CoreModule } from './shared/modules/core/core.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { QuizzesModule } from './modules/quizzes/quizzes.module';
     MaterialModule,
     CategoriesModule,
     FlashcardsModule,
-    QuizzesModule
+    QuizzesModule,
+    CoreModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
