@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { LoginService } from '../pages/login/services/login.service';
+import { LoginService } from '../../../../../components/pages/login/services/login.service';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(private loginService: LoginService, private router: Router,
-              private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
+    private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
 
   ngOnInit() {
     this.subscriptions.push(this.downloadLevel());

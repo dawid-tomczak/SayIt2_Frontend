@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,7 +23,6 @@ import { CoreModule } from './shared/modules/core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     BackgroundComponent,
     BackgorundElementComponent,
     LoginComponent,
