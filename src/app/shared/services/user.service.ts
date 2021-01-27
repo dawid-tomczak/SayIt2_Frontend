@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoggedUserInfo } from 'src/app/components/pages/login/models/logged-user-info';
-import { LoginCredentials } from 'src/app/components/pages/login/models/login-credentials';
-import { RegisterCredentials } from 'src/app/components/pages/login/models/register-credentials';
+import { LoggedUserInfo } from 'src/app/modules/login/models/logged-user-info';
+import { LoginCredentials } from 'src/app/modules/login/models/login-credentials';
+import { RegisterCredentials } from 'src/app/modules/login/models/register-credentials';
 import { LEVEL_ENDPOINT, LOGIN_ENDPOINT, LOGOFF_ENDPOINT, REGISTER_ENDPOINT } from '../consts';
 import { ResponseMessage } from '../models/response-message';
 

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { LoginService } from '../../../../../components/pages/login/services/login.service';
+import { LoginService } from '../../../../../modules/login/services/login.service';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/shared/services/user.service';
 

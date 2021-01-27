@@ -14,7 +14,6 @@ export class CookiesService {
 
   constructor() {
     this._cookiesApproved$.next(this.checkIfCookiesApproved());
-    console.log(this._cookiesApproved$.value);
   }
 
   cookiesDecision(approved: boolean) {

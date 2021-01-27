@@ -3,12 +3,12 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Observable, Subject } from 'rxjs';
 import { ExternalLoginItem } from '../models/externalLoginItem';
 import { LoggedUserInfo } from '../models/logged-user-info';
-import { LoginCredentials } from '../models/login-credentials';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { RegisterCredentials } from '../models/register-credentials';
 import { UserService } from 'src/app/shared/services/user.service';
 import { CookiesService } from 'src/app/shared/services/cookies.service';
 import { AUTH_TOKEN_KEY } from 'src/app/shared/consts';
+import { RegisterCredentials } from '../models/register-credentials';
+import { LoginCredentials } from '../models/login-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class LoginService {
   private loggedUser: Subject<LoggedUserInfo> = new Subject<LoggedUserInfo>();
 
   constructor(private fb: FormBuilder, private userService: UserService, private jwtHelper: JwtHelperService,
-              private cookiesService: CookiesService) { }
+    private cookiesService: CookiesService) { }
 
   getPossibleExternalLoginServices(): ExternalLoginItem[] {
     return [new ExternalLoginItem('Facebook'), new ExternalLoginItem('Google'), new ExternalLoginItem('Microsoft')];
