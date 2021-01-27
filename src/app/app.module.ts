@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BackgroundComponent } from './components/background/background.component';
-import { BackgorundElementComponent } from './components/background/backgorund-element/backgorund-element.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './components/pages/login/login.component';
@@ -23,8 +21,6 @@ import { CoreModule } from './shared/modules/core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
-    BackgroundComponent,
-    BackgorundElementComponent,
     LoginComponent,
     ExternalServiceLoginComponent,
     LoginFormComponent
@@ -35,11 +31,11 @@ import { CoreModule } from './shared/modules/core/core.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CoreModule,
     MaterialModule,
     CategoriesModule,
     FlashcardsModule,
     QuizzesModule,
-    CoreModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

@@ -4,13 +4,17 @@ import { CookiesWarningComponent } from './components/cookies-warning/cookies-wa
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { HeaderComponent } from './components/header/header.component';
+import { BackgroundComponent } from './components/background/background.component';
+import { BackgorundElementComponent } from './components/background/background-element/backgorund-element.component';
 
 
 
 @NgModule({
   declarations: [
     CookiesWarningComponent,
-    HeaderComponent
+    HeaderComponent,
+    BackgroundComponent,
+    BackgorundElementComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +23,8 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   exports: [
     CookiesWarningComponent,
-    HeaderComponent
+    HeaderComponent,
+    BackgroundComponent
   ]
 })
 export class CoreModule { }
