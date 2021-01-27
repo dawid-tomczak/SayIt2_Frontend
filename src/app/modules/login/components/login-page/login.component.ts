@@ -3,9 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { ExternalLoginItem } from './models/externalLoginItem';
-import { LoggedUserInfo } from './models/logged-user-info';
-import { LoginService } from './services/login.service';
+import { ExternalLoginItem } from '../../models/externalLoginItem';
+import { LoggedUserInfo } from '../../models/logged-user-info';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',

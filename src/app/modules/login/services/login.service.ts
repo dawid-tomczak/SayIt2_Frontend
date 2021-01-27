@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
-import { LOGIN_ENDPOINT, LOGOFF_ENDPOINT, REGISTER_ENDPOINT } from 'src/app/shared/consts';
 import { ExternalLoginItem } from '../models/externalLoginItem';
 import { LoggedUserInfo } from '../models/logged-user-info';
-import { LoginCredentials } from '../models/login-credentials';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ResponseMessage } from 'src/app/shared/models/response-message';
+import { UserService } from 'src/app/shared/services/user.service';
+import { CookiesService } from 'src/app/shared/services/cookies.service';
+import { AUTH_TOKEN_KEY } from 'src/app/shared/consts';
 import { RegisterCredentials } from '../models/register-credentials';
+import { LoginCredentials } from '../models/login-credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class LoginService {
   private loginForm: FormGroup;
   private loggedUser: Subject<LoggedUserInfo> = new Subject<LoggedUserInfo>();
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private jwtHelper: JwtHelperService,
+              private cookiesService: CookiesService) { }
 
   getPossibleExternalLoginServices(): ExternalLoginItem[] {
     return [new ExternalLoginItem('Facebook'), new ExternalLoginItem('Google'), new ExternalLoginItem('Microsoft')];
@@ -26,7 +27,7 @@ export class LoginService {
 
   generateNewLoginFormGroup(): FormGroup {
     this.loginForm = this.fb.group({
-      userName: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
@@ -40,7 +41,7 @@ export class LoginService {
       const formValue = this.loginForm.getRawValue();
 
       if (!registration) {
-        return this.loginUser(formValue as LoginCredentials);
+        return this.userService.loginUser(formValue as LoginCredentials);
       } else {
         // backend is not receiving password confirmation
         delete formValue.passwordConfirmation;
@@ -48,25 +49,9 @@ export class LoginService {
         formValue.email = formValue.userName;
         delete formValue.userName;
 
-        return this.registerUser(formValue as RegisterCredentials);
+        return this.userService.registerUser(formValue as RegisterCredentials);
       }
     }
-  }
-
-
-
-  loginUser(credentials: LoginCredentials): Observable<LoggedUserInfo> {
-    const url = LOGIN_ENDPOINT;
-    return this.http.post<LoggedUserInfo>(url, credentials);
-  }
-
-  registerUser(credentials: RegisterCredentials): Observable<any> {
-    const url = REGISTER_ENDPOINT;
-    return this.http.post(url, credentials);
-  }
-
-  logoutUser(): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(LOGOFF_ENDPOINT);
   }
 
   getLoggedUser(): Observable<LoggedUserInfo> {
@@ -75,16 +60,16 @@ export class LoginService {
 
   storeUserInfo(user: LoggedUserInfo): void {
     this.loggedUser.next(user);
-    sessionStorage.setItem('SayIT_Token', user.token);
+    this.cookiesService.setItem(AUTH_TOKEN_KEY, user.token);
   }
 
   clearUserInfo(): void {
     this.loggedUser.next(null);
-    sessionStorage.removeItem('SayIT_Token');
+    this.cookiesService.removeItem(AUTH_TOKEN_KEY);
   }
 
   getUserToken(): string {
-    return sessionStorage.getItem('SayIT_Token');
+    return this.cookiesService.getItem(AUTH_TOKEN_KEY);
   }
 
   isAuthenticated(): boolean {

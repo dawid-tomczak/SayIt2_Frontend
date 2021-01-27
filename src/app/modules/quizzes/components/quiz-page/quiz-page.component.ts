@@ -39,8 +39,8 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   }
 
   private downloadQuiz(categoryId: number) {
-    this.quizService.getQuizForCategory(categoryId).subscribe(questions => {
-      this.quiz = new Quiz(questions);
+    this.quizService.getQuizForCategory(categoryId).subscribe(res => {
+      this.quiz = new Quiz(res.id, res.questions);
       this.answersObservable$ = this.quiz.answers$;
 
       this.subscriptions.push(this.listenToQuestion(), this.listenToFinish());
@@ -51,6 +51,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
     return this.quiz.quizFinished$.subscribe(finish => {
       if (finish) {
         this.quizResult = this.quiz.getResult();
+        this.sendResult(this.quizResult.won);
       }
     });
   }
@@ -59,6 +60,10 @@ export class QuizPageComponent implements OnInit, OnDestroy {
     return this.quiz.actualQuestion$.subscribe(question => {
       this.selectedQuestion = question;
     });
+  }
+
+  private sendResult(won: boolean) {
+    this.quizService.postQuizResult(this.quiz.id, won).subscribe(res => console.log(res));
   }
 
 

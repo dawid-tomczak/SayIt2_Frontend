@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ExternalLoginItem } from '../models/externalLoginItem';
+import { ExternalLoginItem } from '../../models/externalLoginItem';
 
 @Component({
   selector: 'app-external-service-login',

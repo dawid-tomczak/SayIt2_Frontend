@@ -6,4 +6,5 @@ export interface Flashcard {
   description: string;
   contentWithTranslation: Translation[];
   descriptionWithTranslation: Translation[];
+  seenBefore: boolean;
 }

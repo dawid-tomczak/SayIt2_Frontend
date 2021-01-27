@@ -52,3 +52,16 @@ export const scaleInOut = trigger('scaleInOut', [
     animate(200)
   ])
 ]);
+
+export const cookiesSlide = trigger('cookiesSlide', [
+  state('void', style({
+    bottom: '-100px'
+  })),
+  state('*', style({
+    bottom: '50px'
+  })),
+
+  transition('* <=> void', [
+    animate(400)
+  ])
+]);
