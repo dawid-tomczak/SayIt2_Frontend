@@ -6,6 +6,7 @@ import { LoginCredentials } from 'src/app/modules/login/models/login-credentials
 import { RegisterCredentials } from 'src/app/modules/login/models/register-credentials';
 import { LEVEL_ENDPOINT, LOGIN_ENDPOINT, LOGOFF_ENDPOINT, REGISTER_ENDPOINT } from '../consts';
 import { ResponseMessage } from '../models/response-message';
+import { UserProgress } from '../models/user-progress';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class UserService {
     return this.http.get<ResponseMessage>(url);
   }
 
-  getLevel(): Observable<number> {
+  getProgress(): Observable<UserProgress> {
     const url = LEVEL_ENDPOINT;
-    return this.http.get<number>(url);
+    return this.http.get<UserProgress>(url);
   }
 }
