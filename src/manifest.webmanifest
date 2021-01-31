@@ -1,9 +1,10 @@
 {
-  "name": "SayIt",
-  "short_name": "SayIt",
+  "name": "SayIT",
+  "short_name": "SayIT",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#3F51B5",
   "display": "standalone",
+  "orientation": "portrait",
   "scope": "./",
   "start_url": "./",
   "icons": [
@@ -52,6 +53,18 @@
     {
       "src": "assets/icons/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-120x120.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icons/icon-180x180.png",
+      "sizes": "180x180",
       "type": "image/png",
       "purpose": "maskable any"
     }
