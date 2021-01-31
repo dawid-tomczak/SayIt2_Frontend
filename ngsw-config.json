@@ -26,5 +26,21 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-calls",
+      "urls": [
+        "https://api.sayit.hostingasp.pl/api/Categories",
+        "https://api.sayit.hostingasp.pl/api/Flashcard/getAllInCategory/*",
+        "https://api.sayit.hostingasp.pl/api/GetLevel"
+      ],
+      "cacheConfig": {
+        "maxSize": 10,
+        "maxAge": "7d",
+        "timeout": "20s",
+        "strategy": "freshness"
+      }
+    }
   ]
 }
