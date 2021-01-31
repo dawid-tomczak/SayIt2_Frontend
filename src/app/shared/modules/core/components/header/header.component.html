@@ -11,9 +11,10 @@
     <!-- need to put user image in wrapper because border radius is cutting the badge -->
     <div class="toolbar__userWrapper" [matBadge]="progress?.current?.levelNo" matBadgeColor="accent"
       matBadgePosition="below before">
-      <img src="assets//img/user.png" alt="UserImg" class="userWrapper__image rounded-circle mobileHide"
-        [matMenuTriggerFor]="userMenu">
-      <mat-progress-spinner class="userWrapper__progress" color="accent" mode="determinate" diameter="41"
+      <img src="assets//img/user.png" alt="UserImg" class="userWrapper__image rounded-circle mobileHide">
+      <mat-progress-spinner class="userWrapper__progress mobileHide" color="accent" mode="determinate" diameter="41"
+        [matMenuTriggerFor]="userMenu"
+        [matTooltip]="'do następnego poziomu pozostało ' + (progress?.predicted?.totalLearningDays - progress?.current?.totalLearningDays) + ' dni'"
         [value]="(progress?.current?.totalLearningDays / progress?.predicted?.totalLearningDays) * 100">
       </mat-progress-spinner>
     </div>
