@@ -38,7 +38,7 @@ export class FlashcardsPageComponent implements OnInit {
   @ViewChild('swiper', { static: false }) swiper;
 
   constructor(private flashcardService: FlashcardService, private mobileService: MobileDeviceService,
-              private activeRoute: ActivatedRoute, private changeDetector: ChangeDetectorRef) { }
+    private activeRoute: ActivatedRoute, private changeDetector: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.initLoading = true;
@@ -111,7 +111,7 @@ export class FlashcardsPageComponent implements OnInit {
   }
 
   private startListeningToDevice(): Subscription {
-    return this.mobileService.getMobileDeviceObservable().subscribe(isMobile => {
+    return this.mobileService.onMobileDevice$.subscribe(isMobile => {
       if (isMobile) {
         this.showHelp = true;
       }

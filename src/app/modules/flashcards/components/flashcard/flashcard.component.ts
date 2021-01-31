@@ -45,7 +45,7 @@ export class FlashcardComponent implements OnInit, OnDestroy {
 
   private startListeningToDeviceType() {
     if (!this.$mobileDeviceSubscription) {
-      this.$mobileDeviceSubscription = this.mobileService.getMobileDeviceObservable().subscribe(res => {
+      this.$mobileDeviceSubscription = this.mobileService.onMobileDevice$.subscribe(res => {
         this.displayedOnMobileDevice = res;
       });
     }
