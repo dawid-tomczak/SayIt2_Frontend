@@ -1,7 +1,16 @@
+p{
+  margin-bottom: 0px;
+}
+
 .wrapper{
-  display: flex;
+  display: grid;
   padding:20px 40px 20px 40px;
-  flex-direction: row;
+  column-gap: 30px;
+  grid-template-columns:200px auto;
+  grid-template-rows: repeat(2,1fr);
+  grid-template-areas:
+  "avatar info"
+  "avatar progress"
 }
 
 .wrapper__avatar{
@@ -9,6 +18,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  grid-area: avatar;
 }
 
 .avatar__image{
@@ -24,7 +34,7 @@
 }
 
 .wrapper__info{
-  margin-left: 30px;
+  grid-area: info;
 }
 
 .info__name{
@@ -35,11 +45,21 @@
   opacity: 0.9;
 }
 
+.wrapper__progress{
+  grid-area: progress;
+}
+
 @media (max-width: 414px){
   .wrapper{
-    flex-direction: column-reverse;
-    align-items: center;
     padding: 10px 5px 10px 5px;
+    justify-items: center;
+    row-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "info"
+    "avatar"
+    "progress";
   }
 
   .wrapper__avatar{
@@ -51,7 +71,6 @@
   }
 
   .wrapper__info{
-    margin-left: 0;
     text-align: center;
   }
 }
