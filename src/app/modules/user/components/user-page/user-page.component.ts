@@ -37,6 +37,6 @@ export class UserPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
-    })
+    });
   }
 }
