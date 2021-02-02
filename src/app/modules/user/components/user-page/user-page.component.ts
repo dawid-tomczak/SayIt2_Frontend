@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   templateUrl: './user-page.component.html',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getUserInfo();
   }
 
+  private getUserInfo() {
+    this.user = this.userService.getCurrentUser();
+  }
 }
