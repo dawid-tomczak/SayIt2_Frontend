@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+import { UserProgressComponent } from './components/user-progress/user-progress.component';
 
 
 
 @NgModule({
   declarations: [
     UserPageComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    UserProgressComponent
   ],
   imports: [
     CommonModule,

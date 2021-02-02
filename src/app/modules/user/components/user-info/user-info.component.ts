@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user';
+import { UserProgress } from 'src/app/shared/models/user-progress';
 
 @Component({
   selector: 'app-user-info',
@@ -9,6 +10,7 @@ import { User } from 'src/app/shared/models/user';
 export class UserInfoComponent implements OnInit {
 
   @Input() user: User;
+  @Input() progress: UserProgress;
 
   constructor() { }
 
