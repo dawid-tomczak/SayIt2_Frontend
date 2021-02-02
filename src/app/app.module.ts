@@ -16,6 +16,7 @@ import { CoreModule } from './shared/modules/core/core.module';
 import { LoginModule } from './modules/login/login.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { environment } from '../environments/environment';
     FlashcardsModule,
     QuizzesModule,
     LoginModule,
+    UserModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
