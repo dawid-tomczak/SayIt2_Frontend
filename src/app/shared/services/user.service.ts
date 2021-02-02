@@ -9,6 +9,7 @@ import { AUTH_TOKEN_KEY, LEVEL_ENDPOINT, LOGIN_ENDPOINT, LOGOFF_ENDPOINT, REGIST
 import { ResponseMessage } from '../models/response-message';
 import { User } from '../models/user';
 import { CookiesService } from './cookies.service';
+import { UserProgress } from '../models/user-progress';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,9 @@ export class UserService {
     return this.http.get<ResponseMessage>(url);
   }
 
-  getLevel(): Observable<number> {
+  getProgress(): Observable<UserProgress> {
     const url = LEVEL_ENDPOINT;
-    return this.http.get<number>(url);
+    return this.http.get<UserProgress>(url);
   }
 
   getCurrentUser(): User {

@@ -5,6 +5,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { LoginService } from '../../../../../modules/login/services/login.service';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/shared/services/user.service';
+import { UserProgress } from 'src/app/shared/models/user-progress';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,14 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  level: number;
+  progress: UserProgress;
   subscriptions: Subscription[] = [];
 
   constructor(private loginService: LoginService, private router: Router,
               private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
 
   ngOnInit() {
-    this.subscriptions.push(this.downloadLevel());
+    this.subscriptions.push(this.downloadProgress());
   }
 
   logout(): void {
@@ -37,9 +38,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  downloadLevel(): Subscription {
-    return this.userService.getLevel().subscribe(res => {
-      this.level = res;
+  downloadProgress(): Subscription {
+    return this.userService.getProgress().subscribe(res => {
+      this.progress = res;
     });
   }
 

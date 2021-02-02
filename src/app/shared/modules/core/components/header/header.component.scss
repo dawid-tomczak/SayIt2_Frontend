@@ -7,6 +7,13 @@
 .userWrapper__image{
   height: 40px;
   width: auto;
+  position: relative;
+}
+
+.userWrapper__progress{
+  position: absolute;
+  top:0;
+  left: 0;
 }
 
 .header__toolbar{
