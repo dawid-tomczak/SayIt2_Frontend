@@ -11,10 +11,14 @@ export class CategoryCardComponent implements OnInit {
   @Input() category: Category;
 
   fallbackMaterialIcon = 'school';
+  quizSelected: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  quizToggle() {
+    this.quizSelected = !this.quizSelected;
+  }
 }
