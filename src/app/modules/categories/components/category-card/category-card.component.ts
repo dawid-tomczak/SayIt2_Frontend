@@ -11,7 +11,7 @@ export class CategoryCardComponent implements OnInit {
   @Input() category: Category;
 
   fallbackMaterialIcon = 'school';
-  quizSelected: boolean = false;
+  quizSelected = false;
 
   constructor() { }
 
