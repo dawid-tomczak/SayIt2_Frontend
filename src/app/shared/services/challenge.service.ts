@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { START_CHALLENGE } from 'src/app/shared/consts';
-import { QuizQuestion } from '../models/quiz-question';
-import { QuizQuestionComplex } from '../models/quiz-question-complex';
-import { QuizResponse } from '../models/quiz-response';
+import { MY_CHALLENGES, START_CHALLENGE } from 'src/app/shared/consts';
+import { Challenge } from 'src/app/shared/models/challenge';
+import { QuizQuestion } from '../../modules/quizzes/models/quiz-question';
+import { QuizQuestionComplex } from '../../modules/quizzes/models/quiz-question-complex';
+import { QuizResponse } from '../../modules/quizzes/models/quiz-response';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,11 @@ export class ChallengeService {
         return response;
       })
     );
+  }
+
+  getMyChallenges(): Observable<Challenge[]> {
+    const url = MY_CHALLENGES;
+
+    return this.http.get<Challenge[]>(url);
   }
 }

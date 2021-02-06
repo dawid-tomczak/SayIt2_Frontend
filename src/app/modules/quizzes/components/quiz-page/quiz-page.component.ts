@@ -3,9 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Quiz } from '../../models/quiz';
 import { QuizQuestionComplex } from '../../models/quiz-question-complex';
-import { QuizResponse } from '../../models/quiz-response';
 import { QuizResult } from '../../models/quiz-result';
-import { ChallengeService } from '../../services/challenge.service';
+import { ChallengeService } from '../../../../shared/services/challenge.service';
 import { QuizService } from '../../services/quiz.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   selectedQuestion: QuizQuestionComplex;
 
   constructor(private quizService: QuizService, private challengeService: ChallengeService,
-              private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
