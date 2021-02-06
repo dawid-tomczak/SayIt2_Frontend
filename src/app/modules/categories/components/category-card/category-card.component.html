@@ -24,10 +24,12 @@
       </button> -->
     </div>
     <div class="actions__quizActions">
-      <button matRipple class="quizActions__button cardButton">
+      <button matRipple class="quizActions__button cardButton" routerLink="/quiz"
+        [queryParams]="{category: category.id}">
         Solo
       </button>
-      <button matRipple class="quizActions__button quizActions__button--challenge cardButton">
+      <button matRipple class="quizActions__button quizActions__button--challenge cardButton" routerLink="/quiz"
+        [queryParams]="{category: category.id, challenge: true}">
         Wyzwanie
       </button>
     </div>
