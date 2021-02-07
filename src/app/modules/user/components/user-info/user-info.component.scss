@@ -1,0 +1,76 @@
+p{
+  margin-bottom: 0px;
+}
+
+.wrapper{
+  display: grid;
+  padding:20px 40px 20px 40px;
+  column-gap: 30px;
+  grid-template-columns:200px auto;
+  grid-template-rows: repeat(2,1fr);
+  grid-template-areas:
+  "avatar info"
+  "avatar progress"
+}
+
+.wrapper__avatar{
+  height:auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: avatar;
+}
+
+.avatar__image{
+  width:200px;
+  height: auto;
+}
+
+.avatar__actions{
+  display: flex;
+  width:100%;
+  margin-top:10px;
+  justify-content: space-evenly;
+}
+
+.wrapper__info{
+  grid-area: info;
+}
+
+.info__name{
+  font-weight: 500;
+}
+
+.info__mail{
+  opacity: 0.9;
+}
+
+.wrapper__progress{
+  grid-area: progress;
+}
+
+@media (max-width: 414px){
+  .wrapper{
+    padding: 10px 5px 10px 5px;
+    justify-items: center;
+    row-gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "info"
+    "avatar"
+    "progress";
+  }
+
+  .wrapper__avatar{
+    width:70vw;
+  }
+
+  .avatar__image{
+    width:150px
+  }
+
+  .wrapper__info{
+    text-align: center;
+  }
+}

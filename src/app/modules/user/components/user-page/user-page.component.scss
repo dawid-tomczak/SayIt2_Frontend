@@ -1,0 +1,36 @@
+.wrapper__info {
+  background-color: #f9f9f9;
+}
+
+.info__header{
+  display: none;
+}
+
+.wrapper__challenges{
+  margin-top:20px;
+  padding: 20px 40px;
+}
+
+.challenges__subheader{
+  font-size: small;
+  opacity: 0.75;
+}
+
+.challenges__table{
+  padding: 20px 40px;
+}
+
+@media (max-width: 414px){
+  h1, .challenges__subheader{
+    text-align: center;
+  }
+
+  .wrapper__challenges{
+    margin-top:20px;
+    padding: 10px 20px;
+  }
+
+  .challenges__table{
+    padding: 0px 0px;
+  }
+}

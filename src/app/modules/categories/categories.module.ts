@@ -6,6 +6,7 @@ import { HeroHeaderComponent } from './components/hero-header/hero-header.compon
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 import { RouterModule } from '@angular/router';
+import { ChallengesModule } from 'src/app/shared/modules/challenges/challenges.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
-  ]
+    RouterModule,
+    ChallengesModule
+  ],
 })
 export class CategoriesModule { }

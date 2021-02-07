@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <span class="wrapper__level mat-display-1">Poziom {{progress.current.levelNo}}</span>
+  <mat-progress-bar class="wrapper__progress" mode="determinate"
+    [value]="(progress?.current?.totalLearningDays / progress?.predicted?.totalLearningDays) * 100">
+  </mat-progress-bar>
+  <span class="wrapper__prediction mat-subheading-1">
+    Jeśli pójdzie Ci tak dalej, to osiągniesz kolejny poziom za
+    {{progress?.predicted?.totalLearningDays - progress?.current?.totalLearningDays}} dni
+  </span>
+</div>

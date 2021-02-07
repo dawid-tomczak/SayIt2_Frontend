@@ -1,6 +1,7 @@
 import { environment } from 'src/environments/environment';
 
 export const BASE_URL = environment.newBackendUrl + '/api';
+export const MOCK_URL = 'http://localhost:3000';
 
 // auth
 export const USER_CONTROLLER = BASE_URL + '/User';
@@ -22,6 +23,11 @@ export const MARK_FLASHCARD_AS_SEEN = FLASHCARDS_CONTROLLER + '/setAsSeen';
 export const QUIZ_CONTROLLER = BASE_URL + '/Quiz';
 export const QUIZ_WON = QUIZ_CONTROLLER + '/SetAsWin';
 export const QUIZ_LOOSED = QUIZ_CONTROLLER + '/SetAsLoose';
+export const QUIZ_BY_ID = QUIZ_CONTROLLER + '/GetById/:ID';
+
+// challenges
+export const START_CHALLENGE = USER_CONTROLLER + '/startNewStruggle';
+export const MY_CHALLENGES = USER_CONTROLLER + '/getMyStruggles';
 
 // config consts
 export const questionSeconds = 25;

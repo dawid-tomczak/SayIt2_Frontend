@@ -14,6 +14,9 @@ import { FlashcardsModule } from './modules/flashcards/flashcards.module';
 import { QuizzesModule } from './modules/quizzes/quizzes.module';
 import { CoreModule } from './shared/modules/core/core.module';
 import { LoginModule } from './modules/login/login.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { LoginModule } from './modules/login/login.module';
     FlashcardsModule,
     QuizzesModule,
     LoginModule,
+    UserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

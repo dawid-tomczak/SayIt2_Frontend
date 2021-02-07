@@ -4,13 +4,16 @@
 
 *{
   box-sizing: border-box;
-  z-index: 3;
+}
+
+*:focus {
+  outline: none !important;
+  border: 0 !important;
 }
 
 html, body {
   height: 100%;
   width:100%;
-
 }
 
 body {

@@ -2,8 +2,8 @@
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput placeholder="Email" formControlName="userName">
-    <mat-error *ngIf="loginForm.get('userName').hasError('required')">Login jest wymagany</mat-error>
-    <mat-error *ngIf="loginForm.get('userName').hasError('email')">Login musi być mailem</mat-error>
+    <mat-error *ngIf="loginForm.get('userName').hasError('required')">Mail jest wymagany</mat-error>
+    <mat-error *ngIf="loginForm.get('userName').hasError('email')">Mail nie jest poprawny</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Hasło</mat-label>

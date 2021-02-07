@@ -4,6 +4,7 @@ import {
   MatBadgeModule,
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
@@ -13,7 +14,9 @@ import {
   MatProgressSpinnerModule,
   MatRippleModule,
   MatSnackBarModule,
-  MatToolbarModule
+  MatTableModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 
 
@@ -34,7 +37,10 @@ import {
     MatInputModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatDialogModule
   ],
   exports: [
     MatMenuModule,
@@ -49,7 +55,10 @@ import {
     MatInputModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

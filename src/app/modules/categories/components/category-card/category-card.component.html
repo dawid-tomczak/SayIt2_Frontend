@@ -1,20 +1,49 @@
-<div class="categoryCard">
+<div class="categoryCard" (mouseleave)="resetFlags()">
   <h1 class="categoryCard__header">
     <span class="header__span">
       {{category.name}}
     </span>
   </h1>
-  <section class="categoryCard__iconSection">
+  <div class="categoryCard__iconSection">
     <mat-icon class="iconSection__icon" aria-label="category icon">
       {{category.materialIconName ? category.materialIconName : fallbackMaterialIcon}}
     </mat-icon>
-  </section>
-  <section class="categoryCard__actions">
-    <button matRipple class="actions__button" routerLink="/flashcards" [queryParams]="{category: category.id}">
-      Fiszki
-    </button>
-    <button matRipple class="actions__button" routerLink="/quiz" [queryParams]="{category: category.id}">
-      Quiz
-    </button>
-  </section>
+  </div>
+
+  <div class="categoryCard__actions">
+    <div class="actions__wrapper" [class.actions__wrapper--quiz]="quizSelected"
+      [class.actions__wrapper--challenge]="challengeSelected">
+      <div class="wrapper__basicActions actionButtonsDiv">
+        <button matRipple class="basicActions__button cardButton" routerLink="/flashcards"
+          [queryParams]="{category: category.id}">
+          Fiszki
+        </button>
+        <button matRipple class="basicActions__button cardButton" (click)="quizToggle()">
+          Quiz
+        </button>
+      </div>
+
+      <div class="wrapper__quizActions actionButtonsDiv">
+        <button matRipple class="quizActions__button cardButton" routerLink="/quiz"
+          [queryParams]="{category: category.id}">
+          Solo
+        </button>
+        <button matRipple class="quizActions__button quizActions__button--challenge cardButton"
+          (click)="challengeToggle()">
+          Wyzwanie
+        </button>
+      </div>
+
+      <div class="actions__challengeActions actionButtonsDiv">
+        <button matRipple class="challengeActions__button cardButton" routerLink="/quiz"
+          [queryParams]="{category: category.id, challenge: true}">
+          Nowe
+        </button>
+        <button matRipple class="challengeActions__button cardButton challengeActions__button--existing"
+          (click)="openChallengesDialog()">
+          Oczekujące
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

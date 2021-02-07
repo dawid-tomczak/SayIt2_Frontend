@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="wrapper__avatar">
+    <img src="assets//img/user.png" alt="UserImg" class="avatar__image rounded-circle">
+    <div class="avatar__actions">
+      <button mat-flat-button color="warn" (click)="deleteAvatar()">
+        Usuń
+      </button>
+      <button mat-flat-button color="primary" (click)="updateAvatar()">
+        Zmień
+      </button>
+    </div>
+  </div>
+  <div class="wrapper__info">
+    <p>
+      <span class="mat-display-1 info__name">
+        {{user.name}}
+      </span>
+      <br />
+      <span class="mat-subheading-1 info__mail">
+        {{user.email}}
+      </span>
+    </p>
+  </div>
+  <div class="wrapper__progress">
+    <app-user-progress [progress]="progress"></app-user-progress>
+  </div>
+</div>

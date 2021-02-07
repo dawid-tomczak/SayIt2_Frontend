@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Quiz } from '../../models/quiz';
 import { QuizQuestionComplex } from '../../models/quiz-question-complex';
 import { QuizResult } from '../../models/quiz-result';
+import { ChallengeService } from '../../../../shared/services/challenge.service';
 import { QuizService } from '../../services/quiz.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class QuizPageComponent implements OnInit, OnDestroy {
 
   selectedQuestion: QuizQuestionComplex;
 
-  constructor(private quizService: QuizService, private route: ActivatedRoute, private router: Router) {
+  constructor(private quizService: QuizService, private challengeService: ChallengeService,
+              private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,7 +32,9 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   private extractDataFromUrl() {
     this.route.queryParams.subscribe(params => {
       if (params.category) {
-        this.downloadQuiz(params.category);
+        this.subscriptions.push(
+          this.downloadQuiz(params.category, params.challenge)
+        );
       } else {
         console.error('brak kategorii w URL');
         this.router.navigate(['categories']);
@@ -38,8 +42,11 @@ export class QuizPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  private downloadQuiz(categoryId: number) {
-    this.quizService.getQuizForCategory(categoryId).subscribe(res => {
+  private downloadQuiz(categoryId: number, challengeMode: boolean = false): Subscription {
+    const getFunctionRef =
+      challengeMode ? this.challengeService.getNewChallenge(categoryId) : this.quizService.getQuizForCategory(categoryId);
+
+    return getFunctionRef.subscribe(res => {
       this.quiz = new Quiz(res.id, res.questions);
       this.answersObservable$ = this.quiz.answers$;
 
@@ -63,7 +70,9 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   }
 
   private sendResult(won: boolean) {
-    this.quizService.postQuizResult(this.quiz.id, won).subscribe(res => console.log(res));
+    this.subscriptions.push(
+      this.quizService.postQuizResult(this.quiz.id, won).subscribe()
+    );
   }
 
 

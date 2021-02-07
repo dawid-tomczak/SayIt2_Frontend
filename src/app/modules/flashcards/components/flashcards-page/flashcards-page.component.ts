@@ -111,7 +111,7 @@ export class FlashcardsPageComponent implements OnInit {
   }
 
   private startListeningToDevice(): Subscription {
-    return this.mobileService.getMobileDeviceObservable().subscribe(isMobile => {
+    return this.mobileService.onMobileDevice$.subscribe(isMobile => {
       if (isMobile) {
         this.showHelp = true;
       }

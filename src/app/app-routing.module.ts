@@ -5,6 +5,7 @@ import { LoginComponent } from './modules/login/components/login-page/login.comp
 import { CategoriesPageComponent } from './modules/categories/components/categories-page/categories-page.component';
 import { FlashcardsPageComponent } from './modules/flashcards/components/flashcards-page/flashcards-page.component';
 import { QuizPageComponent } from './modules/quizzes/components/quiz-page/quiz-page.component';
+import { UserPageComponent } from './modules/user/components/user-page/user-page.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'categories',
     component: CategoriesPageComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'user',
+    component: UserPageComponent,
     canActivate: [AuthGuardGuard]
   },
   {

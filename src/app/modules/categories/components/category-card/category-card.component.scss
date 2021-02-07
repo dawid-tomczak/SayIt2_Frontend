@@ -11,7 +11,7 @@
   transition: box-shadow 250ms;
 }
 
-.categoryCard__header, .categoryCard__actions, .categoryCard__iconSection{
+.categoryCard__header, .categoryCard__actions, .categoryCard__iconSection, .actionButtonsDiv{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,10 +40,9 @@
 
 .categoryCard__actions{
   height: 30%;
-  padding: 6px;
-  flex-direction: column;
-  justify-content: space-around;
+  width:100%;
   background-color: #778BE1;
+  overflow: hidden;
 
   transition: transform 5s;
 }
@@ -56,7 +55,7 @@
 }
 
 
-.actions__button{
+.cardButton{
   width:80%;
   height:32%;
   border-radius: 8px;
@@ -71,9 +70,36 @@
   transition: background-color 250ms, color 250ms;
 }
 
-.actions__button:hover{
+.cardButton:hover{
   background-color: $pink;
   color:white;
+}
+
+.actions__wrapper{
+  width:300%;
+  height:100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  transition: transform 0.5s;
+  transform: translateX(100%);
+}
+
+.actionButtonsDiv{
+  min-width:100%;
+  height:100%;
+  padding: 6px;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.actions__wrapper--quiz{
+  transform: translateX(0%);
+}
+
+.actions__wrapper--challenge{
+  transform: translateX(-100%);
 }
 
 .categoryCard:hover{
@@ -114,20 +140,35 @@
     grid-area: description;
   }
 
-  .categoryCard__actions{
+  .actions__wrapper{
     width:100%;
-    height:100%;
-    flex-direction: row;
-    grid-area: actions;
-    transition: transform 250ms;
   }
 
-  .actions__button{
+  .actionButtonsDiv{
+    flex-direction: row;
+  }
+
+  .cardButton{
     width:40%;
     height:80%;
 
     font-size: 1.25rem;
     font-weight: 600;
+  }
+
+    .challengeActions__button--existing{
+    font-size: 0.8rem;
+  }
+
+  .quizActions__button--challenge{
+    font-size: 0.9rem;
+  }
+
+  .categoryCard__actions{
+    width:100%;
+    height:100%;
+    grid-area: actions;
+    transition: transform 250ms;
   }
 
   .iconSection__icon{
