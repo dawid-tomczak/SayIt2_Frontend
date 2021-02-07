@@ -11,10 +11,14 @@
   padding: 20px 40px;
 }
 
-  .challenges__subheader{
-    font-size: small;
-    opacity: 0.75;
-  }
+.challenges__subheader{
+  font-size: small;
+  opacity: 0.75;
+}
+
+.challenges__table{
+  padding: 20px 40px;
+}
 
 @media (max-width: 414px){
   h1, .challenges__subheader{
@@ -24,5 +28,9 @@
   .wrapper__challenges{
     margin-top:20px;
     padding: 10px 20px;
+  }
+
+  .challenges__table{
+    padding: 0px 0px;
   }
 }
