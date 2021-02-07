@@ -18,10 +18,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(private loginService: LoginService, private router: Router,
-              private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
+    private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
 
   ngOnInit() {
-    this.subscriptions.push(this.downloadProgress());
+    this.subscriptions.push(
+      this.downloadProgress(),
+    );
   }
 
   logout(): void {
@@ -38,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
-  downloadProgress(): Subscription {
+  private downloadProgress(): Subscription {
     return this.userService.getProgress().subscribe(res => {
       this.progress = res;
     });
