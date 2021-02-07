@@ -4,10 +4,15 @@ import { Challenge } from 'src/app/shared/models/challenge';
 @Component({
   selector: 'app-challenges-table',
   templateUrl: './challenges-table.component.html',
+  // needed to use padding in users column because margin does not work on this angular material element
   styles: [
     `
-    table{
-      width:100%;
+    .wrapper{
+      padding: 0px 40px;
+    }
+
+    .mat-column-users{
+      padding-right: 50px;
     }
 
     .users__vs{
@@ -15,13 +20,14 @@ import { Challenge } from 'src/app/shared/models/challenge';
       font-weight: 500;
     }
     `
-  ]
+  ],
 })
+
 export class ChallengesTableComponent implements OnInit {
 
   @Input() challenges: Challenge[];
 
-  displayedColumns = ['users', 'result', 'actions'];
+  displayedColumns = ['users', 'actions'];
 
   constructor() { }
 
