@@ -1,8 +1,11 @@
 <div class="wrapper">
   <div class="wrapper__info">
+    <!-- header only for accessability, so it is hidden -->
+    <h1 class="info__header">Dane użytkownika</h1>
     <app-user-info *ngIf="user && progress" [user]="user" [progress]="progress"></app-user-info>
   </div>
   <div class="wrapper__challenges">
+    <h1 class="challenges__info">Wyzwania</h1>
     <app-challenges-table [challenges]="challenges"></app-challenges-table>
   </div>
 </div>
