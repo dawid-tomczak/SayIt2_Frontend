@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(private loginService: LoginService, private router: Router,
-    private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
+              private snackbarService: SnackbarService, private location: Location, private userService: UserService) { }
 
   ngOnInit() {
     this.subscriptions.push(
