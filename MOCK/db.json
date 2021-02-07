@@ -1,0 +1,437 @@
+{
+  "quiz": {
+    "questions": [
+      {
+        "id": 19,
+        "qestionTranslation": [
+          {
+            "text": "TEST123",
+            "langCodeId": 1,
+            "langCode": "PL",
+            "languages": [
+              {
+                "text": "EN",
+                "value": "2"
+              },
+              {
+                "text": "PL",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "text": "The TEST223423",
+            "langCodeId": 2,
+            "langCode": "EN",
+            "languages": [
+              {
+                "text": "EN",
+                "value": "2"
+              },
+              {
+                "text": "PL",
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "correctAnswer": {
+          "id": 205,
+          "translations": [
+            {
+              "text": "3345",
+              "langCodeId": 2,
+              "langCode": "EN",
+              "languages": [
+                {
+                  "text": "EN",
+                  "value": "2"
+                },
+                {
+                  "text": "PL",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "text": "4",
+              "langCodeId": 1,
+              "langCode": "PL",
+              "languages": [
+                {
+                  "text": "EN",
+                  "value": "2"
+                },
+                {
+                  "text": "PL",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        "badAnswers": [
+          {
+            "id": 74,
+            "translations": [
+              {
+                "text": "1",
+                "langCodeId": 1,
+                "langCode": "PL",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "text": "2",
+                "langCodeId": 2,
+                "langCode": "EN",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 75,
+            "translations": [
+              {
+                "text": "5",
+                "langCodeId": 2,
+                "langCode": "EN",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "text": "6",
+                "langCodeId": 1,
+                "langCode": "PL",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 76,
+            "translations": [
+              {
+                "text": "75",
+                "langCodeId": 2,
+                "langCode": "EN",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "text": "7",
+                "langCodeId": 1,
+                "langCode": "PL",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "qestionTranslation": [
+          {
+            "text": "TEST234",
+            "langCodeId": 1,
+            "langCode": "PL",
+            "languages": [
+              {
+                "text": "EN",
+                "value": "2"
+              },
+              {
+                "text": "PL",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "text": "The TEST223423",
+            "langCodeId": 2,
+            "langCode": "EN",
+            "languages": [
+              {
+                "text": "EN",
+                "value": "2"
+              },
+              {
+                "text": "PL",
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "correctAnswer": {
+          "id": 205,
+          "translations": [
+            {
+              "text": "3345",
+              "langCodeId": 2,
+              "langCode": "EN",
+              "languages": [
+                {
+                  "text": "EN",
+                  "value": "2"
+                },
+                {
+                  "text": "PL",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "text": "4",
+              "langCodeId": 1,
+              "langCode": "PL",
+              "languages": [
+                {
+                  "text": "EN",
+                  "value": "2"
+                },
+                {
+                  "text": "PL",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        },
+        "badAnswers": [
+          {
+            "id": 74,
+            "translations": [
+              {
+                "text": "1",
+                "langCodeId": 1,
+                "langCode": "PL",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "text": "2",
+                "langCodeId": 2,
+                "langCode": "EN",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 75,
+            "translations": [
+              {
+                "text": "5",
+                "langCodeId": 2,
+                "langCode": "EN",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "text": "6",
+                "langCodeId": 1,
+                "langCode": "PL",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "2"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 76,
+            "translations": [
+              {
+                "text": "75",
+                "langCodeId": 2,
+                "langCode": "EN",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "20"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "10"
+                  }
+                ]
+              },
+              {
+                "text": "70",
+                "langCodeId": 1,
+                "langCode": "PL",
+                "languages": [
+                  {
+                    "text": "EN",
+                    "value": "200"
+                  },
+                  {
+                    "text": "PL",
+                    "value": "10"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": 8,
+      "quizId": 11,
+      "users": [
+        {
+          "id": "3BCFFCB6-757C-4F58-8908-A0A1F3D384DB",
+          "name": "Dawid"
+        },
+        {
+          "id": "937B1DEA-7B7D-4E74-A0E1-CABF220C64F6",
+          "name": "John"
+        }
+      ],
+      "status": "WON"
+    },
+    {
+      "id": 9,
+      "quizId": 12,
+      "users": [
+        {
+          "id": "3BCFFCB6-757C-4F58-8908-A0A1F3D384DB",
+          "name": "Dawid"
+        },
+        {
+          "id": "937B1DEA-7B7D-4E74-A0E1-CABF220C64F6",
+          "name": "John"
+        }
+      ],
+      "status": "TODO"
+    },
+    {
+      "id": 11,
+      "quizId": 12,
+      "users": [
+        {
+          "id": "3BCFFCB6-757C-4F58-8908-A0A1F3D384DB",
+          "name": "Dawid"
+        },
+        {
+          "id": "937B1DEA-7B7D-4E74-A0E1-CABF220C64F6",
+          "name": "John"
+        }
+      ],
+      "status": "TODO"
+    },
+    {
+      "id": 12,
+      "quizId": 11,
+      "users": [
+        {
+          "id": "3BCFFCB6-757C-4F58-8908-A0A1F3D384DB",
+          "name": "Dawid"
+        },
+        {
+          "id": "937B1DEA-7B7D-4E74-A0E1-CABF220C64F6",
+          "name": "John"
+        }
+      ],
+      "status": "LOST"
+    },
+    {
+      "id": 13,
+      "quizId": 10,
+      "users": [
+        {
+          "id": "3BCFFCB6-757C-4F58-8908-A0A1F3D384DB",
+          "name": "Dawid"
+        },
+        {
+          "id": "937B1DEA-7B7D-4E74-A0E1-CABF220C64F6",
+          "name": "John"
+        }
+      ],
+      "status": "WON"
+    }
+  ]
+}
