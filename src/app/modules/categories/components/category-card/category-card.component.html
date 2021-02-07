@@ -39,7 +39,8 @@
           [queryParams]="{category: category.id, challenge: true}">
           Nowe
         </button>
-        <button matRipple class="challengeActions__button cardButton challengeActions__button--existing">
+        <button matRipple class="challengeActions__button cardButton challengeActions__button--existing"
+          (click)="openChallengesDialog()">
           Oczekujące
         </button>
       </div>
