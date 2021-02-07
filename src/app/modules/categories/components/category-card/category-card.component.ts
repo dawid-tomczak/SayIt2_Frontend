@@ -12,6 +12,7 @@ export class CategoryCardComponent implements OnInit {
 
   fallbackMaterialIcon = 'school';
   quizSelected = false;
+  challengeSelected = false;
 
   constructor() { }
 
@@ -20,5 +21,14 @@ export class CategoryCardComponent implements OnInit {
 
   quizToggle() {
     this.quizSelected = !this.quizSelected;
+  }
+
+  challengeToggle() {
+    this.challengeSelected = !this.challengeSelected;
+  }
+
+  resetFlags() {
+    this.quizSelected = false;
+    this.challengeSelected = false;
   }
 }
