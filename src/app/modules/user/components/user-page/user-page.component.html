@@ -2,4 +2,7 @@
   <div class="wrapper__info">
     <app-user-info *ngIf="user && progress" [user]="user" [progress]="progress"></app-user-info>
   </div>
+  <div class="wrapper__challenges">
+    <app-challenges-table [challenges]="challenges"></app-challenges-table>
+  </div>
 </div>
