@@ -22,7 +22,7 @@ export class QuizPageComponent implements OnInit, OnDestroy {
   selectedQuestion: QuizQuestionComplex;
 
   constructor(private quizService: QuizService, private challengeService: ChallengeService,
-    private route: ActivatedRoute, private router: Router) {
+              private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
