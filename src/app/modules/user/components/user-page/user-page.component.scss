@@ -10,3 +10,19 @@
   margin-top:20px;
   padding: 20px 40px;
 }
+
+  .challenges__subheader{
+    font-size: small;
+    opacity: 0.75;
+  }
+
+@media (max-width: 414px){
+  h1, .challenges__subheader{
+    text-align: center;
+  }
+
+  .wrapper__challenges{
+    margin-top:20px;
+    padding: 10px 20px;
+  }
+}

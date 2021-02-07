@@ -1,0 +1,18 @@
+.wrapper{
+  padding: 0px 40px;
+}
+
+// needed to use padding in users column because margin does not work on this angular material element
+.mat-column-users{
+  padding-right: 50px;
+}
+
+@media (max-width: 414px){
+  .wrapper{
+    padding: 0px 0px;
+  }
+
+  table{
+    width:100%;
+  }
+}

@@ -5,7 +5,8 @@
     <app-user-info *ngIf="user && progress" [user]="user" [progress]="progress"></app-user-info>
   </div>
   <div class="wrapper__challenges">
-    <h1 class="challenges__info">Wyzwania</h1>
+    <h1 class="challenges__header">Wyzwania</h1>
+    <span class="challenges__subheader">aby szybciej osiągnąć kolejny poziom rozwiąż wyzwania</span>
     <app-challenges-table [challenges]="challenges"></app-challenges-table>
   </div>
 </div>
